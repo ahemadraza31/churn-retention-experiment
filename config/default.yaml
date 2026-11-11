@@ -1,0 +1,21 @@
+scale: full
+seed: 20261022
+population:
+  n_customers: 20000
+timeline:
+  data_start: 2025-01-01
+  data_end: 2026-06-30
+  train_as_of: 2025-07-01
+  score_as_of: 2026-01-01
+  label_horizon_days: 180
+  feature_lookback_months: 6
+  outcome_window_days: 90
+churn:
+  target_rate: 0.12
+  min_rate: 0.05
+  max_rate: 0.20
+experiment:
+  treatment_share: 0.5
+  stratify_by: risk_band
+anomalies:
+  records_per_type: 40
