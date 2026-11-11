@@ -8,3 +8,5 @@
 
 | Date/Time (IST) | Milestone | Commit |
 | --- | --- | --- |
+| 2026-11-10 23:46 IST | Project scaffolding, Decisions D1-D9 & AI usage setup | `1aaca57` |
+| 2026-11-11 10:35 IST | Phase 2 Architecture Package & Requirements Spec Approved | *Current* |
