@@ -617,3 +617,12 @@ If delivery timelines slip, features will be trimmed in the following strict ord
   - **ADR-004 Confirmed**: Dual-snapshot temporal structure ($P_0 = \text{2025-07-01}$, $P = \text{2026-01-01}$) with zero leakage is adopted as the foundational integrity defense.
   - **ADR-007 Confirmed**: Planned-offer selection prior to 50/50 stratified randomization and ITT evaluation with `WITHHELD` control contacts is approved.
 - **ADR-009 Confirmed**: Starter dataset (1,000 subscribers) will be committed directly in repository; full 20,000 subscriber dataset will be generated deterministically and committed only if CSV total remains comfortably under 50 MB, otherwise verified via committed cryptographic SHA-256 manifests.
+
+## Addendum: Schema refinements (M2)
+
+- Restored `discount_pct` to nullable with proper CHECK constraints distinguishing percent vs free-month offers.
+- Enforced ID format GLOB patterns for all entities (e.g., `OFF-YYYY-######`).
+- Documented enum values and lifecycle state transitions.
+- Added notes on business rules not enforced at DB level (refer to data dictionary).
+- Updated documentation of anomaly shapes A–D and ground‑truth schemas.
+

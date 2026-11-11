@@ -66,6 +66,7 @@ Or invoke pytest directly:
 - [Phase 2: Architecture Package](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/docs/02_architecture.md)
 - [Architecture Decision Records & Decisions D1-D9](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/docs/decisions.md)
 - [Project Timeline & Milestones](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/docs/TIMELINE.md)
+- [Data Dictionary](docs/03_data_dictionary.md)
 - [AI Usage Log & Disclosure](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/ai-usage/README.md)
 
 ---
