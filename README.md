@@ -2,7 +2,61 @@
 
 Identify churn risk from behavioral change using only pre-prediction data, apply eligibility and margin rules, run a randomized treatment/control experiment, and measure incremental retention lift.
 
-**Status**: Phase 2 Approved — Ready for Milestone 1 (Foundation & Skeleton)
+**Status**: Milestone 1 Complete (Foundation & Skeleton)
+
+---
+
+## Setup
+
+Create the Python 3.11 virtual environment, install dependencies, and register editable package `churnexp`:
+
+```bash
+make setup
+```
+
+Or manually:
+```bash
+/opt/homebrew/opt/python@3.11/bin/python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
+---
+
+## Run
+
+Run the CLI health check or inspect configuration presets:
+
+```bash
+# Verify environment, package, config loading, and sqlite3 functionality
+make health
+
+# Or invoke directly via module runner
+python -m churnexp health --scale starter
+python -m churnexp health --scale full
+
+# View CLI options and available subcommands
+python -m churnexp --help
+
+# Inspect resolved configuration
+python -m churnexp config --scale starter
+```
+
+---
+
+## Test
+
+Run the automated test suite with pytest:
+
+```bash
+make test
+```
+
+Or invoke pytest directly:
+```bash
+.venv/bin/pytest -q
+```
 
 ---
 
@@ -23,29 +77,6 @@ Identify churn risk from behavioral change using only pre-prediction data, apply
 3. **Planned-Offer Randomization (ADR-007)**: Eligible accounts receive a planned offer before 50/50 stratified randomization; control accounts receive `WITHHELD` contacts with their planned offer recorded for valid offer-level lift.
 4. **Clean Baseline Evaluation (ADR-012)**: Predictive model evaluation strictly excludes treated accounts whose churn trajectory was influenced by retention interventions.
 5. **Blind Anomaly Detection (ADR-002, ADR-006)**: Operational anomalies (A-D) are detected blind to ground truth; auditing occurs downstream in an isolated audit module.
-
----
-
-## Setup & Execution (Roadmap)
-
-```bash
-# Setup virtual environment
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-# Run complete pipeline (Starter scale: 1,000 subscribers)
-python -m churnexp all --scale starter
-
-# Launch UI
-streamlit run app/streamlit_app.py
-
-# Launch FastAPI Service
-uvicorn churnexp.api.main:app --reload --port 8000
-
-# Execute full test suite
-pytest
-```
 
 ---
 
