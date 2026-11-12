@@ -1,0 +1,96 @@
+{
+  "scale": "full",
+  "seed": 20261022,
+  "config_sha256": "cea6d58482bdb0e444f363695257cbb49ed7add32ac760272a55eb1a82e84ee5",
+  "package_version": "0.1.0",
+  "table_row_counts": {
+    "customer": 20000,
+    "subscription": 23875,
+    "usage_snapshot": 327290,
+    "billing_event": 652796,
+    "support_case": 20849,
+    "offer": 0,
+    "eligibility_rule": 0,
+    "offer_eligibility_rule": 0,
+    "campaign_contact": 0,
+    "churn_outcome": 17738,
+    "retention_outcome": 0,
+    "state_event": 52550,
+    "risk_score": 0,
+    "feature_snapshot": 0,
+    "rule_evaluation": 0
+  },
+  "files": {
+    "csv/billing_event.csv": {
+      "sha256": "f6c200390d29d2940d345b50ce2016767b63a994b6d168d0ad071aae76e8fdf0",
+      "bytes": 69514187
+    },
+    "csv/campaign_contact.csv": {
+      "sha256": "cf439e67b36b0e3daa384236fbd6b7f0ebbd65717d3b935b490098d30c7b63ed",
+      "bytes": 111
+    },
+    "csv/churn_outcome.csv": {
+      "sha256": "0bf416fff78930e52f642af2f23cc1e643e7c8af8967e14e95c6c6f536743c87",
+      "bytes": 1149439
+    },
+    "csv/customer.csv": {
+      "sha256": "24f3e5c13f7d6ef22d53cac855ae0635303c9f740c8c7d2c10fa04e26af7edc3",
+      "bytes": 1010030
+    },
+    "csv/eligibility_rule.csv": {
+      "sha256": "e594adaef097a2c649eaa2eae96bc7e4c85b88294954a8f82c5871b30ee8afd5",
+      "bytes": 79
+    },
+    "csv/feature_snapshot.csv": {
+      "sha256": "59eabf113b7ab8122e0a8d548c17e2a4e71ade0b98dfe677c40dadbd3dc38d85",
+      "bytes": 390
+    },
+    "csv/offer.csv": {
+      "sha256": "420fe145fde8aa33e5475dd33ee2581a01d584447b002e158180fb042c847d6f",
+      "bytes": 117
+    },
+    "csv/offer_eligibility_rule.csv": {
+      "sha256": "92e454e172f539cf7e331a6d0d86a68a5545045522ffdfc448fcc65c0a22788e",
+      "bytes": 17
+    },
+    "csv/retention_outcome.csv": {
+      "sha256": "5dc5918ae9ba7c51efbfe4195d16a24383558b426c17da3f3f9e31ca8f52433d",
+      "bytes": 100
+    },
+    "csv/risk_score.csv": {
+      "sha256": "231ef78da1b6668a049f3abc711a49de73d38539918a3b440d79d7e2b6711d74",
+      "bytes": 62
+    },
+    "csv/rule_evaluation.csv": {
+      "sha256": "56be9252129563e9410a3e30cb109f1f7b12a037178081fe43d97dce99d60066",
+      "bytes": 92
+    },
+    "csv/state_event.csv": {
+      "sha256": "40aca4d3f215db9a8856690bcc411d06141d6269ad1f60b52f18cd8a0869baf9",
+      "bytes": 4816068
+    },
+    "csv/subscription.csv": {
+      "sha256": "2697b875e5c938f3d8389078b5c381e3621b4585d99351436935bbc2f7505f90",
+      "bytes": 1793093
+    },
+    "csv/support_case.csv": {
+      "sha256": "14c98c90594c4971872f75eac334d10c70d8c87e035751d2c5013403a9fc8765",
+      "bytes": 2231517
+    },
+    "csv/usage_snapshot.csv": {
+      "sha256": "caec4d91db4525cc4f53ba31d4d301509b89146f41af650f22de9135ed702f4a",
+      "bytes": 31621560
+    }
+  },
+  "ground_truth_files": {
+    "ground_truth/latent_customer_state.csv": {
+      "sha256": "22d00a6a7e527dff92cf4fd0a246e0af9489069f080a9130e015561d9e022b31",
+      "bytes": 526271
+    }
+  },
+  "environment": {
+    "python": "3.11.15",
+    "pandas": "3.1.1",
+    "numpy": "2.4.6"
+  }
+}

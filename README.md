@@ -2,7 +2,7 @@
 
 Identify churn risk from behavioral change using only pre-prediction data, apply eligibility and margin rules, run a randomized treatment/control experiment, and measure incremental retention lift.
 
-**Status**: Milestone 1 Complete (Foundation & Skeleton)
+**Status**: Milestone 4 Complete (Generators, Validators, Exporters & Reproducibility)
 
 ---
 
@@ -26,7 +26,7 @@ pip install -e .
 
 ## Run
 
-Run the CLI health check or inspect configuration presets:
+Run the CLI health check, inspect configuration presets, generate synthetic data, export datasets, validate rules, and verify reproducibility:
 
 ```bash
 # Verify environment, package, config loading, and sqlite3 functionality
@@ -41,6 +41,22 @@ python -m churnexp --help
 
 # Inspect resolved configuration
 python -m churnexp config --scale starter
+
+# Generate synthetic untreated world into output/<scale>/churnexp.db
+python -m churnexp generate --scale starter
+python -m churnexp generate --scale full
+
+# Export database tables to data/<scale>/ (csv,json,sql for starter; csv for full)
+python -m churnexp export --scale starter
+python -m churnexp export --scale full
+
+# Validate structural, temporal, reconciliation, and cross-file rules
+python -m churnexp validate --scale starter
+python -m churnexp validate --scale full
+
+# Verify two-run subprocess reproducibility (PYTHONHASHSEED=1 vs 2)
+python -m churnexp repro-check --scale starter
+python -m churnexp repro-check --scale full
 ```
 
 ---

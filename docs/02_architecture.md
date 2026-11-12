@@ -642,4 +642,23 @@ If delivery timelines slip, features will be trimmed in the following strict ord
   - `World.tables["usage_snapshot"]` retains `features_used` and `usage_pct_of_limit` in memory, while `load_world` projects to the columns defined in `schema.sql`.
 - **State Events**: `state_event` records transitions for `CUSTOMER` (`INIT -> ACTIVE -> CHURNED`) and `SUBSCRIPTION` (`INIT -> ACTIVE -> EXPIRED | CANCELLED`) per the `entity_type` `CHECK` constraint in `schema.sql`.
 
+## Addendum: Validation, export and reproducibility (M4)
+
+- **Schema & Strict Loader (`A1`)**:
+  - Restored `features_used INTEGER NOT NULL CHECK (features_used BETWEEN 0 AND 8)` and `usage_pct_of_limit REAL NOT NULL CHECK (usage_pct_of_limit BETWEEN 0 AND 1)` to `usage_snapshot` in `src/churnexp/schema/schema.sql` and `docs/03_data_dictionary.md`.
+  - `load_world` in `src/churnexp/generation/world.py` is now strict: it raises `ValueError` if any DataFrame contains a column absent from the target SQLite table or is missing any `NOT NULL` / `PRIMARY KEY` column (no silent column projection).
+- **Conditional Hidden Segment (`A2`)**:
+  - Replaced the independent 4-way latent segment draw with a conditional draw on `latent_segment` RNG stream keyed by untreated churn outcome (`config/default.yaml` under `generator.segment`):
+    - Customers who churn in the untreated world (`untreated_churn_date` not null) are `PERSUADABLE` with probability `persuadable_given_churn: 0.45`, otherwise `LOST_CAUSE`.
+    - Customers who do not churn in the untreated world are `SURE_THING` with probability `1 - sleeping_dog_given_retained` (`0.97`), otherwise `SLEEPING_DOG` (`sleeping_dog_given_retained: 0.03`).
+- **Support Case Lifecycle Note (`A3`)**:
+  - Documented in `docs/03_data_dictionary.md` that `support_case` lifecycle is stored directly in `opened_at`, `resolved_at`, and `escalated`, not in `state_event`.
+- **Validators (`B1`)**:
+  - Implemented `validate_tables(tables)` in `src/churnexp/validation/{enums.py,report.py,checks.py}` covering structural (`STRUCT-PK-UNIQUE`, `STRUCT-FK`, `STRUCT-ENUM`, `STRUCT-ID-FORMAT`), temporal (`TEMP-SUB-DATES`, `TEMP-SUB-CHAIN`, `TEMP-SNAPSHOT-IN-SUB`, `TEMP-BILLING-IN-SUB`, `TEMP-SUPPORT-ORDER`, `TEMP-CHURN-VS-SUB`, `TEMP-STATE-EVENT`), reconciliation (`REC-INVOICE-AMOUNT`, `REC-PAYMENT-AMOUNT`, `REC-BALANCE`, `REC-USAGE`), natural-key (`DUP-NATURAL-KEYS`), and cross-file (`XFILE-ROWCOUNT-KEYS`, `XFILE-JSON-CSV`) rules.
+- **Generic Exporter & Manifests (`B2`)**:
+  - Added CLI subcommand `python -m churnexp export --scale starter|full [--formats csv,json,sql] [--output-dir DIR]` in `src/churnexp/io/{exporters.py,manifest.py}` to export all tables in the database to `data/<scale>/{csv,json,sql}/`, copy `ground_truth/latent_customer_state.csv` isolated from public exports, and write `data/<scale>/MANIFEST.json` and `data/SOURCE_MANIFEST.md`.
+- **Reproducibility Check (`B3`)**:
+  - Implemented `python -m churnexp repro-check --scale starter|full` in `src/churnexp/repro.py`, executing `generate` + `export` twice in isolated subprocesses with `PYTHONHASHSEED=1` and `PYTHONHASHSEED=2`, verifying identical per-table row counts, exported file SHA-256 hashes, latent file SHA-256 hash, and business aggregates, and writing `data/<scale>/REPRODUCIBILITY.md`.
+
+
 

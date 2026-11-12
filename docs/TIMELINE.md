@@ -12,4 +12,5 @@
 | 2026-11-11 10:35 IST | Phase 2 Architecture Package & Requirements Spec Approved | `0ec1842` |
 | 2026-11-11 11:25 IST | Milestone 1: Foundation & Skeleton (env, metadata, config, IDs, RNG, CLI) | `583285e` |
 | 2026-11-11 23:16 IST | Milestone 2: Database schema, views and data dictionary | `b2c6ef4` |
-| 2026-11-12 06:46 IST | Milestone 3: Synthetic history generator (18-month untreated world & latent GT) | `M3` |
+| 2026-11-12 06:46 IST | Milestone 3: Synthetic history generator (18-month untreated world & latent GT) | `dc004a7` |
+| 2026-11-12 08:00 IST | Milestone 4: M3 corrections, validators, generic exporter, and reproducibility check | `M4` |

@@ -1,0 +1,141 @@
+{
+  "scale": "full",
+  "passed": true,
+  "has_critical_or_high": false,
+  "total_findings": 0,
+  "counts_by_severity": {
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  },
+  "rules": [
+    {
+      "rule_id": "STRUCT-PK-UNIQUE",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Primary key uniqueness and non-nullness across all tables"
+    },
+    {
+      "rule_id": "STRUCT-FK",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Foreign key referential integrity across all tables (no orphans)"
+    },
+    {
+      "rule_id": "STRUCT-ENUM",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Allowed enum values on all constrained columns"
+    },
+    {
+      "rule_id": "STRUCT-ID-FORMAT",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Entity primary and foreign key ID regex format validity"
+    },
+    {
+      "rule_id": "TEMP-SUB-DATES",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Subscription end_date >= start_date"
+    },
+    {
+      "rule_id": "TEMP-SUB-CHAIN",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Subscription chain consecutive sequence_no, previous link, and next-day continuity"
+    },
+    {
+      "rule_id": "TEMP-SNAPSHOT-IN-SUB",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Usage snapshot month falls within subscription start/end window"
+    },
+    {
+      "rule_id": "TEMP-BILLING-IN-SUB",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Billing events fall within subscription active window"
+    },
+    {
+      "rule_id": "TEMP-SUPPORT-ORDER",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Support case resolved_at >= opened_at"
+    },
+    {
+      "rule_id": "TEMP-CHURN-VS-SUB",
+      "severity": "CRITICAL",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "No usage, billing, or support after churn date; churn date equals last subscription end_date"
+    },
+    {
+      "rule_id": "TEMP-STATE-EVENT",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "State events per entity are time-ordered and follow allowed dictionary transitions"
+    },
+    {
+      "rule_id": "REC-INVOICE-AMOUNT",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Invoice amount_cents equals subscription monthly_price_cents"
+    },
+    {
+      "rule_id": "REC-PAYMENT-AMOUNT",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Payment/retry amount_cents equals its related invoice amount_cents"
+    },
+    {
+      "rule_id": "REC-BALANCE",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "v_subscription_balance matches independent recomputation for all subscriptions"
+    },
+    {
+      "rule_id": "REC-USAGE",
+      "severity": "MEDIUM",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Usage active_days == 0 iff usage_minutes == 0 and usage_pct_of_limit in [0, 1]"
+    },
+    {
+      "rule_id": "DUP-NATURAL-KEYS",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "Natural keys unique: (subscription_id, snapshot_month), (customer_id, sequence_no), one INVOICE per sub/month"
+    },
+    {
+      "rule_id": "XFILE-ROWCOUNT-KEYS",
+      "severity": "HIGH",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "CSV and DB tables have identical row counts and primary key sets"
+    },
+    {
+      "rule_id": "XFILE-JSON-CSV",
+      "severity": "MEDIUM",
+      "status": "PASS",
+      "finding_count": 0,
+      "description": "JSON and CSV exports match in row counts, keys, and values"
+    }
+  ],
+  "findings": []
+}

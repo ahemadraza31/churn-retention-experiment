@@ -11,4 +11,7 @@ __pycache__/
 .idea/
 .vscode/
 output/
+data/full/csv/
+data/full/json/
+data/full/sql/seed.sql
 
