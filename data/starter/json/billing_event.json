@@ -219890,6 +219890,28 @@
     "failure_reason": null
   },
   {
+    "billing_event_id": "BILL-SUB-CUS-000616-01-202606-01",
+    "subscription_id": "SUB-CUS-000616-01",
+    "related_event_id": null,
+    "event_type": "INVOICE",
+    "event_date": "2026-06-24",
+    "due_date": "2026-07-01",
+    "amount_cents": 1999,
+    "status": "POSTED",
+    "failure_reason": null
+  },
+  {
+    "billing_event_id": "BILL-SUB-CUS-000616-01-202606-02",
+    "subscription_id": "SUB-CUS-000616-01",
+    "related_event_id": "BILL-SUB-CUS-000616-01-202606-01",
+    "event_type": "PAYMENT",
+    "event_date": "2026-06-27",
+    "due_date": null,
+    "amount_cents": 1999,
+    "status": "SETTLED",
+    "failure_reason": null
+  },
+  {
     "billing_event_id": "BILL-SUB-CUS-000617-01-202501-01",
     "subscription_id": "SUB-CUS-000617-01",
     "related_event_id": null,

@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "offer_id": "OFF-2026-000001",
+    "offer_name": "10% off for 6 months",
+    "offer_type": "PERCENT_DISCOUNT",
+    "discount_pct": 0.1,
+    "free_months": null,
+    "duration_months": 6,
+    "max_cost_share_of_margin": 0.2,
+    "valid_from": "2026-01-01",
+    "valid_to": "2026-12-31"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "offer_name": "20% off for 3 months",
+    "offer_type": "PERCENT_DISCOUNT",
+    "discount_pct": 0.2,
+    "free_months": null,
+    "duration_months": 3,
+    "max_cost_share_of_margin": 0.2,
+    "valid_from": "2026-01-01",
+    "valid_to": "2026-12-31"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "offer_name": "1 free month",
+    "offer_type": "FREE_MONTH",
+    "discount_pct": null,
+    "free_months": 1,
+    "duration_months": 1,
+    "max_cost_share_of_margin": 0.25,
+    "valid_from": "2026-01-01",
+    "valid_to": "2026-12-31"
+  }
+]

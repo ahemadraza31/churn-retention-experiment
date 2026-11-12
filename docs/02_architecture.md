@@ -660,5 +660,28 @@ If delivery timelines slip, features will be trimmed in the following strict ord
 - **Reproducibility Check (`B3`)**:
   - Implemented `python -m churnexp repro-check --scale starter|full` in `src/churnexp/repro.py`, executing `generate` + `export` twice in isolated subprocesses with `PYTHONHASHSEED=1` and `PYTHONHASHSEED=2`, verifying identical per-table row counts, exported file SHA-256 hashes, latent file SHA-256 hash, and business aggregates, and writing `data/<scale>/REPRODUCIBILITY.md`.
 
+## Addendum: Campaign pipeline (Run 2A)
+
+- **Configuration (`config/default.yaml` & `src/churnexp/config.py`)**:
+  - Updated `generator.segment.persuadable_given_churn` from `0.45` to `0.60` (affecting only the `latent_segment` RNG stream and latent ground-truth hash; all 7 base untreated table hashes remain identical to M4).
+  - Added validated `campaign`, `offers`, and `experiment.effects` configuration blocks.
+- **Temporal Feature Builder (`src/churnexp/features/builder.py`)**:
+  - `build_features(tables, as_of, lookback_months=6)` builds `feature_snapshot` rows at $P_0 = \text{2025-07-01}$ and $P = \text{2026-01-01}$ for customers with an active subscription on `as_of` (`start_date < as_of` and `end_date` null or $\ge \text{as\_of}$).
+  - Strictly filters usage (`period_end < as_of`), billing (`event_date < as_of`), support (`opened_at < as_of`, with cases resolved on or after `as_of` treated as open), and subscription (`start_date < as_of`) records to prevent temporal leakage.
+- **Churn Risk Model (`src/churnexp/modeling/{train.py,score.py,metrics.py}`)**:
+  - Trained explainable `LogisticRegression` ($L_2$, `C=1.0`, `lbfgs`, `max_iter=1000`, `StandardScaler` on numeric features, `OneHotEncoder(drop="first")` on categoricals) at $P_0 = \text{2025-07-01}$ against 2025 180-day `churn_outcome` labels (`model_version = "logreg_v1"`).
+  - Scored active customers at $P = \text{2026-01-01}$ and assigned quantile risk bands (`HIGH` top 15%, `MEDIUM` next 20%, `LOW` remaining 65%) with deterministic tie-breaking by `(-risk_score, customer_id)`.
+- **Offer Catalog & Eligibility Engine (`src/churnexp/eligibility/{catalog.py,rules.py,engine.py}`)**:
+  - Materialized 3 offers (`OFF-2026-000001..000003`), 7 eligibility rules (`ER-001..ER-007`), and 21 `offer_eligibility_rule` bridge rows.
+  - Evaluated rules as of `assignment_date = 2026-01-05` for all scored customers: `ER-001..ER-006` stored with `offer_id = NULL` (6 rows/customer) and `ER-007` stored per offer (3 rows/customer), for 9 `rule_evaluation` rows per scored customer.
+- **Planned Offer & Stratified Assignment (`src/churnexp/experiment/assign.py`)**:
+  - Selected planned `offer_id` before randomization (`OFF-2026-000003` for `HIGH` risk if eligible, else `OFF-2026-000002`, else `OFF-2026-000001`; `OFF-2026-000002` then `OFF-2026-000001` for `MEDIUM`).
+  - Performed 50/50 stratified randomization within `(risk_band, plan_tier, segment)` strata using `make_rng(seed, "campaign")`, assigning `TREATMENT` (`SENT` vs `DELIVERY_FAILED` at probability `0.03`) and `CONTROL` (`WITHHELD`).
+- **Counterfactual & Observed Outcome Simulation (`src/churnexp/experiment/simulate.py`)**:
+  - Simulated response and redemption for `TREATMENT + SENT` contacts using `make_rng(seed, "outcome")`.
+  - Saved `PERSUADABLE` voluntary 2026 churners who redeemed and passed the offer save draw: cleared subscription `end_date`/`end_reason`, updated 2026 `churn_outcome` and `latent_customer_state`, and generated post-churn usage and billing rows through `2026-06-30` on isolated per-customer RNG sub-streams.
+  - Built `retention_outcome` over the 90-day outcome window (`2026-01-05` to `2026-04-05`) and rebuilt `state_event` across `CUSTOMER`, `SUBSCRIPTION`, and `CAMPAIGN_CONTACT` lifecycles.
+
+
 
 

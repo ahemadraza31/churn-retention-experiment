@@ -1,1 +1,8 @@
 rule_id,rule_code,rule_type,parameter_json,version,effective_from,effective_to
+ER-001,ACTIVE_SUBSCRIPTION,SUBSCRIPTION,"{""require_active"": true}",1,2026-01-01,2026-12-31
+ER-002,MIN_TENURE_DAYS,TENURE,"{""min_tenure_days"": 90}",1,2026-01-01,2026-12-31
+ER-003,MARKETING_OPT_IN,CONSENT,"{""required_opt_in"": 1}",1,2026-01-01,2026-12-31
+ER-004,NO_UNSETTLED_INVOICE,BILLING,"{""grace_days"": 7}",1,2026-01-01,2026-12-31
+ER-005,NO_OPEN_ESCALATED_SUPPORT_CASE,SUPPORT,"{""max_open_escalated"": 0}",1,2026-01-01,2026-12-31
+ER-006,ELIGIBLE_RISK_BAND,RISK,"{""allowed_bands"": [""HIGH"", ""MEDIUM""]}",1,2026-01-01,2026-12-31
+ER-007,OFFER_COST_WITHIN_MARGIN,MARGIN,"{""expected_margin_months"": 6}",1,2026-01-01,2026-12-31

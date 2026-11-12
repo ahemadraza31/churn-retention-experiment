@@ -246,7 +246,7 @@ The `state_event` table records immutable state changes for three entity types (
 
 - **CUSTOMER**: `INIT → ACTIVE → (CHURNED | INACTIVE)`
 - **SUBSCRIPTION**: `INIT → ACTIVE → (CANCELLED | EXPIRED)`
-- **CAMPAIGN_CONTACT**: `SENT → (RESPONDED | REDEEMED | WITHHELD)`
+- **CAMPAIGN_CONTACT**: `INIT → ASSIGNED → (SENT | WITHHELD | DELIVERY_FAILED)`, with `SENT → RESPONDED → REDEEMED` when responded/redeemed.
 
 Note: `support_case` lifecycle is stored in `opened_at`, `resolved_at`, and `escalated`, not in `state_event` (the schema only allows `SUBSCRIPTION`, `CAMPAIGN_CONTACT`, `CUSTOMER`).
 
@@ -303,8 +303,49 @@ The following ID formats are enforced by `src/churnexp/ids.py` and the `GLOB` ch
 - `churn_id`: `CHURN-CUS-######-YYYY`
 - `retention_id`: `RET-CMP-......`
 - `event_id`: `EVT-##########`
-- `score_id`: `RS-CUS-######-YYYYMM-DDDD`
+- `score_id`: `RS-CUS-######-YYYY-MMDD`
 - `evaluation_id`: `RE-######`
 
 No column name contains any of the prohibited substrings: `issue_type`, `ground_truth`, `latent`, `potential`, `anomaly`.
+
+---
+
+### Feature Snapshot Formulas (Run 2A)
+
+For a given `as_of` date ($P_0 = \text{2025-07-01}$ or $P = \text{2026-01-01}$) with `lookback_months = 6`, `window_start` is the first day of the month 6 months before `as_of` and `window_end = as_of - 1 day`. Only records strictly prior to `as_of` are read:
+
+- `usage_minutes_3m`: Sum of `usage_minutes` over the last 3 full calendar months before `as_of` ($M_{-3}, M_{-2}, M_{-1}$).
+- `usage_minutes_prev3m`: Sum of `usage_minutes` over the previous 3 full calendar months ($M_{-6}, M_{-5}, M_{-4}$).
+- `usage_ratio_3m_vs_prev3m`: `usage_minutes_3m / usage_minutes_prev3m`, or `1.0` when `usage_minutes_prev3m == 0` or the customer has fewer than 6 full months of usage history before `as_of`.
+- `last_month_active_days`: `active_days` in $M_{-1}$ (`0` if no snapshot exists in $M_{-1}$).
+- `usage_slope_6m`: Ordinary least-squares slope of monthly `usage_minutes` over the available months in the 6-month window divided by their mean (`0.0` if fewer than 3 months of history or mean is `0`).
+- `sessions_6m`: Sum of `sessions` across snapshots in the 6-month window.
+- `failed_payments_6m`: Count of `PAYMENT_FAILED` billing events with `window_start <= event_date < as_of`.
+- `days_since_last_failed_payment`: `(as_of - max(event_date))` in days across all `PAYMENT_FAILED` events with `event_date < as_of` (`NULL` if none).
+- `outstanding_balance_cents`: Sum of `INVOICE` amounts minus sum of `SETTLED` (`PAYMENT` / `RETRY`) amounts with `event_date < as_of`.
+- `support_cases_6m`: Count of `support_case` rows with `window_start <= opened_at < as_of`.
+- `high_severity_cases_6m`: Count of `support_case` rows with `window_start <= opened_at < as_of` and `severity IN ('HIGH', 'CRITICAL')`.
+- `cancellation_inquiries_6m`: Count of `support_case` rows with `window_start <= opened_at < as_of` and `category == 'CANCELLATION_INQUIRY'`.
+- `tenure_days`: `(as_of - signup_date)` in days.
+- `plan_tier`, `monthly_price_cents`: Taken from the subscription active on `as_of`.
+- `plan_downgrade_6m`: `1` if a subscription starting in `[window_start, as_of)` has a lower tier rank (`BASIC < STANDARD < PREMIUM`) than the immediately preceding subscription, else `0`.
+- `segment`, `channel`, `is_seasonal`: Taken from `customer`.
+
+### Eligibility & Margin Rule Formulas (Run 2A)
+
+Evaluated at `assignment_date = 2026-01-05` for all customers scored at $P = \text{2026-01-01}$:
+
+- **ER-001 (Active Subscription)**: `passed = 1` iff customer has a subscription with `start_date <= assignment_date` and (`end_date IS NULL` or `end_date >= assignment_date`) and `status == 'ACTIVE'`.
+- **ER-002 (Minimum Tenure)**: `passed = 1` iff `(assignment_date - signup_date).days >= 90`.
+- **ER-003 (Good Billing Standing)**: `passed = 1` iff no `INVOICE` issued before `assignment_date - 7 days` remains unsettled as of `assignment_date`.
+- **ER-004 (No Prior Campaign Contact)**: `passed = 1` iff customer has no prior `campaign_contact` row within 180 days before `assignment_date`.
+- **ER-005 (No Open Escalated Ticket)**: `passed = 1` iff customer has no `support_case` with `escalated == 1`, `opened_at < assignment_date`, and (`resolved_at IS NULL` or `resolved_at >= assignment_date`).
+- **ER-006 (At-Risk Band)**: `passed = 1` iff `risk_band IN ('HIGH', 'MEDIUM')` at $P = \text{2026-01-01}$.
+- **ER-007 (Margin Cap, per offer)**:
+  - `expected_6m_margin_cents = round(6 * monthly_price_cents * gross_margin_pct)`
+  - `offer_cost_cents = round(discount_pct * monthly_price_cents * duration_months)` for `PERCENT_DISCOUNT`, or `round(free_months * monthly_price_cents)` for `FREE_MONTH`
+  - `max_allowed_cents = round(max_cost_share_of_margin * expected_6m_margin_cents)`
+  - `passed = 1` iff `offer_cost_cents <= max_allowed_cents`.
+- **Simulation Note**: In Run 2A, only `PERSUADABLE` voluntary churners who are `TREATMENT + SENT`, respond, redeem, and pass the offer save draw have their 2026 churn prevented (`saved_by_campaign = 1`); `SLEEPING_DOG` customers do not get induced churn in this run.
+
 

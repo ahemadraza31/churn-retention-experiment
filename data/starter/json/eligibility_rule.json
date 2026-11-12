@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "rule_id": "ER-001",
+    "rule_code": "ACTIVE_SUBSCRIPTION",
+    "rule_type": "SUBSCRIPTION",
+    "parameter_json": "{\"require_active\": true}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  },
+  {
+    "rule_id": "ER-002",
+    "rule_code": "MIN_TENURE_DAYS",
+    "rule_type": "TENURE",
+    "parameter_json": "{\"min_tenure_days\": 90}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  },
+  {
+    "rule_id": "ER-003",
+    "rule_code": "MARKETING_OPT_IN",
+    "rule_type": "CONSENT",
+    "parameter_json": "{\"required_opt_in\": 1}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  },
+  {
+    "rule_id": "ER-004",
+    "rule_code": "NO_UNSETTLED_INVOICE",
+    "rule_type": "BILLING",
+    "parameter_json": "{\"grace_days\": 7}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  },
+  {
+    "rule_id": "ER-005",
+    "rule_code": "NO_OPEN_ESCALATED_SUPPORT_CASE",
+    "rule_type": "SUPPORT",
+    "parameter_json": "{\"max_open_escalated\": 0}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  },
+  {
+    "rule_id": "ER-006",
+    "rule_code": "ELIGIBLE_RISK_BAND",
+    "rule_type": "RISK",
+    "parameter_json": "{\"allowed_bands\": [\"HIGH\", \"MEDIUM\"]}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  },
+  {
+    "rule_id": "ER-007",
+    "rule_code": "OFFER_COST_WITHIN_MARGIN",
+    "rule_type": "MARGIN",
+    "parameter_json": "{\"expected_margin_months\": 6}",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31"
+  }
+]

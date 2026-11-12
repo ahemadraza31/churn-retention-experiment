@@ -1,1 +1,4 @@
 offer_id,offer_name,offer_type,discount_pct,free_months,duration_months,max_cost_share_of_margin,valid_from,valid_to
+OFF-2026-000001,10% off for 6 months,PERCENT_DISCOUNT,0.100000,,6,0.200000,2026-01-01,2026-12-31
+OFF-2026-000002,20% off for 3 months,PERCENT_DISCOUNT,0.200000,,3,0.200000,2026-01-01,2026-12-31
+OFF-2026-000003,1 free month,FREE_MONTH,,1,1,0.250000,2026-01-01,2026-12-31

@@ -1,1 +1,86 @@
-[]
+[
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-001"
+  },
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-002"
+  },
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-003"
+  },
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-004"
+  },
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-005"
+  },
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-006"
+  },
+  {
+    "offer_id": "OFF-2026-000001",
+    "rule_id": "ER-007"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-001"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-002"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-003"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-004"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-005"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-006"
+  },
+  {
+    "offer_id": "OFF-2026-000002",
+    "rule_id": "ER-007"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-001"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-002"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-003"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-004"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-005"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-006"
+  },
+  {
+    "offer_id": "OFF-2026-000003",
+    "rule_id": "ER-007"
+  }
+]

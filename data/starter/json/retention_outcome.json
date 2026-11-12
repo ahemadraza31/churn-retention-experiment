@@ -1,1 +1,2232 @@
-[]
+[
+  {
+    "retention_id": "RET-CMP-CUS-000007-2026-W01",
+    "contact_id": "CMP-CUS-000007-2026-W01",
+    "customer_id": "CUS-000007",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000008-2026-W01",
+    "contact_id": "CMP-CUS-000008-2026-W01",
+    "customer_id": "CUS-000008",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000010-2026-W01",
+    "contact_id": "CMP-CUS-000010-2026-W01",
+    "customer_id": "CUS-000010",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000014-2026-W01",
+    "contact_id": "CMP-CUS-000014-2026-W01",
+    "customer_id": "CUS-000014",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000023-2026-W01",
+    "contact_id": "CMP-CUS-000023-2026-W01",
+    "customer_id": "CUS-000023",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000026-2026-W01",
+    "contact_id": "CMP-CUS-000026-2026-W01",
+    "customer_id": "CUS-000026",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000029-2026-W01",
+    "contact_id": "CMP-CUS-000029-2026-W01",
+    "customer_id": "CUS-000029",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000030-2026-W01",
+    "contact_id": "CMP-CUS-000030-2026-W01",
+    "customer_id": "CUS-000030",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000031-2026-W01",
+    "contact_id": "CMP-CUS-000031-2026-W01",
+    "customer_id": "CUS-000031",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000036-2026-W01",
+    "contact_id": "CMP-CUS-000036-2026-W01",
+    "customer_id": "CUS-000036",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000039-2026-W01",
+    "contact_id": "CMP-CUS-000039-2026-W01",
+    "customer_id": "CUS-000039",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000042-2026-W01",
+    "contact_id": "CMP-CUS-000042-2026-W01",
+    "customer_id": "CUS-000042",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000043-2026-W01",
+    "contact_id": "CMP-CUS-000043-2026-W01",
+    "customer_id": "CUS-000043",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000046-2026-W01",
+    "contact_id": "CMP-CUS-000046-2026-W01",
+    "customer_id": "CUS-000046",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000051-2026-W01",
+    "contact_id": "CMP-CUS-000051-2026-W01",
+    "customer_id": "CUS-000051",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000052-2026-W01",
+    "contact_id": "CMP-CUS-000052-2026-W01",
+    "customer_id": "CUS-000052",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000055-2026-W01",
+    "contact_id": "CMP-CUS-000055-2026-W01",
+    "customer_id": "CUS-000055",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000057-2026-W01",
+    "contact_id": "CMP-CUS-000057-2026-W01",
+    "customer_id": "CUS-000057",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000073-2026-W01",
+    "contact_id": "CMP-CUS-000073-2026-W01",
+    "customer_id": "CUS-000073",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000078-2026-W01",
+    "contact_id": "CMP-CUS-000078-2026-W01",
+    "customer_id": "CUS-000078",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000085-2026-W01",
+    "contact_id": "CMP-CUS-000085-2026-W01",
+    "customer_id": "CUS-000085",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000086-2026-W01",
+    "contact_id": "CMP-CUS-000086-2026-W01",
+    "customer_id": "CUS-000086",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000099-2026-W01",
+    "contact_id": "CMP-CUS-000099-2026-W01",
+    "customer_id": "CUS-000099",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000105-2026-W01",
+    "contact_id": "CMP-CUS-000105-2026-W01",
+    "customer_id": "CUS-000105",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000113-2026-W01",
+    "contact_id": "CMP-CUS-000113-2026-W01",
+    "customer_id": "CUS-000113",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000119-2026-W01",
+    "contact_id": "CMP-CUS-000119-2026-W01",
+    "customer_id": "CUS-000119",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000120-2026-W01",
+    "contact_id": "CMP-CUS-000120-2026-W01",
+    "customer_id": "CUS-000120",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000123-2026-W01",
+    "contact_id": "CMP-CUS-000123-2026-W01",
+    "customer_id": "CUS-000123",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000127-2026-W01",
+    "contact_id": "CMP-CUS-000127-2026-W01",
+    "customer_id": "CUS-000127",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000130-2026-W01",
+    "contact_id": "CMP-CUS-000130-2026-W01",
+    "customer_id": "CUS-000130",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000137-2026-W01",
+    "contact_id": "CMP-CUS-000137-2026-W01",
+    "customer_id": "CUS-000137",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000142-2026-W01",
+    "contact_id": "CMP-CUS-000142-2026-W01",
+    "customer_id": "CUS-000142",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000145-2026-W01",
+    "contact_id": "CMP-CUS-000145-2026-W01",
+    "customer_id": "CUS-000145",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000148-2026-W01",
+    "contact_id": "CMP-CUS-000148-2026-W01",
+    "customer_id": "CUS-000148",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000156-2026-W01",
+    "contact_id": "CMP-CUS-000156-2026-W01",
+    "customer_id": "CUS-000156",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000160-2026-W01",
+    "contact_id": "CMP-CUS-000160-2026-W01",
+    "customer_id": "CUS-000160",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000166-2026-W01",
+    "contact_id": "CMP-CUS-000166-2026-W01",
+    "customer_id": "CUS-000166",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000171-2026-W01",
+    "contact_id": "CMP-CUS-000171-2026-W01",
+    "customer_id": "CUS-000171",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000176-2026-W01",
+    "contact_id": "CMP-CUS-000176-2026-W01",
+    "customer_id": "CUS-000176",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000177-2026-W01",
+    "contact_id": "CMP-CUS-000177-2026-W01",
+    "customer_id": "CUS-000177",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000179-2026-W01",
+    "contact_id": "CMP-CUS-000179-2026-W01",
+    "customer_id": "CUS-000179",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000184-2026-W01",
+    "contact_id": "CMP-CUS-000184-2026-W01",
+    "customer_id": "CUS-000184",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000191-2026-W01",
+    "contact_id": "CMP-CUS-000191-2026-W01",
+    "customer_id": "CUS-000191",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000192-2026-W01",
+    "contact_id": "CMP-CUS-000192-2026-W01",
+    "customer_id": "CUS-000192",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000193-2026-W01",
+    "contact_id": "CMP-CUS-000193-2026-W01",
+    "customer_id": "CUS-000193",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000196-2026-W01",
+    "contact_id": "CMP-CUS-000196-2026-W01",
+    "customer_id": "CUS-000196",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000198-2026-W01",
+    "contact_id": "CMP-CUS-000198-2026-W01",
+    "customer_id": "CUS-000198",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000201-2026-W01",
+    "contact_id": "CMP-CUS-000201-2026-W01",
+    "customer_id": "CUS-000201",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000202-2026-W01",
+    "contact_id": "CMP-CUS-000202-2026-W01",
+    "customer_id": "CUS-000202",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000206-2026-W01",
+    "contact_id": "CMP-CUS-000206-2026-W01",
+    "customer_id": "CUS-000206",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000207-2026-W01",
+    "contact_id": "CMP-CUS-000207-2026-W01",
+    "customer_id": "CUS-000207",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000214-2026-W01",
+    "contact_id": "CMP-CUS-000214-2026-W01",
+    "customer_id": "CUS-000214",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000215-2026-W01",
+    "contact_id": "CMP-CUS-000215-2026-W01",
+    "customer_id": "CUS-000215",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000224-2026-W01",
+    "contact_id": "CMP-CUS-000224-2026-W01",
+    "customer_id": "CUS-000224",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000235-2026-W01",
+    "contact_id": "CMP-CUS-000235-2026-W01",
+    "customer_id": "CUS-000235",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000239-2026-W01",
+    "contact_id": "CMP-CUS-000239-2026-W01",
+    "customer_id": "CUS-000239",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000240-2026-W01",
+    "contact_id": "CMP-CUS-000240-2026-W01",
+    "customer_id": "CUS-000240",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000241-2026-W01",
+    "contact_id": "CMP-CUS-000241-2026-W01",
+    "customer_id": "CUS-000241",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000244-2026-W01",
+    "contact_id": "CMP-CUS-000244-2026-W01",
+    "customer_id": "CUS-000244",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000246-2026-W01",
+    "contact_id": "CMP-CUS-000246-2026-W01",
+    "customer_id": "CUS-000246",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000249-2026-W01",
+    "contact_id": "CMP-CUS-000249-2026-W01",
+    "customer_id": "CUS-000249",
+    "attributed_offer_id": "OFF-2026-000003",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000254-2026-W01",
+    "contact_id": "CMP-CUS-000254-2026-W01",
+    "customer_id": "CUS-000254",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000255-2026-W01",
+    "contact_id": "CMP-CUS-000255-2026-W01",
+    "customer_id": "CUS-000255",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000257-2026-W01",
+    "contact_id": "CMP-CUS-000257-2026-W01",
+    "customer_id": "CUS-000257",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000263-2026-W01",
+    "contact_id": "CMP-CUS-000263-2026-W01",
+    "customer_id": "CUS-000263",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000270-2026-W01",
+    "contact_id": "CMP-CUS-000270-2026-W01",
+    "customer_id": "CUS-000270",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000273-2026-W01",
+    "contact_id": "CMP-CUS-000273-2026-W01",
+    "customer_id": "CUS-000273",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000287-2026-W01",
+    "contact_id": "CMP-CUS-000287-2026-W01",
+    "customer_id": "CUS-000287",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000290-2026-W01",
+    "contact_id": "CMP-CUS-000290-2026-W01",
+    "customer_id": "CUS-000290",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000298-2026-W01",
+    "contact_id": "CMP-CUS-000298-2026-W01",
+    "customer_id": "CUS-000298",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000300-2026-W01",
+    "contact_id": "CMP-CUS-000300-2026-W01",
+    "customer_id": "CUS-000300",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000305-2026-W01",
+    "contact_id": "CMP-CUS-000305-2026-W01",
+    "customer_id": "CUS-000305",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000317-2026-W01",
+    "contact_id": "CMP-CUS-000317-2026-W01",
+    "customer_id": "CUS-000317",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000318-2026-W01",
+    "contact_id": "CMP-CUS-000318-2026-W01",
+    "customer_id": "CUS-000318",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000323-2026-W01",
+    "contact_id": "CMP-CUS-000323-2026-W01",
+    "customer_id": "CUS-000323",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000331-2026-W01",
+    "contact_id": "CMP-CUS-000331-2026-W01",
+    "customer_id": "CUS-000331",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000332-2026-W01",
+    "contact_id": "CMP-CUS-000332-2026-W01",
+    "customer_id": "CUS-000332",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000335-2026-W01",
+    "contact_id": "CMP-CUS-000335-2026-W01",
+    "customer_id": "CUS-000335",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 0,
+    "churned_at": "2026-02-18"
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000341-2026-W01",
+    "contact_id": "CMP-CUS-000341-2026-W01",
+    "customer_id": "CUS-000341",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000352-2026-W01",
+    "contact_id": "CMP-CUS-000352-2026-W01",
+    "customer_id": "CUS-000352",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000354-2026-W01",
+    "contact_id": "CMP-CUS-000354-2026-W01",
+    "customer_id": "CUS-000354",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000358-2026-W01",
+    "contact_id": "CMP-CUS-000358-2026-W01",
+    "customer_id": "CUS-000358",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000359-2026-W01",
+    "contact_id": "CMP-CUS-000359-2026-W01",
+    "customer_id": "CUS-000359",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000364-2026-W01",
+    "contact_id": "CMP-CUS-000364-2026-W01",
+    "customer_id": "CUS-000364",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000366-2026-W01",
+    "contact_id": "CMP-CUS-000366-2026-W01",
+    "customer_id": "CUS-000366",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000369-2026-W01",
+    "contact_id": "CMP-CUS-000369-2026-W01",
+    "customer_id": "CUS-000369",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000371-2026-W01",
+    "contact_id": "CMP-CUS-000371-2026-W01",
+    "customer_id": "CUS-000371",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000376-2026-W01",
+    "contact_id": "CMP-CUS-000376-2026-W01",
+    "customer_id": "CUS-000376",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000379-2026-W01",
+    "contact_id": "CMP-CUS-000379-2026-W01",
+    "customer_id": "CUS-000379",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000385-2026-W01",
+    "contact_id": "CMP-CUS-000385-2026-W01",
+    "customer_id": "CUS-000385",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000395-2026-W01",
+    "contact_id": "CMP-CUS-000395-2026-W01",
+    "customer_id": "CUS-000395",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000397-2026-W01",
+    "contact_id": "CMP-CUS-000397-2026-W01",
+    "customer_id": "CUS-000397",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000402-2026-W01",
+    "contact_id": "CMP-CUS-000402-2026-W01",
+    "customer_id": "CUS-000402",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000413-2026-W01",
+    "contact_id": "CMP-CUS-000413-2026-W01",
+    "customer_id": "CUS-000413",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000422-2026-W01",
+    "contact_id": "CMP-CUS-000422-2026-W01",
+    "customer_id": "CUS-000422",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000425-2026-W01",
+    "contact_id": "CMP-CUS-000425-2026-W01",
+    "customer_id": "CUS-000425",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000428-2026-W01",
+    "contact_id": "CMP-CUS-000428-2026-W01",
+    "customer_id": "CUS-000428",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000432-2026-W01",
+    "contact_id": "CMP-CUS-000432-2026-W01",
+    "customer_id": "CUS-000432",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000433-2026-W01",
+    "contact_id": "CMP-CUS-000433-2026-W01",
+    "customer_id": "CUS-000433",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000435-2026-W01",
+    "contact_id": "CMP-CUS-000435-2026-W01",
+    "customer_id": "CUS-000435",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000437-2026-W01",
+    "contact_id": "CMP-CUS-000437-2026-W01",
+    "customer_id": "CUS-000437",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000443-2026-W01",
+    "contact_id": "CMP-CUS-000443-2026-W01",
+    "customer_id": "CUS-000443",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000451-2026-W01",
+    "contact_id": "CMP-CUS-000451-2026-W01",
+    "customer_id": "CUS-000451",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000456-2026-W01",
+    "contact_id": "CMP-CUS-000456-2026-W01",
+    "customer_id": "CUS-000456",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000465-2026-W01",
+    "contact_id": "CMP-CUS-000465-2026-W01",
+    "customer_id": "CUS-000465",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000467-2026-W01",
+    "contact_id": "CMP-CUS-000467-2026-W01",
+    "customer_id": "CUS-000467",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000474-2026-W01",
+    "contact_id": "CMP-CUS-000474-2026-W01",
+    "customer_id": "CUS-000474",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000477-2026-W01",
+    "contact_id": "CMP-CUS-000477-2026-W01",
+    "customer_id": "CUS-000477",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000478-2026-W01",
+    "contact_id": "CMP-CUS-000478-2026-W01",
+    "customer_id": "CUS-000478",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 0,
+    "churned_at": "2026-03-10"
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000479-2026-W01",
+    "contact_id": "CMP-CUS-000479-2026-W01",
+    "customer_id": "CUS-000479",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000480-2026-W01",
+    "contact_id": "CMP-CUS-000480-2026-W01",
+    "customer_id": "CUS-000480",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000483-2026-W01",
+    "contact_id": "CMP-CUS-000483-2026-W01",
+    "customer_id": "CUS-000483",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000484-2026-W01",
+    "contact_id": "CMP-CUS-000484-2026-W01",
+    "customer_id": "CUS-000484",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000488-2026-W01",
+    "contact_id": "CMP-CUS-000488-2026-W01",
+    "customer_id": "CUS-000488",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000493-2026-W01",
+    "contact_id": "CMP-CUS-000493-2026-W01",
+    "customer_id": "CUS-000493",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000494-2026-W01",
+    "contact_id": "CMP-CUS-000494-2026-W01",
+    "customer_id": "CUS-000494",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000495-2026-W01",
+    "contact_id": "CMP-CUS-000495-2026-W01",
+    "customer_id": "CUS-000495",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000496-2026-W01",
+    "contact_id": "CMP-CUS-000496-2026-W01",
+    "customer_id": "CUS-000496",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000501-2026-W01",
+    "contact_id": "CMP-CUS-000501-2026-W01",
+    "customer_id": "CUS-000501",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000502-2026-W01",
+    "contact_id": "CMP-CUS-000502-2026-W01",
+    "customer_id": "CUS-000502",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000504-2026-W01",
+    "contact_id": "CMP-CUS-000504-2026-W01",
+    "customer_id": "CUS-000504",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000509-2026-W01",
+    "contact_id": "CMP-CUS-000509-2026-W01",
+    "customer_id": "CUS-000509",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000512-2026-W01",
+    "contact_id": "CMP-CUS-000512-2026-W01",
+    "customer_id": "CUS-000512",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000516-2026-W01",
+    "contact_id": "CMP-CUS-000516-2026-W01",
+    "customer_id": "CUS-000516",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000520-2026-W01",
+    "contact_id": "CMP-CUS-000520-2026-W01",
+    "customer_id": "CUS-000520",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000523-2026-W01",
+    "contact_id": "CMP-CUS-000523-2026-W01",
+    "customer_id": "CUS-000523",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000524-2026-W01",
+    "contact_id": "CMP-CUS-000524-2026-W01",
+    "customer_id": "CUS-000524",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000525-2026-W01",
+    "contact_id": "CMP-CUS-000525-2026-W01",
+    "customer_id": "CUS-000525",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000534-2026-W01",
+    "contact_id": "CMP-CUS-000534-2026-W01",
+    "customer_id": "CUS-000534",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000537-2026-W01",
+    "contact_id": "CMP-CUS-000537-2026-W01",
+    "customer_id": "CUS-000537",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000540-2026-W01",
+    "contact_id": "CMP-CUS-000540-2026-W01",
+    "customer_id": "CUS-000540",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000541-2026-W01",
+    "contact_id": "CMP-CUS-000541-2026-W01",
+    "customer_id": "CUS-000541",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000542-2026-W01",
+    "contact_id": "CMP-CUS-000542-2026-W01",
+    "customer_id": "CUS-000542",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000545-2026-W01",
+    "contact_id": "CMP-CUS-000545-2026-W01",
+    "customer_id": "CUS-000545",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000546-2026-W01",
+    "contact_id": "CMP-CUS-000546-2026-W01",
+    "customer_id": "CUS-000546",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000549-2026-W01",
+    "contact_id": "CMP-CUS-000549-2026-W01",
+    "customer_id": "CUS-000549",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000550-2026-W01",
+    "contact_id": "CMP-CUS-000550-2026-W01",
+    "customer_id": "CUS-000550",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000559-2026-W01",
+    "contact_id": "CMP-CUS-000559-2026-W01",
+    "customer_id": "CUS-000559",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 0,
+    "churned_at": "2026-02-14"
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000563-2026-W01",
+    "contact_id": "CMP-CUS-000563-2026-W01",
+    "customer_id": "CUS-000563",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000565-2026-W01",
+    "contact_id": "CMP-CUS-000565-2026-W01",
+    "customer_id": "CUS-000565",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000573-2026-W01",
+    "contact_id": "CMP-CUS-000573-2026-W01",
+    "customer_id": "CUS-000573",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000585-2026-W01",
+    "contact_id": "CMP-CUS-000585-2026-W01",
+    "customer_id": "CUS-000585",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000599-2026-W01",
+    "contact_id": "CMP-CUS-000599-2026-W01",
+    "customer_id": "CUS-000599",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000600-2026-W01",
+    "contact_id": "CMP-CUS-000600-2026-W01",
+    "customer_id": "CUS-000600",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000602-2026-W01",
+    "contact_id": "CMP-CUS-000602-2026-W01",
+    "customer_id": "CUS-000602",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 0,
+    "churned_at": "2026-03-08"
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000603-2026-W01",
+    "contact_id": "CMP-CUS-000603-2026-W01",
+    "customer_id": "CUS-000603",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000611-2026-W01",
+    "contact_id": "CMP-CUS-000611-2026-W01",
+    "customer_id": "CUS-000611",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000613-2026-W01",
+    "contact_id": "CMP-CUS-000613-2026-W01",
+    "customer_id": "CUS-000613",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000616-2026-W01",
+    "contact_id": "CMP-CUS-000616-2026-W01",
+    "customer_id": "CUS-000616",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000617-2026-W01",
+    "contact_id": "CMP-CUS-000617-2026-W01",
+    "customer_id": "CUS-000617",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000621-2026-W01",
+    "contact_id": "CMP-CUS-000621-2026-W01",
+    "customer_id": "CUS-000621",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000623-2026-W01",
+    "contact_id": "CMP-CUS-000623-2026-W01",
+    "customer_id": "CUS-000623",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000631-2026-W01",
+    "contact_id": "CMP-CUS-000631-2026-W01",
+    "customer_id": "CUS-000631",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000636-2026-W01",
+    "contact_id": "CMP-CUS-000636-2026-W01",
+    "customer_id": "CUS-000636",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000643-2026-W01",
+    "contact_id": "CMP-CUS-000643-2026-W01",
+    "customer_id": "CUS-000643",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000656-2026-W01",
+    "contact_id": "CMP-CUS-000656-2026-W01",
+    "customer_id": "CUS-000656",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000658-2026-W01",
+    "contact_id": "CMP-CUS-000658-2026-W01",
+    "customer_id": "CUS-000658",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000677-2026-W01",
+    "contact_id": "CMP-CUS-000677-2026-W01",
+    "customer_id": "CUS-000677",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000681-2026-W01",
+    "contact_id": "CMP-CUS-000681-2026-W01",
+    "customer_id": "CUS-000681",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000682-2026-W01",
+    "contact_id": "CMP-CUS-000682-2026-W01",
+    "customer_id": "CUS-000682",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000692-2026-W01",
+    "contact_id": "CMP-CUS-000692-2026-W01",
+    "customer_id": "CUS-000692",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000693-2026-W01",
+    "contact_id": "CMP-CUS-000693-2026-W01",
+    "customer_id": "CUS-000693",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000694-2026-W01",
+    "contact_id": "CMP-CUS-000694-2026-W01",
+    "customer_id": "CUS-000694",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000698-2026-W01",
+    "contact_id": "CMP-CUS-000698-2026-W01",
+    "customer_id": "CUS-000698",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000704-2026-W01",
+    "contact_id": "CMP-CUS-000704-2026-W01",
+    "customer_id": "CUS-000704",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000718-2026-W01",
+    "contact_id": "CMP-CUS-000718-2026-W01",
+    "customer_id": "CUS-000718",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000724-2026-W01",
+    "contact_id": "CMP-CUS-000724-2026-W01",
+    "customer_id": "CUS-000724",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000730-2026-W01",
+    "contact_id": "CMP-CUS-000730-2026-W01",
+    "customer_id": "CUS-000730",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000731-2026-W01",
+    "contact_id": "CMP-CUS-000731-2026-W01",
+    "customer_id": "CUS-000731",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000750-2026-W01",
+    "contact_id": "CMP-CUS-000750-2026-W01",
+    "customer_id": "CUS-000750",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000752-2026-W01",
+    "contact_id": "CMP-CUS-000752-2026-W01",
+    "customer_id": "CUS-000752",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000759-2026-W01",
+    "contact_id": "CMP-CUS-000759-2026-W01",
+    "customer_id": "CUS-000759",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000763-2026-W01",
+    "contact_id": "CMP-CUS-000763-2026-W01",
+    "customer_id": "CUS-000763",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 0,
+    "churned_at": "2026-02-25"
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000767-2026-W01",
+    "contact_id": "CMP-CUS-000767-2026-W01",
+    "customer_id": "CUS-000767",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000770-2026-W01",
+    "contact_id": "CMP-CUS-000770-2026-W01",
+    "customer_id": "CUS-000770",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000777-2026-W01",
+    "contact_id": "CMP-CUS-000777-2026-W01",
+    "customer_id": "CUS-000777",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000793-2026-W01",
+    "contact_id": "CMP-CUS-000793-2026-W01",
+    "customer_id": "CUS-000793",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000802-2026-W01",
+    "contact_id": "CMP-CUS-000802-2026-W01",
+    "customer_id": "CUS-000802",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000804-2026-W01",
+    "contact_id": "CMP-CUS-000804-2026-W01",
+    "customer_id": "CUS-000804",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000805-2026-W01",
+    "contact_id": "CMP-CUS-000805-2026-W01",
+    "customer_id": "CUS-000805",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000807-2026-W01",
+    "contact_id": "CMP-CUS-000807-2026-W01",
+    "customer_id": "CUS-000807",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000816-2026-W01",
+    "contact_id": "CMP-CUS-000816-2026-W01",
+    "customer_id": "CUS-000816",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000817-2026-W01",
+    "contact_id": "CMP-CUS-000817-2026-W01",
+    "customer_id": "CUS-000817",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000829-2026-W01",
+    "contact_id": "CMP-CUS-000829-2026-W01",
+    "customer_id": "CUS-000829",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000836-2026-W01",
+    "contact_id": "CMP-CUS-000836-2026-W01",
+    "customer_id": "CUS-000836",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000841-2026-W01",
+    "contact_id": "CMP-CUS-000841-2026-W01",
+    "customer_id": "CUS-000841",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000847-2026-W01",
+    "contact_id": "CMP-CUS-000847-2026-W01",
+    "customer_id": "CUS-000847",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000852-2026-W01",
+    "contact_id": "CMP-CUS-000852-2026-W01",
+    "customer_id": "CUS-000852",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000859-2026-W01",
+    "contact_id": "CMP-CUS-000859-2026-W01",
+    "customer_id": "CUS-000859",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000864-2026-W01",
+    "contact_id": "CMP-CUS-000864-2026-W01",
+    "customer_id": "CUS-000864",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000865-2026-W01",
+    "contact_id": "CMP-CUS-000865-2026-W01",
+    "customer_id": "CUS-000865",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000869-2026-W01",
+    "contact_id": "CMP-CUS-000869-2026-W01",
+    "customer_id": "CUS-000869",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000872-2026-W01",
+    "contact_id": "CMP-CUS-000872-2026-W01",
+    "customer_id": "CUS-000872",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000875-2026-W01",
+    "contact_id": "CMP-CUS-000875-2026-W01",
+    "customer_id": "CUS-000875",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000885-2026-W01",
+    "contact_id": "CMP-CUS-000885-2026-W01",
+    "customer_id": "CUS-000885",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000887-2026-W01",
+    "contact_id": "CMP-CUS-000887-2026-W01",
+    "customer_id": "CUS-000887",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000888-2026-W01",
+    "contact_id": "CMP-CUS-000888-2026-W01",
+    "customer_id": "CUS-000888",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000890-2026-W01",
+    "contact_id": "CMP-CUS-000890-2026-W01",
+    "customer_id": "CUS-000890",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000896-2026-W01",
+    "contact_id": "CMP-CUS-000896-2026-W01",
+    "customer_id": "CUS-000896",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000901-2026-W01",
+    "contact_id": "CMP-CUS-000901-2026-W01",
+    "customer_id": "CUS-000901",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000904-2026-W01",
+    "contact_id": "CMP-CUS-000904-2026-W01",
+    "customer_id": "CUS-000904",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000913-2026-W01",
+    "contact_id": "CMP-CUS-000913-2026-W01",
+    "customer_id": "CUS-000913",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000914-2026-W01",
+    "contact_id": "CMP-CUS-000914-2026-W01",
+    "customer_id": "CUS-000914",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000915-2026-W01",
+    "contact_id": "CMP-CUS-000915-2026-W01",
+    "customer_id": "CUS-000915",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000917-2026-W01",
+    "contact_id": "CMP-CUS-000917-2026-W01",
+    "customer_id": "CUS-000917",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000918-2026-W01",
+    "contact_id": "CMP-CUS-000918-2026-W01",
+    "customer_id": "CUS-000918",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000924-2026-W01",
+    "contact_id": "CMP-CUS-000924-2026-W01",
+    "customer_id": "CUS-000924",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000925-2026-W01",
+    "contact_id": "CMP-CUS-000925-2026-W01",
+    "customer_id": "CUS-000925",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000926-2026-W01",
+    "contact_id": "CMP-CUS-000926-2026-W01",
+    "customer_id": "CUS-000926",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000928-2026-W01",
+    "contact_id": "CMP-CUS-000928-2026-W01",
+    "customer_id": "CUS-000928",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000934-2026-W01",
+    "contact_id": "CMP-CUS-000934-2026-W01",
+    "customer_id": "CUS-000934",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000938-2026-W01",
+    "contact_id": "CMP-CUS-000938-2026-W01",
+    "customer_id": "CUS-000938",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000940-2026-W01",
+    "contact_id": "CMP-CUS-000940-2026-W01",
+    "customer_id": "CUS-000940",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000951-2026-W01",
+    "contact_id": "CMP-CUS-000951-2026-W01",
+    "customer_id": "CUS-000951",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000955-2026-W01",
+    "contact_id": "CMP-CUS-000955-2026-W01",
+    "customer_id": "CUS-000955",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000964-2026-W01",
+    "contact_id": "CMP-CUS-000964-2026-W01",
+    "customer_id": "CUS-000964",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000975-2026-W01",
+    "contact_id": "CMP-CUS-000975-2026-W01",
+    "customer_id": "CUS-000975",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000978-2026-W01",
+    "contact_id": "CMP-CUS-000978-2026-W01",
+    "customer_id": "CUS-000978",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000979-2026-W01",
+    "contact_id": "CMP-CUS-000979-2026-W01",
+    "customer_id": "CUS-000979",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000980-2026-W01",
+    "contact_id": "CMP-CUS-000980-2026-W01",
+    "customer_id": "CUS-000980",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000988-2026-W01",
+    "contact_id": "CMP-CUS-000988-2026-W01",
+    "customer_id": "CUS-000988",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000989-2026-W01",
+    "contact_id": "CMP-CUS-000989-2026-W01",
+    "customer_id": "CUS-000989",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000994-2026-W01",
+    "contact_id": "CMP-CUS-000994-2026-W01",
+    "customer_id": "CUS-000994",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  }
+]

@@ -13,4 +13,5 @@
 | 2026-11-11 11:25 IST | Milestone 1: Foundation & Skeleton (env, metadata, config, IDs, RNG, CLI) | `583285e` |
 | 2026-11-11 23:16 IST | Milestone 2: Database schema, views and data dictionary | `b2c6ef4` |
 | 2026-11-12 06:46 IST | Milestone 3: Synthetic history generator (18-month untreated world & latent GT) | `dc004a7` |
-| 2026-11-12 08:00 IST | Milestone 4: M3 corrections, validators, generic exporter, and reproducibility check | `M4` |
+| 2026-11-12 08:00 IST | Milestone 4: M3 corrections, validators, generic exporter, and reproducibility check | `81a7fba` |
+| 2026-11-12 10:00 IST | Run 2A (M5-M7): Features, churn risk model, offer catalog, eligibility & margin engine, stratified assignment, and outcome simulation | `Run 2A` |

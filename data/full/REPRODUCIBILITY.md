@@ -9,57 +9,57 @@
 
 | Table | Run 1 (`PYTHONHASHSEED=1`) | Run 2 (`PYTHONHASHSEED=2`) | Match |
 | :--- | ---: | ---: | :---: |
-| `billing_event` | 652796 | 652796 | `PASS` |
-| `campaign_contact` | 0 | 0 | `PASS` |
-| `churn_outcome` | 17738 | 17738 | `PASS` |
+| `billing_event` | 653119 | 653119 | `PASS` |
+| `campaign_contact` | 4867 | 4867 | `PASS` |
+| `churn_outcome` | 36101 | 36101 | `PASS` |
 | `customer` | 20000 | 20000 | `PASS` |
-| `eligibility_rule` | 0 | 0 | `PASS` |
-| `feature_snapshot` | 0 | 0 | `PASS` |
-| `offer` | 0 | 0 | `PASS` |
-| `offer_eligibility_rule` | 0 | 0 | `PASS` |
-| `retention_outcome` | 0 | 0 | `PASS` |
-| `risk_score` | 0 | 0 | `PASS` |
-| `rule_evaluation` | 0 | 0 | `PASS` |
-| `state_event` | 52550 | 52550 | `PASS` |
+| `eligibility_rule` | 7 | 7 | `PASS` |
+| `feature_snapshot` | 36089 | 36089 | `PASS` |
+| `offer` | 3 | 3 | `PASS` |
+| `offer_eligibility_rule` | 21 | 21 | `PASS` |
+| `retention_outcome` | 4867 | 4867 | `PASS` |
+| `risk_score` | 18363 | 18363 | `PASS` |
+| `rule_evaluation` | 165267 | 165267 | `PASS` |
+| `state_event` | 64021 | 64021 | `PASS` |
 | `subscription` | 23875 | 23875 | `PASS` |
-| `support_case` | 20849 | 20849 | `PASS` |
-| `usage_snapshot` | 327290 | 327290 | `PASS` |
+| `support_case` | 20859 | 20859 | `PASS` |
+| `usage_snapshot` | 327426 | 327426 | `PASS` |
 
 ## 2. Aggregate Metrics
 
 | Metric | Run 1 (`PYTHONHASHSEED=1`) | Run 2 (`PYTHONHASHSEED=2`) | Match |
 | :--- | ---: | ---: | :---: |
-| `overall_churn_rate` | `0.120000` | `0.120000` | `PASS` |
-| `voluntary_count` | `1709` | `1709` | `PASS` |
+| `overall_churn_rate` | `0.117450` | `0.117450` | `PASS` |
+| `voluntary_count` | `1658` | `1658` | `PASS` |
 | `involuntary_count` | `691` | `691` | `PASS` |
 | `plan_change_count` | `3875` | `3875` | `PASS` |
-| `total_invoiced_cents` | `651841698` | `651841698` | `PASS` |
-| `total_settled_cents` | `650621389` | `650621389` | `PASS` |
+| `total_invoiced_cents` | `652125538` | `652125538` | `PASS` |
+| `total_settled_cents` | `650905229` | `650905229` | `PASS` |
 
 ## 3. Latent Ground-Truth File SHA-256
 
 | File | Run 1 SHA-256 | Run 2 SHA-256 | Match |
 | :--- | :--- | :--- | :---: |
-| `ground_truth/latent_customer_state.csv` | `22d00a6a7e527dff92cf4fd0a246e0af9489069f080a9130e015561d9e022b31` | `22d00a6a7e527dff92cf4fd0a246e0af9489069f080a9130e015561d9e022b31` | `PASS` |
+| `ground_truth/latent_customer_state.csv` | `8a4f907c8770997f5cf262813ceff158182d59be6d396fe3ee6b7545486b5eda` | `8a4f907c8770997f5cf262813ceff158182d59be6d396fe3ee6b7545486b5eda` | `PASS` |
 
 ## 4. Exported File SHA-256 Hashes
 
 | File | Run 1 SHA-256 | Run 2 SHA-256 | Match |
 | :--- | :--- | :--- | :---: |
-| `csv/billing_event.csv` | `f6c200390d29d2940d345b50ce2016767b63a994b6d168d0ad071aae76e8fdf0` | `f6c200390d29d2940d345b50ce2016767b63a994b6d168d0ad071aae76e8fdf0` | `PASS` |
-| `csv/campaign_contact.csv` | `cf439e67b36b0e3daa384236fbd6b7f0ebbd65717d3b935b490098d30c7b63ed` | `cf439e67b36b0e3daa384236fbd6b7f0ebbd65717d3b935b490098d30c7b63ed` | `PASS` |
-| `csv/churn_outcome.csv` | `0bf416fff78930e52f642af2f23cc1e643e7c8af8967e14e95c6c6f536743c87` | `0bf416fff78930e52f642af2f23cc1e643e7c8af8967e14e95c6c6f536743c87` | `PASS` |
+| `csv/billing_event.csv` | `50d54159852b4f42b709105662ee4dd4bad66def240f8c65e6e39503f7fcf735` | `50d54159852b4f42b709105662ee4dd4bad66def240f8c65e6e39503f7fcf735` | `PASS` |
+| `csv/campaign_contact.csv` | `6a16eaec56976d8ed8dc36860d8c9aafec491e96f28fe3d9d12f0655566f1812` | `6a16eaec56976d8ed8dc36860d8c9aafec491e96f28fe3d9d12f0655566f1812` | `PASS` |
+| `csv/churn_outcome.csv` | `027dad2676d4a81cf7caa2b683f5a0b3a8e35a344d0854c8fd9fa8591aa17c2a` | `027dad2676d4a81cf7caa2b683f5a0b3a8e35a344d0854c8fd9fa8591aa17c2a` | `PASS` |
 | `csv/customer.csv` | `24f3e5c13f7d6ef22d53cac855ae0635303c9f740c8c7d2c10fa04e26af7edc3` | `24f3e5c13f7d6ef22d53cac855ae0635303c9f740c8c7d2c10fa04e26af7edc3` | `PASS` |
-| `csv/eligibility_rule.csv` | `e594adaef097a2c649eaa2eae96bc7e4c85b88294954a8f82c5871b30ee8afd5` | `e594adaef097a2c649eaa2eae96bc7e4c85b88294954a8f82c5871b30ee8afd5` | `PASS` |
-| `csv/feature_snapshot.csv` | `59eabf113b7ab8122e0a8d548c17e2a4e71ade0b98dfe677c40dadbd3dc38d85` | `59eabf113b7ab8122e0a8d548c17e2a4e71ade0b98dfe677c40dadbd3dc38d85` | `PASS` |
-| `csv/offer.csv` | `420fe145fde8aa33e5475dd33ee2581a01d584447b002e158180fb042c847d6f` | `420fe145fde8aa33e5475dd33ee2581a01d584447b002e158180fb042c847d6f` | `PASS` |
-| `csv/offer_eligibility_rule.csv` | `92e454e172f539cf7e331a6d0d86a68a5545045522ffdfc448fcc65c0a22788e` | `92e454e172f539cf7e331a6d0d86a68a5545045522ffdfc448fcc65c0a22788e` | `PASS` |
-| `csv/retention_outcome.csv` | `5dc5918ae9ba7c51efbfe4195d16a24383558b426c17da3f3f9e31ca8f52433d` | `5dc5918ae9ba7c51efbfe4195d16a24383558b426c17da3f3f9e31ca8f52433d` | `PASS` |
-| `csv/risk_score.csv` | `231ef78da1b6668a049f3abc711a49de73d38539918a3b440d79d7e2b6711d74` | `231ef78da1b6668a049f3abc711a49de73d38539918a3b440d79d7e2b6711d74` | `PASS` |
-| `csv/rule_evaluation.csv` | `56be9252129563e9410a3e30cb109f1f7b12a037178081fe43d97dce99d60066` | `56be9252129563e9410a3e30cb109f1f7b12a037178081fe43d97dce99d60066` | `PASS` |
-| `csv/state_event.csv` | `40aca4d3f215db9a8856690bcc411d06141d6269ad1f60b52f18cd8a0869baf9` | `40aca4d3f215db9a8856690bcc411d06141d6269ad1f60b52f18cd8a0869baf9` | `PASS` |
-| `csv/subscription.csv` | `2697b875e5c938f3d8389078b5c381e3621b4585d99351436935bbc2f7505f90` | `2697b875e5c938f3d8389078b5c381e3621b4585d99351436935bbc2f7505f90` | `PASS` |
-| `csv/support_case.csv` | `14c98c90594c4971872f75eac334d10c70d8c87e035751d2c5013403a9fc8765` | `14c98c90594c4971872f75eac334d10c70d8c87e035751d2c5013403a9fc8765` | `PASS` |
-| `csv/usage_snapshot.csv` | `caec4d91db4525cc4f53ba31d4d301509b89146f41af650f22de9135ed702f4a` | `caec4d91db4525cc4f53ba31d4d301509b89146f41af650f22de9135ed702f4a` | `PASS` |
+| `csv/eligibility_rule.csv` | `40b51ca0da8aa83fa00d4302640d519fd0a67c4d0d0a32586d271dbb6d70c150` | `40b51ca0da8aa83fa00d4302640d519fd0a67c4d0d0a32586d271dbb6d70c150` | `PASS` |
+| `csv/feature_snapshot.csv` | `53fe255b89bec1688e8cbf65e002ded249dba96def3f905887d81a75abd00609` | `53fe255b89bec1688e8cbf65e002ded249dba96def3f905887d81a75abd00609` | `PASS` |
+| `csv/offer.csv` | `587262ca603ffdb02d78ed5f3160dbc072f5a72d3ad4b560893fed081b26ca39` | `587262ca603ffdb02d78ed5f3160dbc072f5a72d3ad4b560893fed081b26ca39` | `PASS` |
+| `csv/offer_eligibility_rule.csv` | `abaec520ecf93753458748d3dc48a56288672ce25ac2b539fe5709748b124d16` | `abaec520ecf93753458748d3dc48a56288672ce25ac2b539fe5709748b124d16` | `PASS` |
+| `csv/retention_outcome.csv` | `9e2510c44d508c803f4c4946815d0859c382363ebab84e58cb68b1c1e50011e9` | `9e2510c44d508c803f4c4946815d0859c382363ebab84e58cb68b1c1e50011e9` | `PASS` |
+| `csv/risk_score.csv` | `aba0005aa58744e7f5b51bfb177e1758ba355db8ae5d0a9f2616c5f72fb9a01c` | `aba0005aa58744e7f5b51bfb177e1758ba355db8ae5d0a9f2616c5f72fb9a01c` | `PASS` |
+| `csv/rule_evaluation.csv` | `7b0d53cf59d8027cf776a7dc41e7b7a229ef183eea85bc00b3186af3b755d9bf` | `7b0d53cf59d8027cf776a7dc41e7b7a229ef183eea85bc00b3186af3b755d9bf` | `PASS` |
+| `csv/state_event.csv` | `5442a706c500bb8fadab48b8f14cb2cc5592378a9a9be62ea851b566eccc0cc1` | `5442a706c500bb8fadab48b8f14cb2cc5592378a9a9be62ea851b566eccc0cc1` | `PASS` |
+| `csv/subscription.csv` | `0c7a4d21d27c68d2ce49b417706917d62ec26d82f45f048b5201566a701fca62` | `0c7a4d21d27c68d2ce49b417706917d62ec26d82f45f048b5201566a701fca62` | `PASS` |
+| `csv/support_case.csv` | `b81e32e196b1217978f3be7731cbb312a46a0b788b5b7c39698bb29e6df24fa3` | `b81e32e196b1217978f3be7731cbb312a46a0b788b5b7c39698bb29e6df24fa3` | `PASS` |
+| `csv/usage_snapshot.csv` | `048363f46bfa6923d6cfc10c719b5887221f1244f3fa3013f1229cfc8bfab7ed` | `048363f46bfa6923d6cfc10c719b5887221f1244f3fa3013f1229cfc8bfab7ed` | `PASS` |
 
 Reproducibility Result: PASS

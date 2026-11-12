@@ -8912,8 +8912,8 @@
     "monthly_price_cents": 1999,
     "gross_margin_pct": 0.62,
     "start_date": "2024-12-24",
-    "end_date": "2026-06-23",
-    "end_reason": "VOLUNTARY_CANCEL"
+    "end_date": null,
+    "end_reason": null
   },
   {
     "subscription_id": "SUB-CUS-000617-01",
