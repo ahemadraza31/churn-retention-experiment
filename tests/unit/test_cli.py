@@ -57,8 +57,23 @@ def test_cli_config(capsys):
     assert "n_customers: 1000" in captured
 
 
+def test_cli_generate_starter(capsys, tmp_path):
+    """generate subcommand builds starter world, writes DB and latent CSV, and exits 0."""
+    from churnexp.cli import run_generate
+
+    ret = run_generate(scale="starter", output_root=tmp_path)
+    assert ret == 0
+    captured = capsys.readouterr().out
+    assert "=== Generation Summary (scale=starter, seed=20261022) ===" in captured
+    assert "overall_churn_rate" in captured
+    assert "SHA-256 Hashes:" in captured
+    assert (tmp_path / "starter" / "churnexp.db").is_file()
+    assert (tmp_path / "starter" / "ground_truth" / "latent_customer_state.csv").is_file()
+
+
 def test_cli_stubs(capsys):
     """All unreleased subcommands exit 2 and print planned milestone."""
+    assert "generate" not in PLANNED_MILESTONES
     for cmd, milestone in PLANNED_MILESTONES.items():
         ret = main([cmd])
         assert ret == 2

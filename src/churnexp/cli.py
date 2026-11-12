@@ -2,17 +2,20 @@
 
 import argparse
 from dataclasses import asdict
+from pathlib import Path
 import sqlite3
 import sys
+import time
 from typing import Sequence
 import yaml
 
 from churnexp import __version__
 from churnexp.config import load_config
+from churnexp.generation.world import generate_world, hash_world, load_world
+from churnexp.schema.db import create_database
 
 
 PLANNED_MILESTONES: dict[str, int] = {
-    "generate": 3,
     "validate": 4,
     "train": 5,
     "campaign": 7,
@@ -122,6 +125,64 @@ def run_config(scale: str) -> int:
     return 0
 
 
+def run_generate(scale: str, output_root: Path | str | None = None) -> int:
+    """Generate the synthetic untreated world, load into SQLite, and write latent ground truth."""
+    t0 = time.perf_counter()
+    cfg = load_config(scale=scale)
+    if output_root is None:
+        base_out = Path(__file__).resolve().parent.parent.parent / "output"
+    else:
+        base_out = Path(output_root)
+
+    scale_dir = base_out / cfg.scale
+    gt_dir = scale_dir / "ground_truth"
+    scale_dir.mkdir(parents=True, exist_ok=True)
+    gt_dir.mkdir(parents=True, exist_ok=True)
+
+    db_path = scale_dir / "churnexp.db"
+    if db_path.exists():
+        db_path.unlink()
+
+    world = generate_world(cfg)
+    conn = create_database(str(db_path))
+    try:
+        load_world(world, conn)
+    finally:
+        conn.close()
+
+    latent_path = gt_dir / "latent_customer_state.csv"
+    world.latent.to_csv(latent_path, index=False, lineterminator="\n")
+
+    hashes = hash_world(world)
+    elapsed = time.perf_counter() - t0
+    s = world.summary
+
+    print(f"=== Generation Summary (scale={cfg.scale}, seed={cfg.seed}) ===")
+    print("Table Row Counts:")
+    for tbl_name, df in world.tables.items():
+        print(f"  {tbl_name:18s}: {len(df):8d}")
+    print(f"  {'latent (GT)':18s}: {len(world.latent):8d}")
+
+    print("Cohort & Churn Metrics:")
+    print(
+        f"  overall_churn_rate          : {s['overall_churn_rate']:.4f} "
+        f"({s['n_churned']}/{s['n_customers']})"
+    )
+    print(f"  voluntary_churn_count       : {s['n_voluntary']}")
+    print(f"  involuntary_churn_count     : {s['n_involuntary']}")
+    print(f"  plan_change_count           : {s['n_plan_changes']}")
+    print(f"  active_on_train_as_of       : {s['active_on_train_as_of']}")
+    print(f"  active_on_score_as_of       : {s['active_on_score_as_of']}")
+    print(f"  untreated_churn_2025_horizon: {s['untreated_churn_2025_horizon']}")
+    print(f"  untreated_churn_2026_horizon: {s['untreated_churn_2026_horizon']}")
+
+    print("SHA-256 Hashes:")
+    for k, h in hashes.items():
+        print(f"  {k:18s}: {h}")
+    print(f"Elapsed seconds: {elapsed:.2f}s")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     """CLI entrypoint function."""
     parser = build_parser()
@@ -137,6 +198,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return run_health(scale=scale)
     elif command == "config":
         return run_config(scale=scale)
+    elif command == "generate":
+        return run_generate(scale=scale)
     elif command in PLANNED_MILESTONES:
         m_num = PLANNED_MILESTONES[command]
         print(f"not implemented yet (planned for milestone {m_num})")

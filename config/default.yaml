@@ -19,3 +19,133 @@ experiment:
   stratify_by: risk_band
 anomalies:
   records_per_type: 40
+generator:
+  customers:
+    early_signup_share: 0.85
+    early_signup_start: 2023-01-01
+    early_signup_end: 2024-12-31
+    late_signup_start: 2025-01-01
+    late_signup_end: 2025-12-15
+    segment_probs:
+      CONSUMER: 0.75
+      SMB: 0.25
+    channel_probs:
+      ORGANIC: 0.40
+      PAID: 0.30
+      PARTNER: 0.15
+      REFERRAL: 0.15
+    regions:
+      - NA
+      - EU
+      - APAC
+      - LATAM
+    seasonal_prob: 0.12
+    marketing_opt_in_prob: 0.82
+    max_billing_day: 28
+  subscriptions:
+    consumer_tier_probs:
+      BASIC: 0.50
+      STANDARD: 0.35
+      PREMIUM: 0.15
+    smb_tier_probs:
+      BASIC: 0.20
+      STANDARD: 0.45
+      PREMIUM: 0.35
+    tier_price_cents:
+      BASIC: 999
+      STANDARD: 1999
+      PREMIUM: 3999
+    tier_gross_margin_pct:
+      BASIC: 0.55
+      STANDARD: 0.62
+      PREMIUM: 0.70
+    monthly_plan_change_prob: 0.012
+    upgrade_prob: 0.55
+  churn:
+    frailty_sigma: 0.7
+    tier_hazard_mult:
+      BASIC: 1.3
+      STANDARD: 1.0
+      PREMIUM: 0.7
+    channel_hazard_mult:
+      PAID: 1.2
+      REFERRAL: 0.7
+      ORGANIC: 1.0
+      PARTNER: 1.0
+    short_tenure_months: 6
+    short_tenure_mult: 1.5
+    recent_downgrade_months: 3
+    recent_downgrade_mult: 1.6
+    monthly_hazard_cap: 0.08
+    calibration_tolerance: 0.005
+    bisection_iterations: 20
+    involuntary_prob: 0.30
+    involuntary_cancel_offset_days: 8
+    hidden_segment_probs:
+      PERSUADABLE: 0.25
+      SURE_THING: 0.45
+      LOST_CAUSE: 0.25
+      SLEEPING_DOG: 0.05
+  usage:
+    base_minutes:
+      BASIC: 600.0
+      STANDARD: 1200.0
+      PREMIUM: 2000.0
+    plan_limit_minutes:
+      BASIC: 1500.0
+      STANDARD: 3000.0
+      PREMIUM: 6000.0
+    smb_multiplier: 1.5
+    customer_lognormal_sigma: 0.35
+    monthly_noise_sigma: 0.15
+    seasonal_off_months_count: 3
+    seasonal_off_multiplier: 0.25
+    loud_voluntary_prob: 0.75
+    loud_decay_multipliers:
+      3: 0.90
+      2: 0.75
+      1: 0.55
+      0: 0.35
+    decoy_dip_prob: 0.07
+    decoy_dip_months: 2
+    decoy_dip_multiplier: 0.55
+    upgrade_usage_multiplier: 1.2
+    downgrade_usage_multiplier: 0.8
+  billing:
+    due_days_offset: 7
+    payment_max_delay_days: 3
+    failure_prob_consumer: 0.025
+    failure_prob_smb: 0.015
+    failed_event_offset_days: 1
+    retry_min_delay_days: 3
+    retry_max_delay_days: 45
+    involuntary_retry_offset_days: 4
+    involuntary_prev_month_fail_prob: 0.60
+    failure_reasons:
+      - INSUFFICIENT_FUNDS
+      - EXPIRED_CARD
+      - DO_NOT_HONOR
+      - NETWORK_ERROR
+  support:
+    poisson_rate_consumer: 0.05
+    poisson_rate_smb: 0.07
+    category_probs:
+      TECHNICAL: 0.45
+      BILLING: 0.20
+      GENERAL: 0.35
+    severity_probs:
+      LOW: 0.65
+      MEDIUM: 0.27
+      HIGH: 0.08
+    loud_churn_rate_multiplier: 4.0
+    loud_churn_window_months: 3
+    loud_cancellation_inquiry_prob: 0.35
+    loud_cancellation_window_months: 2
+    decoy_cancellation_inquiry_prob: 0.005
+    loud_high_severity_prob: 0.25
+    involuntary_billing_case_prob: 0.35
+    involuntary_billing_window_months: 2
+    resolution_min_days: 1
+    resolution_max_days: 10
+    escalation_prob: 0.03
+    escalation_extra_days: 14
