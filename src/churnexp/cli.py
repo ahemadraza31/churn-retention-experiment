@@ -419,11 +419,10 @@ def run_validate(
         print(f"  {line}")
 
     md_path, json_path = report.write_reports(data_dir)
-    overall = "PASS" if report.passed else "FAIL"
+    overall_quality = "PASS" if report.passed else "FAIL"
     print(
-        f"Overall: {overall} (data_quality_findings={len(report.findings)}, "
-        f"detector_findings={len(report.detector_findings)}, "
-        f"summary={md_path.name}, report={json_path.name})"
+        f"Overall data quality: {overall_quality} | business-rule detector findings: "
+        f"{len(report.detector_findings)} (expected when anomalies are injected; see anomaly_report.json)"
     )
     return 1 if report.has_critical_or_high else 0
 
@@ -557,9 +556,9 @@ def run_evaluate(
         f"[{s180['ci_95_low_pp']:+.2f}, {s180['ci_95_high_pp']:+.2f}] (p={s180['p_value']:.4f})"
     )
     print(
-        f"Financial Impact (180d headline): Net Impact=${f180.get('net_impact_cents', 0) / 100.0:+,.2f}, "
-        f"Benefit=${f180.get('benefit_cents', 0) / 100.0:+,.2f}, "
-        f"Cost=${fin.get('realized_cost_cents', 0) / 100.0:+,.2f}"
+        f"Financial Impact (180d headline): Net Impact={f180.get('net_impact_cents', 0):+d} cents, "
+        f"Benefit={f180.get('benefit_cents', 0):d} cents, "
+        f"Cost={fin.get('realized_cost_cents', 0):d} cents"
     )
     print(
         f"Reports written: {out_dir / 'evaluation_results.json'}, "

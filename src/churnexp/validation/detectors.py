@@ -1,4 +1,4 @@
-"""Blind business-rule detectors operating strictly on observable database tables."""
+"""Blind business-rule detectors operating strictly on observable database tables (ADR-014)."""
 
 from __future__ import annotations
 

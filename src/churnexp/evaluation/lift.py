@@ -35,28 +35,48 @@ def compute_two_proportion_stats(
 
     p_t = (r_t / float(n_t)) if n_t > 0 else 0.0
     p_c = (r_c / float(n_c)) if n_c > 0 else 0.0
+
+    # If either arm is empty, lift, CI, p-value, and incremental retained are undefined (null)
+    if n_t == 0 or n_c == 0:
+        return {
+            "n_treatment": n_t,
+            "retained_treatment": r_t,
+            "rate_treatment": _round6(p_t) if n_t > 0 else 0.0,
+            "n_control": n_c,
+            "retained_control": r_c,
+            "rate_control": _round6(p_c) if n_c > 0 else 0.0,
+            "absolute_lift": None,
+            "absolute_lift_pp": None,
+            "se_unpooled": None,
+            "ci_95_low": None,
+            "ci_95_high": None,
+            "ci_95_low_pp": None,
+            "ci_95_high_pp": None,
+            "z_stat_pooled": None,
+            "p_value": None,
+            "relative_lift": None,
+            "incremental_retained": None,
+            "incremental_retained_ci_low": None,
+            "incremental_retained_ci_high": None,
+            "nnt": None,
+        }
+
     lift = p_t - p_c
     lift_pp = lift * 100.0
 
     # Unpooled standard error for 95% confidence interval
-    if n_t > 0 and n_c > 0:
-        var_unpooled = (p_t * (1.0 - p_t) / float(n_t)) + (
-            p_c * (1.0 - p_c) / float(n_c)
-        )
-        se_unpooled = math.sqrt(max(0.0, var_unpooled))
-    else:
-        se_unpooled = 0.0
+    var_unpooled = (p_t * (1.0 - p_t) / float(n_t)) + (
+        p_c * (1.0 - p_c) / float(n_c)
+    )
+    se_unpooled = math.sqrt(max(0.0, var_unpooled))
 
     ci_low = lift - Z_95 * se_unpooled
     ci_high = lift + Z_95 * se_unpooled
 
     # Pooled z-test for two-sided p-value
-    if (n_t + n_c) > 0 and n_t > 0 and n_c > 0:
-        p_pool = (r_t + r_c) / float(n_t + n_c)
-        var_pool = p_pool * (1.0 - p_pool) * (1.0 / float(n_t) + 1.0 / float(n_c))
-        se_pool = math.sqrt(max(0.0, var_pool))
-    else:
-        se_pool = 0.0
+    p_pool = (r_t + r_c) / float(n_t + n_c)
+    var_pool = p_pool * (1.0 - p_pool) * (1.0 / float(n_t) + 1.0 / float(n_c))
+    se_pool = math.sqrt(max(0.0, var_pool))
 
     if se_pool > 0.0:
         z_stat = lift / se_pool

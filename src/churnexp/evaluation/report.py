@@ -144,15 +144,32 @@ def format_evaluation_markdown(results: dict[str, Any]) -> str:
             "| :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: |",
         ]
     )
+    def _format_subgroup_row(label: str, horizon: str, s: dict[str, Any]) -> str:
+        t_n = s.get("n_treatment", 0)
+        c_n = s.get("n_control", 0)
+        t_ret = s.get("retained_treatment", 0)
+        c_ret = s.get("retained_control", 0)
+        t_rate = f"({s['rate_treatment']:.4f})" if s.get("rate_treatment") is not None else "(0.0000)"
+        c_rate = f"({s['rate_control']:.4f})" if s.get("rate_control") is not None else "(0.0000)"
+        t_cell = f"{t_ret}/{t_n} {t_rate}"
+        c_cell = f"{c_ret}/{c_n} {c_rate}"
+
+        if t_n == 0 or c_n == 0 or s.get("absolute_lift_pp") is None:
+            lift_str = "n/a (arm empty)"
+            ci_str = "n/a (arm empty)"
+            p_str = "n/a (arm empty)"
+            inc_str = "n/a (arm empty)"
+        else:
+            lift_str = f"{s['absolute_lift_pp']:+.2f}"
+            ci_str = f"[{s['ci_95_low_pp']:+.2f}, {s['ci_95_high_pp']:+.2f}]"
+            p_str = f"{s['p_value']:.4f}"
+            inc_str = f"{s['incremental_retained']:+.2f}"
+
+        return f"| `{label}` *(exploratory)* | {horizon} | {t_cell} | {c_cell} | {lift_str} | {ci_str} | {p_str} | {inc_str} |"
+
     for oid, odata in sorted(sub["by_offer"].items()):
-        o90 = odata["primary_90d"]
-        o180 = odata["secondary_180d"]
-        lines.append(
-            f"| `{oid}` *(exploratory)* | 90d | {o90['retained_treatment']}/{o90['n_treatment']} ({o90['rate_treatment']:.4f}) | {o90['retained_control']}/{o90['n_control']} ({o90['rate_control']:.4f}) | {o90['absolute_lift_pp']:+.2f} | [{o90['ci_95_low_pp']:+.2f}, {o90['ci_95_high_pp']:+.2f}] | {o90['p_value']:.4f} | {o90['incremental_retained']:+.2f} |"
-        )
-        lines.append(
-            f"| `{oid}` *(exploratory)* | 180d | {o180['retained_treatment']}/{o180['n_treatment']} ({o180['rate_treatment']:.4f}) | {o180['retained_control']}/{o180['n_control']} ({o180['rate_control']:.4f}) | {o180['absolute_lift_pp']:+.2f} | [{o180['ci_95_low_pp']:+.2f}, {o180['ci_95_high_pp']:+.2f}] | {o180['p_value']:.4f} | {o180['incremental_retained']:+.2f} |"
-        )
+        lines.append(_format_subgroup_row(oid, "90d", odata["primary_90d"]))
+        lines.append(_format_subgroup_row(oid, "180d", odata["secondary_180d"]))
 
     lines.extend(
         [
@@ -164,14 +181,8 @@ def format_evaluation_markdown(results: dict[str, Any]) -> str:
         ]
     )
     for strat, sdata in sub["by_stratum"].items():
-        st90 = sdata["primary_90d"]
-        st180 = sdata["secondary_180d"]
-        lines.append(
-            f"| `{strat}` *(exploratory)* | 90d | {st90['retained_treatment']}/{st90['n_treatment']} ({st90['rate_treatment']:.4f}) | {st90['retained_control']}/{st90['n_control']} ({st90['rate_control']:.4f}) | {st90['absolute_lift_pp']:+.2f} | [{st90['ci_95_low_pp']:+.2f}, {st90['ci_95_high_pp']:+.2f}] | {st90['p_value']:.4f} | {st90['incremental_retained']:+.2f} |"
-        )
-        lines.append(
-            f"| `{strat}` *(exploratory)* | 180d | {st180['retained_treatment']}/{st180['n_treatment']} ({st180['rate_treatment']:.4f}) | {st180['retained_control']}/{st180['n_control']} ({st180['rate_control']:.4f}) | {st180['absolute_lift_pp']:+.2f} | [{st180['ci_95_low_pp']:+.2f}, {st180['ci_95_high_pp']:+.2f}] | {st180['p_value']:.4f} | {st180['incremental_retained']:+.2f} |"
-        )
+        lines.append(_format_subgroup_row(strat, "90d", sdata["primary_90d"]))
+        lines.append(_format_subgroup_row(strat, "180d", sdata["secondary_180d"]))
 
     lines.extend(
         [
@@ -182,10 +193,16 @@ def format_evaluation_markdown(results: dict[str, Any]) -> str:
             "| :--- | ---: | ---: | ---: | :---: |",
         ]
     )
+    is_small_sample = (p90.get("n_treatment", 0) < 200 or p90.get("n_control", 0) < 200)
     for cov_name, cdata in rcheck.get("covariate_balance", {}).items():
-        flag_str = "YES" if cdata["flagged"] else "NO"
+        if cdata.get("flagged"):
+            flag_str = "YES (small sample)" if is_small_sample else "YES"
+            smd_str = f"{cdata['smd']:.6f} *(small sample)*" if is_small_sample else f"{cdata['smd']:.6f}"
+        else:
+            flag_str = "NO"
+            smd_str = f"{cdata['smd']:.6f}"
         lines.append(
-            f"| `{cov_name}` | {cdata['mean_treatment']:.4f} | {cdata['mean_control']:.4f} | {cdata['smd']:.6f} | `{flag_str}` |"
+            f"| `{cov_name}` | {cdata['mean_treatment']:.4f} | {cdata['mean_control']:.4f} | {smd_str} | `{flag_str}` |"
         )
 
     lines.extend(
@@ -217,10 +234,51 @@ def format_evaluation_markdown(results: dict[str, Any]) -> str:
             f"| **Net Financial Impact (cents)** | {f180['net_impact_cents']} ([{f180['net_impact_ci_low_cents']}, {f180['net_impact_ci_high_cents']}]) | {f90['net_impact_cents']} ([{f90['net_impact_ci_low_cents']}, {f90['net_impact_ci_high_cents']}]) |",
             f"| **Cost per Incremental Retained Customer (cents)** | {f180['cost_per_incremental_retained_cents'] if f180['cost_per_incremental_retained_cents'] is not None else 'N/A'} | {f90['cost_per_incremental_retained_cents'] if f90['cost_per_incremental_retained_cents'] is not None else 'N/A'} |",
             "",
+            "Realized cost counts every redeemer who stayed, including customers who would have stayed anyway.",
+            "",
             f"- **180-Day Financial Assessment**: {f180['plain_statement']}",
             f"- **90-Day Financial Assessment**: {f90['plain_statement']}",
             "",
-            "## 5. How to read this",
+            "## 5. Business reading",
+            "",
+        ]
+    )
+
+    # Template-built business reading
+    lift_180 = s180.get("absolute_lift")
+    lift_sign = "positive" if (lift_180 is not None and lift_180 > 0) else ("negative" if (lift_180 is not None and lift_180 < 0) else "neutral")
+    lift_ci_low = s180.get("ci_95_low")
+    lift_ci_high = s180.get("ci_95_high")
+    if lift_ci_low is not None and lift_ci_high is not None:
+        lift_ci_excludes_zero = (lift_ci_low > 0 and lift_ci_high > 0) or (lift_ci_low < 0 and lift_ci_high < 0)
+        lift_ci_str = "excludes zero" if lift_ci_excludes_zero else "includes zero"
+    else:
+        lift_ci_str = "is undefined"
+
+    net_cents = f180.get("net_impact_cents", 0)
+    net_is_negative = net_cents < 0
+    net_impact_str = "negative" if net_is_negative else "positive"
+
+    net_low = f180.get("net_impact_ci_low_cents", 0)
+    net_high = f180.get("net_impact_ci_high_cents", 0)
+    net_ci_excludes_zero = (net_low > 0 and net_high > 0) or (net_low < 0 and net_high < 0)
+    net_ci_str = "excludes zero" if net_ci_excludes_zero else "includes zero"
+
+    cost_per_inc = f180.get("cost_per_incremental_retained_cents")
+    avg_margin = fin.get("avg_expected_margin_cents", 0)
+    if cost_per_inc is not None:
+        econ_sentence = f"The cost per incremental retained customer is {cost_per_inc} cents versus the average 6-month margin of {avg_margin} cents."
+    else:
+        econ_sentence = f"The cost per incremental retained customer is not available versus the average 6-month margin of {avg_margin} cents."
+
+    lines.extend(
+        [
+            f"1. **Causal Lift Sign & Confidence**: The sign of the 180-day retention lift is {lift_sign} ({s180.get('absolute_lift_pp', 0.0):+.2f} pp), and the 95% confidence interval of the 180-day lift {lift_ci_str} ([{s180.get('ci_95_low_pp', 0.0):+.2f}, {s180.get('ci_95_high_pp', 0.0):+.2f}] pp).",
+            f"2. **Net Impact Assessment**: Program net impact is {net_impact_str} ({net_cents} cents), and the 95% confidence interval of net impact {net_ci_str} ([{net_low}, {net_high}] cents).",
+            f"3. **Unit Economics Comparison**: {econ_sentence}",
+            "4. **Simulation Caveat**: These conclusions hold only under the stated simulation parameters.",
+            "",
+            "## 6. How to read this",
             "",
             "1. **What Intention-to-Treat (ITT) Means**: Every eligible customer randomized into `TREATMENT` or `CONTROL` at `W01` (`2026-01-05`) is analyzed in their assigned arm regardless of whether delivery succeeded (`SENT` vs `DELIVERY_FAILED`) or whether the customer responded or redeemed. Comparing `TREATMENT` redeemers directly to `CONTROL` introduces severe selection bias because customers who open and redeem offers also have higher baseline retention propensity.",
             "2. **Denominators and Time Windows**: Model evaluation uses the unflagged untreated cohort (`CONTROL` + uncontacted customers scored at `P = 2026-01-01`). Experiment evaluation uses unflagged eligible customers assigned at `2026-01-05`. The **90-day outcome window** (`2026-01-05` to `2026-04-05`) is the **primary experiment metric** (Decision D3), while the **180-day horizon** (`2026-01-01` to `2026-06-30`) is the **secondary experiment metric** and serves as the headline financial basis because expected gross margin is evaluated over 6 months.",
@@ -290,12 +348,42 @@ def run_evaluation(
         expected_margin_months=expected_margin_months,
     )
 
+    s180 = experiment_lift["secondary_180d"]
+    lift_180 = s180.get("absolute_lift")
+    lift_sign = "positive" if (lift_180 is not None and lift_180 > 0) else ("negative" if (lift_180 is not None and lift_180 < 0) else "neutral")
+    lift_ci_low = s180.get("ci_95_low")
+    lift_ci_high = s180.get("ci_95_high")
+    if lift_ci_low is not None and lift_ci_high is not None:
+        lift_ci_excludes_zero = (lift_ci_low > 0 and lift_ci_high > 0) or (lift_ci_low < 0 and lift_ci_high < 0)
+    else:
+        lift_ci_excludes_zero = False
+
+    f180 = financial_impact.get("headline_180d", {})
+    net_cents = f180.get("net_impact_cents", 0)
+    net_is_negative = net_cents < 0
+    net_low = f180.get("net_impact_ci_low_cents", 0)
+    net_high = f180.get("net_impact_ci_high_cents", 0)
+    net_ci_excludes_zero = (net_low > 0 and net_high > 0) or (net_low < 0 and net_high < 0)
+    cost_per_inc = f180.get("cost_per_incremental_retained_cents")
+    avg_margin = financial_impact.get("avg_expected_margin_cents", 0)
+
+    business_reading = {
+        "lift_sign": lift_sign,
+        "lift_180d_ci_excludes_zero": lift_ci_excludes_zero,
+        "net_impact_is_negative": net_is_negative,
+        "net_impact_ci_excludes_zero": net_ci_excludes_zero,
+        "cost_per_incremental_retained_cents": cost_per_inc,
+        "avg_expected_margin_cents": avg_margin,
+        "caveat": "These conclusions hold only under the stated simulation parameters.",
+    }
+
     raw_results = {
         "scale": scale,
         "exclusions": exclusions,
         "model_metrics": model_metrics,
         "experiment": experiment_lift,
         "financial": financial_impact,
+        "business_reading": business_reading,
     }
     normalized = _normalize_for_json(raw_results)
     report_md = format_evaluation_markdown(normalized)

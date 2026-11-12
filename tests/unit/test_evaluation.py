@@ -86,3 +86,142 @@ def test_binary_metrics_roc_auc():
     assert 0.0 <= res["brier_score"] <= 1.0
     assert "high_band_decision_rule" in res
     assert res["high_band_decision_rule"]["precision"] == 1.0
+
+
+def test_empty_arm_subgroups_and_markdown_formatting():
+    """Verify empty-arm subgroups return null lift/CI/p-val/incremental and markdown renders 'n/a (arm empty)'."""
+    from churnexp.evaluation.report import format_evaluation_markdown
+
+    # Treatment arm empty
+    res_t0 = compute_two_proportion_stats(
+        n_treatment=0,
+        retained_treatment=0,
+        n_control=2,
+        retained_control=2,
+    )
+    assert res_t0["absolute_lift"] is None
+    assert res_t0["absolute_lift_pp"] is None
+    assert res_t0["ci_95_low"] is None
+    assert res_t0["ci_95_high"] is None
+    assert res_t0["p_value"] is None
+    assert res_t0["incremental_retained"] is None
+
+    # Control arm empty
+    res_c0 = compute_two_proportion_stats(
+        n_treatment=4,
+        retained_treatment=3,
+        n_control=0,
+        retained_control=0,
+    )
+    assert res_c0["absolute_lift"] is None
+    assert res_c0["absolute_lift_pp"] is None
+    assert res_c0["ci_95_low"] is None
+    assert res_c0["ci_95_high"] is None
+    assert res_c0["p_value"] is None
+    assert res_c0["incremental_retained"] is None
+
+    # Test markdown formatting for empty arm
+    mock_results = {
+        "scale": "starter",
+        "exclusions": {"total_unique_excluded_customers": 0, "counts_by_detector": {}},
+        "model_metrics": {
+            "label_180d": {"n": 100, "positives": 10, "base_rate": 0.1, "roc_auc": 0.75, "brier_score": 0.08, "high_band_decision_rule": {"precision": 0.5, "recall": 0.5, "f1": 0.5, "precision_lift": 2.0}},
+            "label_90d": {"n": 100, "positives": 5, "base_rate": 0.05, "roc_auc": 0.70, "brier_score": 0.04, "high_band_decision_rule": {"precision": 0.4, "recall": 0.4, "f1": 0.4, "precision_lift": 2.0}},
+        },
+        "experiment": {
+            "primary_90d": {
+                "n_treatment": 92, "retained_treatment": 80, "rate_treatment": 0.869565,
+                "n_control": 111, "retained_control": 95, "rate_control": 0.855856,
+                "absolute_lift": 0.013709, "absolute_lift_pp": 1.37,
+                "ci_95_low_pp": -8.0, "ci_95_high_pp": 10.7,
+                "p_value": 0.78, "relative_lift": 0.016, "incremental_retained": 1.26,
+                "incremental_retained_ci_low": -7.36, "incremental_retained_ci_high": 9.88,
+                "nnt": None,
+            },
+            "secondary_180d": {
+                "n_treatment": 92, "retained_treatment": 75, "rate_treatment": 0.815217,
+                "n_control": 111, "retained_control": 90, "rate_control": 0.810811,
+                "absolute_lift": 0.004406, "absolute_lift_pp": 0.44,
+                "ci_95_low_pp": -9.9, "ci_95_high_pp": 10.8,
+                "p_value": 0.94, "relative_lift": 0.005, "incremental_retained": 0.41,
+                "incremental_retained_ci_low": -9.1, "incremental_retained_ci_high": 9.9,
+                "nnt": None,
+            },
+            "subgroups": {
+                "by_offer": {
+                    "OFF-2026-000003": {
+                        "primary_90d": res_t0,
+                        "secondary_180d": res_t0,
+                    }
+                },
+                "by_stratum": {},
+            },
+            "randomization_check": {
+                "any_flagged": True,
+                "covariate_balance": {
+                    "tenure_days": {
+                        "mean_treatment": 631.77,
+                        "mean_control": 596.90,
+                        "smd": 0.135239,
+                        "flagged": True,
+                    }
+                }
+            },
+            "correlation_vs_incremental": {
+                "a_treatment_all_retention_rate_90d": 0.8696,
+                "a_treatment_all_retention_rate_180d": 0.8152,
+                "b_redeemers_retention_rate_90d": 0.95,
+                "b_redeemers_retention_rate_180d": 0.90,
+                "c_control_retention_rate_90d": 0.8559,
+                "c_control_retention_rate_180d": 0.8108,
+                "d_attributed_retained_customers": 40,
+                "e_incremental_retained_customers_90d": 1.26,
+                "e_incremental_retained_customers_180d": 0.41,
+                "n_redeemers": 42,
+                "why_not_causal": "Redeemers self-select.",
+            }
+        },
+        "financial": {
+            "expected_margin_months": 6,
+            "avg_expected_margin_cents": 75000,
+            "realized_cost_cents": 120000,
+            "redeemed_retained_90d_count": 40,
+            "headline_180d": {
+                "incremental_retained_customers": 0.41,
+                "incremental_retained_ci_low": -9.1,
+                "incremental_retained_ci_high": 9.9,
+                "benefit_cents": 30750,
+                "benefit_ci_low_cents": -682500,
+                "benefit_ci_high_cents": 742500,
+                "realized_cost_cents": 120000,
+                "net_impact_cents": -89250,
+                "net_impact_ci_low_cents": -802500,
+                "net_impact_ci_high_cents": 622500,
+                "cost_per_incremental_retained_cents": 292683,
+                "plain_statement": "Point estimate net impact is negative and 95% CI includes zero.",
+            },
+            "primary_90d": {
+                "incremental_retained_customers": 1.26,
+                "incremental_retained_ci_low": -7.36,
+                "incremental_retained_ci_high": 9.88,
+                "benefit_cents": 94500,
+                "benefit_ci_low_cents": -552000,
+                "benefit_ci_high_cents": 741000,
+                "realized_cost_cents": 120000,
+                "net_impact_cents": -25500,
+                "net_impact_ci_low_cents": -672000,
+                "net_impact_ci_high_cents": 621000,
+                "cost_per_incremental_retained_cents": 95238,
+                "plain_statement": "Point estimate net impact is negative and 95% CI includes zero.",
+            }
+        }
+    }
+
+    md = format_evaluation_markdown(mock_results)
+    assert "n/a (arm empty)" in md
+    assert "-100.00" not in md
+    assert "small sample" in md
+    assert "Realized cost counts every redeemer who stayed, including customers who would have stayed anyway." in md
+    assert "## 5. Business reading" in md
+    assert "These conclusions hold only under the stated simulation parameters." in md
+

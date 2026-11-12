@@ -1,4 +1,4 @@
-"""Ground truth audit against blind detectors and true causal treatment effects."""
+"""Ground truth audit against blind detectors and true causal treatment effects (ADR-015)."""
 
 from __future__ import annotations
 
