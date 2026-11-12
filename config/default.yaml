@@ -17,6 +17,52 @@ churn:
 experiment:
   treatment_share: 0.5
   stratify_by: risk_band
+  effects:
+    respond_prob:
+      PERSUADABLE: 0.85
+      SURE_THING: 0.40
+      LOST_CAUSE: 0.15
+      SLEEPING_DOG: 0.30
+    redeem_given_respond: 0.90
+    save_prob_given_redeem:
+      1: 0.80
+      2: 0.90
+      3: 0.95
+campaign:
+  assignment_date: 2026-01-05
+  contact_hour: 10
+  risk_bands:
+    high_share: 0.15
+    medium_share: 0.20
+  min_tenure_days: 90
+  unsettled_invoice_grace_days: 7
+  expected_margin_months: 6
+  delivery_failure_prob: 0.03
+offers:
+  valid_from: 2026-01-01
+  valid_to: 2026-12-31
+  items:
+    - number: 1
+      offer_name: "10% off for 6 months"
+      offer_type: PERCENT_DISCOUNT
+      discount_pct: 0.10
+      free_months: null
+      duration_months: 6
+      max_cost_share_of_margin: 0.20
+    - number: 2
+      offer_name: "20% off for 3 months"
+      offer_type: PERCENT_DISCOUNT
+      discount_pct: 0.20
+      free_months: null
+      duration_months: 3
+      max_cost_share_of_margin: 0.20
+    - number: 3
+      offer_name: "1 free month"
+      offer_type: FREE_MONTH
+      discount_pct: null
+      free_months: 1
+      duration_months: 1
+      max_cost_share_of_margin: 0.25
 anomalies:
   records_per_type: 40
 generator:
@@ -82,7 +128,7 @@ generator:
     involuntary_prob: 0.30
     involuntary_cancel_offset_days: 8
   segment:
-    persuadable_given_churn: 0.45
+    persuadable_given_churn: 0.60
     sleeping_dog_given_retained: 0.03
   usage:
     base_minutes:

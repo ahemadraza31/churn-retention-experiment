@@ -31,9 +31,93 @@ class ChurnConfig:
 
 
 @dataclass(frozen=True)
+class ExperimentEffectsConfig:
+    respond_prob: dict[str, float] = field(
+        default_factory=lambda: {
+            "PERSUADABLE": 0.85,
+            "SURE_THING": 0.40,
+            "LOST_CAUSE": 0.15,
+            "SLEEPING_DOG": 0.30,
+        }
+    )
+    redeem_given_respond: float = 0.90
+    save_prob_given_redeem: dict[int, float] = field(
+        default_factory=lambda: {1: 0.80, 2: 0.90, 3: 0.95}
+    )
+
+
+@dataclass(frozen=True)
 class ExperimentConfig:
     treatment_share: float
     stratify_by: str
+    effects: ExperimentEffectsConfig = field(default_factory=ExperimentEffectsConfig)
+
+
+@dataclass(frozen=True)
+class RiskBandsConfig:
+    high_share: float = 0.15
+    medium_share: float = 0.20
+
+
+@dataclass(frozen=True)
+class CampaignConfig:
+    assignment_date: date = date(2026, 1, 5)
+    contact_hour: int = 10
+    risk_bands: RiskBandsConfig = field(default_factory=RiskBandsConfig)
+    min_tenure_days: int = 90
+    unsettled_invoice_grace_days: int = 7
+    expected_margin_months: int = 6
+    delivery_failure_prob: float = 0.03
+
+
+@dataclass(frozen=True)
+class OfferItemConfig:
+    number: int
+    offer_name: str
+    offer_type: str
+    discount_pct: float | None
+    free_months: int | None
+    duration_months: int
+    max_cost_share_of_margin: float
+
+
+def _default_offer_items() -> list[OfferItemConfig]:
+    return [
+        OfferItemConfig(
+            number=1,
+            offer_name="10% off for 6 months",
+            offer_type="PERCENT_DISCOUNT",
+            discount_pct=0.10,
+            free_months=None,
+            duration_months=6,
+            max_cost_share_of_margin=0.20,
+        ),
+        OfferItemConfig(
+            number=2,
+            offer_name="20% off for 3 months",
+            offer_type="PERCENT_DISCOUNT",
+            discount_pct=0.20,
+            free_months=None,
+            duration_months=3,
+            max_cost_share_of_margin=0.20,
+        ),
+        OfferItemConfig(
+            number=3,
+            offer_name="1 free month",
+            offer_type="FREE_MONTH",
+            discount_pct=None,
+            free_months=1,
+            duration_months=1,
+            max_cost_share_of_margin=0.25,
+        ),
+    ]
+
+
+@dataclass(frozen=True)
+class OffersConfig:
+    valid_from: date = date(2026, 1, 1)
+    valid_to: date = date(2026, 12, 31)
+    items: list[OfferItemConfig] = field(default_factory=_default_offer_items)
 
 
 @dataclass(frozen=True)
@@ -112,7 +196,7 @@ class ChurnGenConfig:
 
 @dataclass(frozen=True)
 class SegmentGenConfig:
-    persuadable_given_churn: float = 0.45
+    persuadable_given_churn: float = 0.60
     sleeping_dog_given_retained: float = 0.03
 
 
@@ -220,6 +304,8 @@ class Config:
     experiment: ExperimentConfig
     anomalies: AnomaliesConfig
     generator: GeneratorConfig = field(default_factory=GeneratorConfig)
+    campaign: CampaignConfig = field(default_factory=CampaignConfig)
+    offers: OffersConfig = field(default_factory=OffersConfig)
 
 
 def _parse_date(value: Any) -> date:
@@ -293,6 +379,107 @@ def validate_config(cfg: Config) -> None:
 
     # 7. Generator config invariants
     _validate_generator_config(cfg.generator, cfg.timeline)
+
+    # 8. Campaign, offers, and experiment effects invariants
+    _validate_campaign_and_offers(cfg)
+
+
+def _validate_campaign_and_offers(cfg: Config) -> None:
+    camp = cfg.campaign
+    tl = cfg.timeline
+    score_horizon_end = tl.score_as_of + timedelta(days=tl.label_horizon_days)
+    if not (tl.score_as_of <= camp.assignment_date < score_horizon_end):
+        raise ValueError(
+            f"Campaign assignment_date ({camp.assignment_date}) must be in "
+            f"[{tl.score_as_of}, {score_horizon_end})"
+        )
+    if not (0 <= camp.contact_hour <= 23):
+        raise ValueError(f"Campaign contact_hour must be in 0..23, got {camp.contact_hour}")
+
+    rb = camp.risk_bands
+    _check_prob_scalar("campaign.risk_bands.high_share", rb.high_share, allow_zero=False, allow_one=False)
+    _check_prob_scalar("campaign.risk_bands.medium_share", rb.medium_share, allow_zero=False, allow_one=False)
+    if rb.high_share + rb.medium_share >= 1.0:
+        raise ValueError(
+            f"Campaign risk_bands high_share + medium_share must be < 1.0, got "
+            f"{rb.high_share + rb.medium_share}"
+        )
+
+    if camp.min_tenure_days < 0:
+        raise ValueError(f"Campaign min_tenure_days must be >= 0, got {camp.min_tenure_days}")
+    if camp.unsettled_invoice_grace_days < 0:
+        raise ValueError(
+            f"Campaign unsettled_invoice_grace_days must be >= 0, got {camp.unsettled_invoice_grace_days}"
+        )
+    if camp.expected_margin_months < 1:
+        raise ValueError(
+            f"Campaign expected_margin_months must be >= 1, got {camp.expected_margin_months}"
+        )
+    _check_prob_scalar("campaign.delivery_failure_prob", camp.delivery_failure_prob)
+
+    offers = cfg.offers
+    if not (offers.valid_from <= camp.assignment_date <= offers.valid_to):
+        raise ValueError(
+            f"Offers valid window [{offers.valid_from}, {offers.valid_to}] must cover "
+            f"campaign assignment_date ({camp.assignment_date})"
+        )
+    if not offers.items:
+        raise ValueError("Offers items list must not be empty")
+
+    offer_numbers: set[int] = set()
+    for item in offers.items:
+        if item.number < 1 or item.number in offer_numbers:
+            raise ValueError(f"Invalid or duplicate offer number: {item.number}")
+        offer_numbers.add(item.number)
+        if not item.offer_name:
+            raise ValueError(f"Offer {item.number} must have a non-empty offer_name")
+        if item.offer_type == "PERCENT_DISCOUNT":
+            if item.discount_pct is None or not (0.0 < float(item.discount_pct) < 1.0):
+                raise ValueError(
+                    f"PERCENT_DISCOUNT offer {item.number} requires discount_pct in (0, 1)"
+                )
+            if item.free_months is not None:
+                raise ValueError(
+                    f"PERCENT_DISCOUNT offer {item.number} must have free_months=None"
+                )
+        elif item.offer_type == "FREE_MONTH":
+            if item.free_months is None or int(item.free_months) < 1:
+                raise ValueError(
+                    f"FREE_MONTH offer {item.number} requires free_months >= 1"
+                )
+            if item.discount_pct is not None:
+                raise ValueError(
+                    f"FREE_MONTH offer {item.number} must have discount_pct=None"
+                )
+        else:
+            raise ValueError(f"Unknown offer_type {item.offer_type!r} for offer {item.number}")
+
+        if int(item.duration_months) < 1:
+            raise ValueError(f"Offer {item.number} duration_months must be >= 1")
+        _check_prob_scalar(
+            f"offers[{item.number}].max_cost_share_of_margin",
+            item.max_cost_share_of_margin,
+            allow_zero=False,
+        )
+
+    eff = cfg.experiment.effects
+    expected_segs = {"PERSUADABLE", "SURE_THING", "LOST_CAUSE", "SLEEPING_DOG"}
+    if set(eff.respond_prob.keys()) != expected_segs:
+        raise ValueError(
+            f"experiment.effects.respond_prob keys must be {expected_segs}, got {set(eff.respond_prob.keys())}"
+        )
+    for seg_k, prob_v in eff.respond_prob.items():
+        _check_prob_scalar(f"experiment.effects.respond_prob[{seg_k}]", prob_v)
+
+    _check_prob_scalar("experiment.effects.redeem_given_respond", eff.redeem_given_respond)
+
+    if set(eff.save_prob_given_redeem.keys()) != offer_numbers:
+        raise ValueError(
+            f"experiment.effects.save_prob_given_redeem keys must match offer numbers {offer_numbers}, "
+            f"got {set(eff.save_prob_given_redeem.keys())}"
+        )
+    for off_num, save_p in eff.save_prob_given_redeem.items():
+        _check_prob_scalar(f"experiment.effects.save_prob_given_redeem[{off_num}]", save_p)
 
 
 def _check_prob_dist(name: str, dist: Mapping[Any, float], expected_keys: set[Any] | None = None) -> None:
@@ -534,6 +721,66 @@ def _parse_generator_config(gen_raw: Mapping[str, Any]) -> GeneratorConfig:
     )
 
 
+def _parse_experiment_config(exp_raw: Mapping[str, Any]) -> ExperimentConfig:
+    if "effects" in exp_raw and exp_raw["effects"] is not None:
+        eff_raw = exp_raw["effects"]
+        effects = ExperimentEffectsConfig(
+            respond_prob={str(k): float(v) for k, v in eff_raw["respond_prob"].items()},
+            redeem_given_respond=float(eff_raw["redeem_given_respond"]),
+            save_prob_given_redeem={
+                int(k): float(v) for k, v in eff_raw["save_prob_given_redeem"].items()
+            },
+        )
+    else:
+        effects = ExperimentEffectsConfig()
+    return ExperimentConfig(
+        treatment_share=float(exp_raw["treatment_share"]),
+        stratify_by=str(exp_raw["stratify_by"]),
+        effects=effects,
+    )
+
+
+def _parse_campaign_config(camp_raw: Mapping[str, Any] | None) -> CampaignConfig:
+    if not camp_raw:
+        return CampaignConfig()
+    rb_raw = camp_raw.get("risk_bands", {})
+    risk_bands = RiskBandsConfig(
+        high_share=float(rb_raw.get("high_share", 0.15)),
+        medium_share=float(rb_raw.get("medium_share", 0.20)),
+    )
+    return CampaignConfig(
+        assignment_date=_parse_date(camp_raw["assignment_date"]),
+        contact_hour=int(camp_raw["contact_hour"]),
+        risk_bands=risk_bands,
+        min_tenure_days=int(camp_raw["min_tenure_days"]),
+        unsettled_invoice_grace_days=int(camp_raw["unsettled_invoice_grace_days"]),
+        expected_margin_months=int(camp_raw["expected_margin_months"]),
+        delivery_failure_prob=float(camp_raw["delivery_failure_prob"]),
+    )
+
+
+def _parse_offers_config(off_raw: Mapping[str, Any] | None) -> OffersConfig:
+    if not off_raw:
+        return OffersConfig()
+    items = [
+        OfferItemConfig(
+            number=int(it["number"]),
+            offer_name=str(it["offer_name"]),
+            offer_type=str(it["offer_type"]),
+            discount_pct=float(it["discount_pct"]) if it.get("discount_pct") is not None else None,
+            free_months=int(it["free_months"]) if it.get("free_months") is not None else None,
+            duration_months=int(it["duration_months"]),
+            max_cost_share_of_margin=float(it["max_cost_share_of_margin"]),
+        )
+        for it in off_raw["items"]
+    ]
+    return OffersConfig(
+        valid_from=_parse_date(off_raw["valid_from"]),
+        valid_to=_parse_date(off_raw["valid_to"]),
+        items=items,
+    )
+
+
 def _config_from_dict(data: Mapping[str, Any]) -> Config:
     pop = PopulationConfig(n_customers=int(data["population"]["n_customers"]))
     tl_raw = data["timeline"]
@@ -551,14 +798,13 @@ def _config_from_dict(data: Mapping[str, Any]) -> Config:
         min_rate=float(data["churn"]["min_rate"]),
         max_rate=float(data["churn"]["max_rate"]),
     )
-    experiment = ExperimentConfig(
-        treatment_share=float(data["experiment"]["treatment_share"]),
-        stratify_by=str(data["experiment"]["stratify_by"]),
-    )
+    experiment = _parse_experiment_config(data["experiment"])
     anomalies = AnomaliesConfig(
         records_per_type=int(data["anomalies"]["records_per_type"])
     )
     generator = _parse_generator_config(data["generator"])
+    campaign = _parse_campaign_config(data.get("campaign"))
+    offers = _parse_offers_config(data.get("offers"))
 
     cfg = Config(
         scale=str(data["scale"]),
@@ -569,6 +815,8 @@ def _config_from_dict(data: Mapping[str, Any]) -> Config:
         experiment=experiment,
         anomalies=anomalies,
         generator=generator,
+        campaign=campaign,
+        offers=offers,
     )
     validate_config(cfg)
     return cfg
