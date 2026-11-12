@@ -626,3 +626,20 @@ If delivery timelines slip, features will be trimmed in the following strict ord
 - Added notes on business rules not enforced at DB level (refer to data dictionary).
 - Updated documentation of anomaly shapes A–D and ground‑truth schemas.
 
+## Addendum: Generator (M3)
+
+- **Parameterization**: All synthetic history generator parameters live in `config/default.yaml` under `generator:` and are validated by `churnexp.config.validate_config`.
+- **Enum values where dictionary specifies `Any`**:
+  - `customer.region`: `NA`, `EU`, `APAC`, `LATAM`.
+  - `billing_event.status`: `POSTED` (invoices), `SETTLED` (payments and recovered retries), `FAILED` (failed payments and failed involuntary-churn retries).
+  - `billing_event.failure_reason`: `INSUFFICIENT_FUNDS`, `EXPIRED_CARD`, `DO_NOT_HONOR`, `NETWORK_ERROR`.
+  - `latent.hidden_segment`: `PERSUADABLE`, `SURE_THING`, `LOST_CAUSE`, `SLEEPING_DOG`.
+- **Usage formulas**:
+  - `usage_pct_of_limit = round(min(1.0, usage_minutes / plan_limit_minutes), 4)`
+  - `active_days = 0 if usage_minutes == 0 else clip(round(20 * usage_minutes / customer_expected_minutes), 1, days_in_month)`
+  - `sessions = max(active_days, round((usage_minutes / 22) * monthly_noise))`
+  - `features_used = clip(round(1 + 6 * usage_pct_of_limit + feat_noise), 1, 8)`
+  - `World.tables["usage_snapshot"]` retains `features_used` and `usage_pct_of_limit` in memory, while `load_world` projects to the columns defined in `schema.sql`.
+- **State Events**: `state_event` records transitions for `CUSTOMER` (`INIT -> ACTIVE -> CHURNED`) and `SUBSCRIPTION` (`INIT -> ACTIVE -> EXPIRED | CANCELLED`) per the `entity_type` `CHECK` constraint in `schema.sql`.
+
+
