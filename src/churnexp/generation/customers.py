@@ -33,9 +33,8 @@ def _draw_categorical(u: float, items: list[tuple[str, float]]) -> str:
 
 
 def generate_customers(cfg: Config, rng_factory: RngFactory) -> list[CustomerRecord]:
-    """Generate deterministic customer records and their latent segments."""
+    """Generate deterministic customer records."""
     c_cfg = cfg.generator.customers
-    ch_cfg = cfg.generator.churn
     n = cfg.population.n_customers
 
     early_days = (c_cfg.early_signup_end - c_cfg.early_signup_start).days + 1
@@ -53,13 +52,6 @@ def generate_customers(cfg: Config, rng_factory: RngFactory) -> list[CustomerRec
     ]
     regions = list(c_cfg.regions)
     n_regions = len(regions)
-
-    hidden_items = [
-        ("PERSUADABLE", float(ch_cfg.hidden_segment_probs["PERSUADABLE"])),
-        ("SURE_THING", float(ch_cfg.hidden_segment_probs["SURE_THING"])),
-        ("LOST_CAUSE", float(ch_cfg.hidden_segment_probs["LOST_CAUSE"])),
-        ("SLEEPING_DOG", float(ch_cfg.hidden_segment_probs["SLEEPING_DOG"])),
-    ]
 
     records: list[CustomerRecord] = []
     for i in range(1, n + 1):
@@ -80,9 +72,6 @@ def generate_customers(cfg: Config, rng_factory: RngFactory) -> list[CustomerRec
         marketing_opt_in = 1 if float(rng.random()) < c_cfg.marketing_opt_in_prob else 0
         billing_day = min(signup.day, c_cfg.max_billing_day)
 
-        rng_lat = rng_factory.entity_stream("latent_segment", i)
-        hidden_seg = _draw_categorical(float(rng_lat.random()), hidden_items)
-
         records.append(
             CustomerRecord(
                 index=i,
@@ -94,7 +83,7 @@ def generate_customers(cfg: Config, rng_factory: RngFactory) -> list[CustomerRec
                 usage_pattern=usage_pattern,
                 marketing_opt_in=marketing_opt_in,
                 billing_day=billing_day,
-                hidden_segment=hidden_seg,
+                hidden_segment="",
             )
         )
 

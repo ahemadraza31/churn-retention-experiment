@@ -53,6 +53,8 @@ Each table has a markdown table with the following columns:
 | active_days | INTEGER | Yes | – | days | No | – | – |
 | sessions | INTEGER | Yes | – | – | No | – | – |
 | usage_minutes | REAL | Yes | – | minutes | No | – | – |
+| features_used | INTEGER | Yes | 0‑8 | – | No | `features_used BETWEEN 0 AND 8` | – |
+| usage_pct_of_limit | REAL | Yes | 0‑1 | – | No | `usage_pct_of_limit BETWEEN 0 AND 1` | – |
 
 ---
 
@@ -82,6 +84,8 @@ Each table has a markdown table with the following columns:
 | category | TEXT | Yes | `BILLING`,`TECHNICAL`,`CANCELLATION_INQUIRY`,`GENERAL` | – | No | `category IN (...)` | – |
 | severity | TEXT | Yes | `LOW`,`MEDIUM`,`HIGH`,`CRITICAL` | – | No | `severity IN (...)` | – |
 | escalated | INTEGER | Yes | 0,1 | – | No | `escalated IN (0,1)` | – |
+
+Note: `support_case` lifecycle is stored directly in `opened_at`, `resolved_at`, and `escalated`, not in `state_event` (the `state_event` schema constraint only allows `SUBSCRIPTION`, `CAMPAIGN_CONTACT`, and `CUSTOMER`).
 
 ---
 
@@ -243,6 +247,8 @@ The `state_event` table records immutable state changes for three entity types (
 - **CUSTOMER**: `INIT → ACTIVE → (CHURNED | INACTIVE)`
 - **SUBSCRIPTION**: `INIT → ACTIVE → (CANCELLED | EXPIRED)`
 - **CAMPAIGN_CONTACT**: `SENT → (RESPONDED | REDEEMED | WITHHELD)`
+
+Note: `support_case` lifecycle is stored in `opened_at`, `resolved_at`, and `escalated`, not in `state_event` (the schema only allows `SUBSCRIPTION`, `CAMPAIGN_CONTACT`, `CUSTOMER`).
 
 These transitions are not enforced by foreign‑key constraints; they are enforced by business‑logic validation and the append‑only triggers.
 

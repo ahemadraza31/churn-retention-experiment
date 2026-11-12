@@ -1,6 +1,6 @@
 """Full untreated world orchestrator, database loader, and deterministic hashing."""
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import date, timedelta
 import hashlib
 import sqlite3
@@ -125,6 +125,10 @@ def generate_world(cfg: Config) -> World:
     churn_results, calibrated_base = simulate_untreated_churn(
         customers, pre_subs, months, cfg, rng_factory
     )
+    customers = [
+        replace(c, hidden_segment=ch.hidden_segment)
+        for c, ch in zip(customers, churn_results)
+    ]
 
     all_subs: list[SubscriptionRecord] = []
     subs_by_customer: list[list[SubscriptionRecord]] = []
@@ -228,7 +232,11 @@ def generate_world(cfg: Config) -> World:
 
 
 def load_world(world: World, conn: sqlite3.Connection) -> None:
-    """Insert world tables into SQLite with foreign keys ON, parents first."""
+    """Insert world tables into SQLite with foreign keys ON, parents first.
+
+    Strictly validates that every DataFrame has no columns absent from the table schema
+    and is not missing any NOT NULL or PRIMARY KEY columns.
+    """
     cur = conn.cursor()
     cur.execute("PRAGMA foreign_keys = ON;")
 
@@ -236,13 +244,34 @@ def load_world(world: World, conn: sqlite3.Connection) -> None:
         if table_name not in world.tables:
             continue
         df = world.tables[table_name]
+
+        cur.execute(f"PRAGMA table_info({table_name});")
+        info_rows = cur.fetchall()
+        db_cols = [row[1] for row in info_rows]
+        db_col_set = set(db_cols)
+        not_null_cols = {
+            row[1] for row in info_rows if (row[3] == 1 and row[4] is None) or row[5] > 0
+        }
+
+        df_col_set = set(df.columns)
+        extra_cols = df_col_set - db_col_set
+        if extra_cols:
+            raise ValueError(
+                f"Table {table_name!r} DataFrame contains unknown columns not in schema: "
+                f"{sorted(extra_cols)}"
+            )
+
+        missing_not_null = not_null_cols - df_col_set
+        if missing_not_null:
+            raise ValueError(
+                f"Table {table_name!r} DataFrame is missing required NOT NULL columns: "
+                f"{sorted(missing_not_null)}"
+            )
+
         if df.empty:
             continue
 
-        cur.execute(f"PRAGMA table_info({table_name});")
-        db_cols = [row[1] for row in cur.fetchall()]
-        present_cols = [c for c in db_cols if c in df.columns]
-
+        present_cols = [c for c in db_cols if c in df_col_set]
         sorted_df = df.sort_values(pk_col, kind="mergesort")[present_cols]
         records = sorted_df.astype(object).where(pd.notnull(sorted_df), None).values.tolist()
 

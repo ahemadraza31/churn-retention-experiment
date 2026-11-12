@@ -425,3 +425,77 @@ def test_reusable_generate_customer_months(starter_cfg):
     assert u1 == u2
     assert b1 == b2
     assert s1 == s2
+
+
+def test_load_world_strict_rejects_extra_or_missing_not_null_columns(starter_world):
+    """load_world raises ValueError if a DataFrame has an extra column or lacks a NOT NULL column."""
+    # 1. Extra column not in schema
+    bad_usage_extra = starter_world.tables["usage_snapshot"].copy()
+    bad_usage_extra["unexpected_extra_col"] = 1
+    bad_tables_extra = dict(starter_world.tables, usage_snapshot=bad_usage_extra)
+    bad_world_extra = replace(starter_world, tables=bad_tables_extra)
+
+    conn1 = create_database(":memory:")
+    try:
+        with pytest.raises(ValueError, match="unknown columns"):
+            load_world(bad_world_extra, conn1)
+    finally:
+        conn1.close()
+
+    # 2. Missing NOT NULL column
+    bad_usage_missing = starter_world.tables["usage_snapshot"].drop(columns=["features_used"])
+    bad_tables_missing = dict(starter_world.tables, usage_snapshot=bad_usage_missing)
+    bad_world_missing = replace(starter_world, tables=bad_tables_missing)
+
+    conn2 = create_database(":memory:")
+    try:
+        with pytest.raises(ValueError, match="missing required NOT NULL columns"):
+            load_world(bad_world_missing, conn2)
+    finally:
+        conn2.close()
+
+
+def test_hidden_segment_depends_on_untreated_churn(starter_cfg, starter_world):
+    """Churners are only PERSUADABLE/LOST_CAUSE, non-churners only SURE_THING/SLEEPING_DOG, shares near config."""
+    lat = starter_world.latent
+    churners = lat[lat["untreated_churn_date"].notna()]
+    retained = lat[lat["untreated_churn_date"].isna()]
+
+    assert not churners.empty
+    assert not retained.empty
+    assert set(churners["hidden_segment"]).issubset({"PERSUADABLE", "LOST_CAUSE"})
+    assert set(retained["hidden_segment"]).issubset({"SURE_THING", "SLEEPING_DOG"})
+
+    # Check shares at 5,000-customer scale for tight statistical convergence
+    med_cfg = replace(
+        starter_cfg,
+        population=replace(starter_cfg.population, n_customers=5000),
+    )
+    from churnexp.generation.churn import simulate_untreated_churn
+    from churnexp.generation.customers import generate_customers
+    from churnexp.generation.subscriptions import (
+        get_simulation_months,
+        pre_simulate_plan_changes,
+    )
+    from churnexp.rng import RngFactory
+
+    rf = RngFactory(med_cfg.seed)
+    months = get_simulation_months(med_cfg)
+    custs = generate_customers(med_cfg, rf)
+    psubs = pre_simulate_plan_changes(custs, months, med_cfg, rf)
+    ch_results, _ = simulate_untreated_churn(custs, psubs, months, med_cfg, rf)
+
+    ch_segs = [r.hidden_segment for r in ch_results if r.churn_date is not None]
+    ret_segs = [r.hidden_segment for r in ch_results if r.churn_date is None]
+
+    assert set(ch_segs) == {"PERSUADABLE", "LOST_CAUSE"}
+    assert set(ret_segs) == {"SURE_THING", "SLEEPING_DOG"}
+
+    persuadable_share = sum(1 for s in ch_segs if s == "PERSUADABLE") / len(ch_segs)
+    sleeping_dog_share = sum(1 for s in ret_segs if s == "SLEEPING_DOG") / len(ret_segs)
+    sure_thing_share = sum(1 for s in ret_segs if s == "SURE_THING") / len(ret_segs)
+
+    assert abs(persuadable_share - starter_cfg.generator.segment.persuadable_given_churn) <= 0.05
+    assert abs(sleeping_dog_share - starter_cfg.generator.segment.sleeping_dog_given_retained) <= 0.015
+    assert abs(sure_thing_share - (1.0 - starter_cfg.generator.segment.sleeping_dog_given_retained)) <= 0.015
+

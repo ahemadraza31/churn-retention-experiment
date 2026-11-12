@@ -108,14 +108,12 @@ class ChurnGenConfig:
     bisection_iterations: int = 20
     involuntary_prob: float = 0.30
     involuntary_cancel_offset_days: int = 8
-    hidden_segment_probs: dict[str, float] = field(
-        default_factory=lambda: {
-            "PERSUADABLE": 0.25,
-            "SURE_THING": 0.45,
-            "LOST_CAUSE": 0.25,
-            "SLEEPING_DOG": 0.05,
-        }
-    )
+
+
+@dataclass(frozen=True)
+class SegmentGenConfig:
+    persuadable_given_churn: float = 0.45
+    sleeping_dog_given_retained: float = 0.03
 
 
 @dataclass(frozen=True)
@@ -206,6 +204,7 @@ class GeneratorConfig:
         default_factory=SubscriptionsGenConfig
     )
     churn: ChurnGenConfig = field(default_factory=ChurnGenConfig)
+    segment: SegmentGenConfig = field(default_factory=SegmentGenConfig)
     usage: UsageGenConfig = field(default_factory=UsageGenConfig)
     billing: BillingGenConfig = field(default_factory=BillingGenConfig)
     support: SupportGenConfig = field(default_factory=SupportGenConfig)
@@ -365,11 +364,11 @@ def _validate_generator_config(gen: GeneratorConfig, timeline: TimelineConfig) -
     _check_prob_scalar("churn.involuntary_prob", ch.involuntary_prob)
     if ch.involuntary_cancel_offset_days <= 0:
         raise ValueError("Generator churn.involuntary_cancel_offset_days must be positive")
-    _check_prob_dist(
-        "churn.hidden_segment_probs",
-        ch.hidden_segment_probs,
-        {"PERSUADABLE", "SURE_THING", "LOST_CAUSE", "SLEEPING_DOG"},
-    )
+
+    # Segment
+    seg = gen.segment
+    _check_prob_scalar("segment.persuadable_given_churn", seg.persuadable_given_churn)
+    _check_prob_scalar("segment.sleeping_dog_given_retained", seg.sleeping_dog_given_retained)
 
     # Usage
     usg = gen.usage
@@ -464,7 +463,12 @@ def _parse_generator_config(gen_raw: Mapping[str, Any]) -> GeneratorConfig:
         bisection_iterations=int(ch_raw["bisection_iterations"]),
         involuntary_prob=float(ch_raw["involuntary_prob"]),
         involuntary_cancel_offset_days=int(ch_raw["involuntary_cancel_offset_days"]),
-        hidden_segment_probs={str(k): float(v) for k, v in ch_raw["hidden_segment_probs"].items()},
+    )
+
+    seg_raw = gen_raw["segment"]
+    segment_gen = SegmentGenConfig(
+        persuadable_given_churn=float(seg_raw["persuadable_given_churn"]),
+        sleeping_dog_given_retained=float(seg_raw["sleeping_dog_given_retained"]),
     )
 
     u_raw = gen_raw["usage"]
@@ -523,6 +527,7 @@ def _parse_generator_config(gen_raw: Mapping[str, Any]) -> GeneratorConfig:
         customers=customers,
         subscriptions=subscriptions,
         churn=churn_gen,
+        segment=segment_gen,
         usage=usage,
         billing=billing,
         support=support,

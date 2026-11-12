@@ -23,6 +23,7 @@ class CustomerChurnResult:
     churn_type: str | None
     is_loud: bool
     frailty_z: float
+    hidden_segment: str = ""
 
 
 def simulate_untreated_churn(
@@ -110,6 +111,10 @@ def simulate_untreated_churn(
     final_hazards = np.minimum(best_base * factors, cap)
     hits = u_draws < final_hazards
 
+    seg_cfg = cfg.generator.segment
+    p_persuadable = float(seg_cfg.persuadable_given_churn)
+    p_sure_thing = 1.0 - float(seg_cfg.sleeping_dog_given_retained)
+
     results: list[CustomerChurnResult] = []
     for idx, c in enumerate(customers):
         rng_det = rng_factory.entity_stream("churn_detail", c.index)
@@ -117,8 +122,12 @@ def simulate_untreated_churn(
         vol_day = int(rng_det.integers(1, 29))
         u_loud = float(rng_det.random())
 
+        rng_lat = rng_factory.entity_stream("latent_segment", c.index)
+        u_seg = float(rng_lat.random())
+
         row_hits = np.flatnonzero(hits[idx])
         if len(row_hits) == 0:
+            hidden_seg = "SURE_THING" if u_seg < p_sure_thing else "SLEEPING_DOG"
             results.append(
                 CustomerChurnResult(
                     customer_id=c.customer_id,
@@ -128,6 +137,7 @@ def simulate_untreated_churn(
                     churn_type=None,
                     is_loud=False,
                     frailty_z=float(frailties[idx]),
+                    hidden_segment=hidden_seg,
                 )
             )
             continue
@@ -152,6 +162,7 @@ def simulate_untreated_churn(
                 c_date = min(c.signup_date + timedelta(days=1), month_ends[m_idx])
             is_loud = u_loud < u_cfg.loud_voluntary_prob
 
+        hidden_seg = "PERSUADABLE" if u_seg < p_persuadable else "LOST_CAUSE"
         results.append(
             CustomerChurnResult(
                 customer_id=c.customer_id,
@@ -161,6 +172,7 @@ def simulate_untreated_churn(
                 churn_type=c_type,
                 is_loud=is_loud,
                 frailty_z=float(frailties[idx]),
+                hidden_segment=hidden_seg,
             )
         )
 
@@ -226,7 +238,7 @@ def build_latent_dataframe(
     rows = [
         {
             "customer_id": c.customer_id,
-            "hidden_segment": c.hidden_segment,
+            "hidden_segment": res.hidden_segment or c.hidden_segment,
             "untreated_churn_date": res.churn_date.isoformat() if res.churn_date else None,
             "treated_churn_date": None,
             "true_effect_flag": None,

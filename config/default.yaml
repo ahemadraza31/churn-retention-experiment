@@ -81,11 +81,9 @@ generator:
     bisection_iterations: 20
     involuntary_prob: 0.30
     involuntary_cancel_offset_days: 8
-    hidden_segment_probs:
-      PERSUADABLE: 0.25
-      SURE_THING: 0.45
-      LOST_CAUSE: 0.25
-      SLEEPING_DOG: 0.05
+  segment:
+    persuadable_given_churn: 0.45
+    sleeping_dog_given_retained: 0.03
   usage:
     base_minutes:
       BASIC: 600.0

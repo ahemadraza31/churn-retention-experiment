@@ -161,13 +161,23 @@ def test_id_format_pk_check(conn):
     # --- usage_snapshot ---
     good_snap = ids_mod.snapshot_id(good_sub, 2025, 6)
     cur.execute(
-        "INSERT INTO usage_snapshot (snapshot_id, subscription_id, snapshot_month, period_end, active_days, sessions, usage_minutes) "
-        f"VALUES ('{good_snap}','{good_sub}','2025-06','2025-06-30',20,100,500.0);"
+        "INSERT INTO usage_snapshot (snapshot_id, subscription_id, snapshot_month, period_end, active_days, sessions, usage_minutes, features_used, usage_pct_of_limit) "
+        f"VALUES ('{good_snap}','{good_sub}','2025-06','2025-06-30',20,100,500.0,4,0.3333);"
     )
     with pytest.raises(sqlite3.IntegrityError):
         cur.execute(
-            f"INSERT INTO usage_snapshot (snapshot_id, subscription_id, snapshot_month, period_end, active_days, sessions, usage_minutes) "
-            f"VALUES ('SNAP-BAD','{good_sub}','2025-07','2025-07-31',20,100,500.0);"
+            f"INSERT INTO usage_snapshot (snapshot_id, subscription_id, snapshot_month, period_end, active_days, sessions, usage_minutes, features_used, usage_pct_of_limit) "
+            f"VALUES ('SNAP-BAD','{good_sub}','2025-07','2025-07-31',20,100,500.0,4,0.3333);"
+        )
+    with pytest.raises(sqlite3.IntegrityError):
+        cur.execute(
+            f"INSERT INTO usage_snapshot (snapshot_id, subscription_id, snapshot_month, period_end, active_days, sessions, usage_minutes, features_used, usage_pct_of_limit) "
+            f"VALUES ('{ids_mod.snapshot_id(good_sub, 2025, 7)}','{good_sub}','2025-07','2025-07-31',20,100,500.0,9,0.3333);"
+        )
+    with pytest.raises(sqlite3.IntegrityError):
+        cur.execute(
+            f"INSERT INTO usage_snapshot (snapshot_id, subscription_id, snapshot_month, period_end, active_days, sessions, usage_minutes, features_used, usage_pct_of_limit) "
+            f"VALUES ('{ids_mod.snapshot_id(good_sub, 2025, 8)}','{good_sub}','2025-08','2025-08-31',20,100,500.0,4,1.2);"
         )
 
     # --- offer ---

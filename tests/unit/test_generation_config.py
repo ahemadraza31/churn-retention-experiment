@@ -21,6 +21,8 @@ def test_generator_config_loaded_values():
     assert g.subscriptions.monthly_plan_change_prob == 0.012
     assert g.churn.monthly_hazard_cap == 0.08
     assert g.churn.involuntary_prob == 0.30
+    assert g.segment.persuadable_given_churn == 0.45
+    assert g.segment.sleeping_dog_given_retained == 0.03
     assert g.usage.base_minutes == {"BASIC": 600.0, "STANDARD": 1200.0, "PREMIUM": 2000.0}
     assert g.billing.failure_prob_consumer == 0.025
     assert g.billing.failure_prob_smb == 0.015
@@ -61,16 +63,18 @@ def test_generator_config_invalid_tier_prices():
         validate_config(bad_cfg)
 
 
-def test_generator_config_invalid_hidden_segment_probs():
-    """Missing key in hidden_segment_probs must fail validation."""
+def test_generator_config_invalid_segment_conditional_probs():
+    """Out-of-bounds [0, 1] conditional segment probabilities must fail validation."""
     cfg = load_config("starter")
-    bad_churn = replace(
-        cfg.generator.churn,
-        hidden_segment_probs={"PERSUADABLE": 0.5, "SURE_THING": 0.5},
-    )
-    bad_cfg = replace(cfg, generator=replace(cfg.generator, churn=bad_churn))
-    with pytest.raises(ValueError, match="hidden_segment_probs keys mismatch"):
-        validate_config(bad_cfg)
+    bad_seg1 = replace(cfg.generator.segment, persuadable_given_churn=1.2)
+    bad_cfg1 = replace(cfg, generator=replace(cfg.generator, segment=bad_seg1))
+    with pytest.raises(ValueError, match="persuadable_given_churn"):
+        validate_config(bad_cfg1)
+
+    bad_seg2 = replace(cfg.generator.segment, sleeping_dog_given_retained=-0.1)
+    bad_cfg2 = replace(cfg, generator=replace(cfg.generator, segment=bad_seg2))
+    with pytest.raises(ValueError, match="sleeping_dog_given_retained"):
+        validate_config(bad_cfg2)
 
 
 def test_generator_config_invalid_plan_limits():

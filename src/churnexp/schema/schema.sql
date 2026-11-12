@@ -40,6 +40,8 @@ CREATE TABLE usage_snapshot (
     active_days INTEGER NOT NULL,
     sessions INTEGER NOT NULL,
     usage_minutes REAL NOT NULL,
+    features_used INTEGER NOT NULL CHECK (features_used BETWEEN 0 AND 8),
+    usage_pct_of_limit REAL NOT NULL CHECK (usage_pct_of_limit BETWEEN 0 AND 1),
     UNIQUE(subscription_id, snapshot_month),
     FOREIGN KEY(subscription_id) REFERENCES subscription(subscription_id)
 );
