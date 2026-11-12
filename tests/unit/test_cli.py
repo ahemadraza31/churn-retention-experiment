@@ -6,7 +6,7 @@ from churnexp.cli import PLANNED_MILESTONES, build_parser, main
 
 
 def test_cli_help():
-    """Verify that --help exits with 0 and lists all 10 subcommands."""
+    """Verify that --help exits with 0 and lists all subcommands."""
     parser = build_parser()
     help_text = parser.format_help()
     expected_subcommands = [
@@ -14,6 +14,7 @@ def test_cli_help():
         "config",
         "generate",
         "validate",
+        "export",
         "train",
         "campaign",
         "evaluate",
@@ -73,7 +74,8 @@ def test_cli_generate_starter(capsys, tmp_path):
 
 def test_cli_stubs(capsys):
     """All unreleased subcommands exit 2 and print planned milestone."""
-    assert "generate" not in PLANNED_MILESTONES
+    for implemented in ("generate", "validate", "export", "repro-check"):
+        assert implemented not in PLANNED_MILESTONES
     for cmd, milestone in PLANNED_MILESTONES.items():
         ret = main([cmd])
         assert ret == 2

@@ -12,16 +12,22 @@ import yaml
 from churnexp import __version__
 from churnexp.config import load_config
 from churnexp.generation.world import generate_world, hash_world, load_world
+from churnexp.io.exporters import export_database, parse_formats
+from churnexp.repro import run_repro_check
 from churnexp.schema.db import create_database
+from churnexp.validation.checks import (
+    load_tables_from_csv_dir,
+    load_tables_from_db,
+    load_tables_from_json_dir,
+    validate_tables,
+)
 
 
 PLANNED_MILESTONES: dict[str, int] = {
-    "validate": 4,
     "train": 5,
     "campaign": 7,
     "evaluate": 9,
     "audit": 8,
-    "repro-check": 4,
     "all": 9,
 }
 
@@ -32,7 +38,6 @@ def build_parser() -> argparse.ArgumentParser:
         prog="churnexp",
         description="Churn Detection and Retention Offer Experiment CLI",
     )
-    # Common parent parser so every subcommand inherits --scale
     scale_parent = argparse.ArgumentParser(add_help=False)
     scale_parent.add_argument(
         "--scale",
@@ -61,15 +66,65 @@ def build_parser() -> argparse.ArgumentParser:
         help="Print the resolved configuration",
     )
 
-    # 3-10. Stub subcommands
+    # 3. generate
+    gen_parser = subparsers.add_parser(
+        "generate",
+        parents=[scale_parent],
+        help="Generate synthetic data and anomalies",
+    )
+    gen_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom output directory (default: output/<scale>)",
+    )
+
+    # 4. validate
+    val_parser = subparsers.add_parser(
+        "validate",
+        parents=[scale_parent],
+        help="Validate structural and temporal database rules",
+    )
+    val_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom report output directory (default: data/<scale>)",
+    )
+
+    # 5. export
+    exp_parser = subparsers.add_parser(
+        "export",
+        parents=[scale_parent],
+        help="Export database tables to CSV, JSON, SQL, and write MANIFEST.json",
+    )
+    exp_parser.add_argument(
+        "--formats",
+        default=None,
+        help="Comma-separated formats to export: csv,json,sql (default: csv,json,sql for starter; csv for full)",
+    )
+    exp_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom export directory (default: data/<scale>)",
+    )
+
+    # 6. repro-check
+    repro_parser = subparsers.add_parser(
+        "repro-check",
+        parents=[scale_parent],
+        help="Check end-to-end reproducibility with seed 20261022",
+    )
+    repro_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom report directory for REPRODUCIBILITY.md (default: data/<scale>)",
+    )
+
+    # Remaining stub subcommands
     stub_names = [
-        ("generate", "Generate synthetic data and anomalies"),
-        ("validate", "Validate structural and temporal database rules"),
         ("train", "Train churn risk prediction model"),
         ("campaign", "Evaluate eligibility and assign retention offers"),
         ("evaluate", "Evaluate model performance, ITT lift, and financial impact"),
         ("audit", "Run blind detectors and audit precision/recall against ground truth"),
-        ("repro-check", "Check end-to-end reproducibility with seed 20261022"),
         ("all", "Run end-to-end generation, training, assignment, and evaluation"),
     ]
 
@@ -125,16 +180,21 @@ def run_config(scale: str) -> int:
     return 0
 
 
-def run_generate(scale: str, output_root: Path | str | None = None) -> int:
+def run_generate(
+    scale: str,
+    output_root: Path | str | None = None,
+    output_dir: Path | str | None = None,
+) -> int:
     """Generate the synthetic untreated world, load into SQLite, and write latent ground truth."""
     t0 = time.perf_counter()
     cfg = load_config(scale=scale)
-    if output_root is None:
-        base_out = Path(__file__).resolve().parent.parent.parent / "output"
+    if output_dir is not None:
+        scale_dir = Path(output_dir)
+    elif output_root is not None:
+        scale_dir = Path(output_root) / cfg.scale
     else:
-        base_out = Path(output_root)
+        scale_dir = Path(__file__).resolve().parent.parent.parent / "output" / cfg.scale
 
-    scale_dir = base_out / cfg.scale
     gt_dir = scale_dir / "ground_truth"
     scale_dir.mkdir(parents=True, exist_ok=True)
     gt_dir.mkdir(parents=True, exist_ok=True)
@@ -183,6 +243,113 @@ def run_generate(scale: str, output_root: Path | str | None = None) -> int:
     return 0
 
 
+def run_validate(
+    scale: str,
+    db_path: Path | str | None = None,
+    output_dir: Path | str | None = None,
+) -> int:
+    """Validate structural, temporal, reconciliation, and cross-file rules."""
+    repo_root = Path(__file__).resolve().parent.parent.parent
+    if db_path is None:
+        db_p = repo_root / "output" / scale / "churnexp.db"
+    else:
+        db_p = Path(db_path)
+
+    if not db_p.is_file():
+        print(f"ERROR: Database not found at {db_p}", file=sys.stderr)
+        return 1
+
+    if output_dir is None:
+        data_dir = repo_root / "data" / scale
+    else:
+        data_dir = Path(output_dir)
+
+    conn = sqlite3.connect(str(db_p))
+    try:
+        db_tables = load_tables_from_db(conn)
+        csv_dir = data_dir / "csv"
+        json_dir = data_dir / "json"
+
+        csv_tables = load_tables_from_csv_dir(csv_dir) if csv_dir.is_dir() else None
+        json_tables = load_tables_from_json_dir(json_dir) if json_dir.is_dir() else None
+
+        report = validate_tables(
+            tables=db_tables,
+            csv_tables=csv_tables,
+            json_tables=json_tables,
+            conn=conn,
+            scale=scale,
+        )
+    finally:
+        conn.close()
+
+    print(f"=== Validation Report (scale={scale}) ===")
+    for line in report.format_cli_lines():
+        print(f"  {line}")
+
+    md_path, json_path = report.write_reports(data_dir)
+    overall = "PASS" if report.passed else "FAIL"
+    print(
+        f"Overall: {overall} (total_findings={len(report.findings)}, "
+        f"summary={md_path.name}, report={json_path.name})"
+    )
+    return 1 if report.has_critical_or_high else 0
+
+
+def run_export(
+    scale: str,
+    formats: str | Sequence[str] | None = None,
+    output_dir: Path | str | None = None,
+    db_path: Path | str | None = None,
+) -> int:
+    """Export all tables found in the DB to CSV, JSON, SQL, and write MANIFEST.json."""
+    t0 = time.perf_counter()
+    cfg = load_config(scale=scale)
+    repo_root = Path(__file__).resolve().parent.parent.parent
+
+    if output_dir is not None:
+        out_dir = Path(output_dir)
+        write_root_sm = False
+    else:
+        out_dir = repo_root / "data" / cfg.scale
+        write_root_sm = True
+
+    if db_path is not None:
+        db_p = Path(db_path)
+    elif (out_dir / "churnexp.db").is_file():
+        db_p = out_dir / "churnexp.db"
+    else:
+        db_p = repo_root / "output" / cfg.scale / "churnexp.db"
+
+    fmt_list = parse_formats(formats, cfg.scale)
+    manifest = export_database(
+        db_path=db_p,
+        export_dir=out_dir,
+        cfg=cfg,
+        formats=fmt_list,
+        source_gt_dir=db_p.parent / "ground_truth",
+        write_root_source_manifest=write_root_sm,
+    )
+    elapsed = time.perf_counter() - t0
+
+    print(
+        f"=== Export Summary (scale={cfg.scale}, formats={','.join(fmt_list)}) ==="
+    )
+    print(f"Output directory: {out_dir}")
+    print(f"Files written   : {len(manifest['files'])}")
+    print(f"GT files copied : {len(manifest['ground_truth_files'])}")
+    print(f"Config SHA-256  : {manifest['config_sha256']}")
+    print(f"Elapsed seconds : {elapsed:.2f}s")
+    return 0
+
+
+def run_repro(scale: str, output_dir: Path | str | None = None) -> int:
+    """Run two-process reproducibility check and write REPRODUCIBILITY.md."""
+    comp = run_repro_check(scale=scale, report_dir=output_dir)
+    print(comp.format_cli_table())
+    return 0 if comp.passed else 1
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     """CLI entrypoint function."""
     parser = build_parser()
@@ -193,13 +360,24 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     command = args.command
     scale = getattr(args, "scale", "starter")
+    out_dir = getattr(args, "output_dir", None)
 
     if command == "health":
         return run_health(scale=scale)
     elif command == "config":
         return run_config(scale=scale)
     elif command == "generate":
-        return run_generate(scale=scale)
+        return run_generate(scale=scale, output_dir=out_dir)
+    elif command == "validate":
+        return run_validate(scale=scale, output_dir=out_dir)
+    elif command == "export":
+        return run_export(
+            scale=scale,
+            formats=getattr(args, "formats", None),
+            output_dir=out_dir,
+        )
+    elif command == "repro-check":
+        return run_repro(scale=scale, output_dir=out_dir)
     elif command in PLANNED_MILESTONES:
         m_num = PLANNED_MILESTONES[command]
         print(f"not implemented yet (planned for milestone {m_num})")
