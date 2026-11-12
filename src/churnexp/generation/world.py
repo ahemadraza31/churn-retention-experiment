@@ -43,7 +43,7 @@ from churnexp.generation.usage import (
 )
 from churnexp.rng import RngFactory
 
-TABLE_LOAD_ORDER: list[tuple[str, str]] = [
+TABLE_LOAD_ORDER: list[tuple[str, str | list[str]]] = [
     ("customer", "customer_id"),
     ("subscription", "subscription_id"),
     ("usage_snapshot", "snapshot_id"),
@@ -51,6 +51,14 @@ TABLE_LOAD_ORDER: list[tuple[str, str]] = [
     ("support_case", "case_id"),
     ("state_event", "event_id"),
     ("churn_outcome", "churn_id"),
+    ("offer", "offer_id"),
+    ("eligibility_rule", "rule_id"),
+    ("offer_eligibility_rule", ["offer_id", "rule_id"]),
+    ("feature_snapshot", ["customer_id", "as_of_date"]),
+    ("risk_score", "score_id"),
+    ("rule_evaluation", "evaluation_id"),
+    ("campaign_contact", "contact_id"),
+    ("retention_outcome", "retention_id"),
 ]
 
 
@@ -283,7 +291,7 @@ def load_world(world: World, conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-def _dataframe_sha256(df: pd.DataFrame, pk_col: str) -> str:
+def _dataframe_sha256(df: pd.DataFrame, pk_col: str | list[str]) -> str:
     sorted_df = df.sort_values(pk_col, kind="mergesort")
     csv_bytes = sorted_df.to_csv(
         index=False,

@@ -261,14 +261,23 @@ def _canonicalize_dataframe(
     for cname, ctype in cols:
         s = out[cname]
         if ctype == "INTEGER":
-            if s.isna().any():
-                out[cname] = [None if pd.isna(v) or v == "" else int(float(v)) for v in s]
+            is_null = s.isna() | (s == "")
+            if is_null.any():
+                out[cname] = pd.Series(
+                    [None if pd.isna(v) or v == "" else int(float(v)) for v in s],
+                    index=out.index,
+                    dtype=object,
+                )
             else:
                 out[cname] = s.astype("int64")
         elif ctype == "REAL":
             out[cname] = pd.to_numeric(s, errors="coerce").round(6).astype("float64")
         else:
-            out[cname] = [None if pd.isna(v) or v == "" else str(v) for v in s]
+            out[cname] = pd.Series(
+                [None if pd.isna(v) or v == "" else str(v) for v in s],
+                index=out.index,
+                dtype=object,
+            )
 
     if pk_cols:
         out = out.sort_values(pk_cols, kind="mergesort").reset_index(drop=True)

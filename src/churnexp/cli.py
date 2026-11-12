@@ -11,7 +11,8 @@ import yaml
 
 from churnexp import __version__
 from churnexp.config import load_config
-from churnexp.generation.world import generate_world, hash_world, load_world
+from churnexp.experiment.pipeline import M4_STARTER_REFERENCE_HASH_PREFIXES, run_pipeline
+from churnexp.generation.world import TABLE_LOAD_ORDER, hash_world, load_world
 from churnexp.io.exporters import export_database, parse_formats
 from churnexp.repro import run_repro_check
 from churnexp.schema.db import create_database
@@ -24,8 +25,6 @@ from churnexp.validation.checks import (
 
 
 PLANNED_MILESTONES: dict[str, int] = {
-    "train": 5,
-    "campaign": 7,
     "evaluate": 9,
     "audit": 8,
     "all": 9,
@@ -185,7 +184,7 @@ def run_generate(
     output_root: Path | str | None = None,
     output_dir: Path | str | None = None,
 ) -> int:
-    """Generate the synthetic untreated world, load into SQLite, and write latent ground truth."""
+    """Generate the base untreated world, run the campaign pipeline, load SQLite, and write latent GT."""
     t0 = time.perf_counter()
     cfg = load_config(scale=scale)
     if output_dir is not None:
@@ -203,7 +202,7 @@ def run_generate(
     if db_path.exists():
         db_path.unlink()
 
-    world = generate_world(cfg)
+    world = run_pipeline(cfg)
     conn = create_database(str(db_path))
     try:
         load_world(world, conn)
@@ -218,27 +217,94 @@ def run_generate(
     s = world.summary
 
     print(f"=== Generation Summary (scale={cfg.scale}, seed={cfg.seed}) ===")
+    print("Base Untreated World SHA-256 Hashes:")
+    base_hashes = s.get("base_hashes", {})
+    for b_tbl, b_h in base_hashes.items():
+        if cfg.scale == "starter" and b_tbl in M4_STARTER_REFERENCE_HASH_PREFIXES:
+            ref_p = M4_STARTER_REFERENCE_HASH_PREFIXES[b_tbl]
+            match_tag = " (matches M4)" if b_h.startswith(ref_p) else f" (MISMATCH vs {ref_p})"
+        else:
+            match_tag = ""
+        print(f"  {b_tbl:18s}: {b_h}{match_tag}")
+
     print("Table Row Counts:")
-    for tbl_name, df in world.tables.items():
-        print(f"  {tbl_name:18s}: {len(df):8d}")
-    print(f"  {'latent (GT)':18s}: {len(world.latent):8d}")
+    for tbl_name, _ in TABLE_LOAD_ORDER:
+        if tbl_name in world.tables:
+            print(f"  {tbl_name:24s}: {len(world.tables[tbl_name]):8d}")
+    print(f"  {'latent (GT)':24s}: {len(world.latent):8d}")
 
     print("Cohort & Churn Metrics:")
     print(
         f"  overall_churn_rate          : {s['overall_churn_rate']:.4f} "
-        f"({s['n_churned']}/{s['n_customers']})"
+        f"({s['n_churned']}/{s['n_customers']}) [untreated]"
     )
-    print(f"  voluntary_churn_count       : {s['n_voluntary']}")
-    print(f"  involuntary_churn_count     : {s['n_involuntary']}")
+    print(
+        f"  observed_churn_rate         : {s['observed_churn_rate']:.4f} "
+        f"({s['observed_n_churned']}/{s['n_customers']}) [post-campaign]"
+    )
+    print(f"  voluntary_churn_count       : {s['n_voluntary']} (observed: {s['observed_n_voluntary']})")
+    print(f"  involuntary_churn_count     : {s['n_involuntary']} (observed: {s['observed_n_involuntary']})")
     print(f"  plan_change_count           : {s['n_plan_changes']}")
     print(f"  active_on_train_as_of       : {s['active_on_train_as_of']}")
     print(f"  active_on_score_as_of       : {s['active_on_score_as_of']}")
     print(f"  untreated_churn_2025_horizon: {s['untreated_churn_2025_horizon']}")
     print(f"  untreated_churn_2026_horizon: {s['untreated_churn_2026_horizon']}")
 
+    print("Model & Scoring Summary:")
+    print(f"  training_rows (P0)          : {s['train_rows']}")
+    print(f"  training_positives (2025)   : {s['train_positives']}")
+    print(f"  training_roc_auc            : {s['train_auc']:.6f}")
+    print(f"  scored_customers (P)        : {s['scored_customers']}")
+    bc = s["band_counts"]
+    print(f"  risk_bands (HIGH/MED/LOW)   : HIGH={bc['HIGH']}, MEDIUM={bc['MEDIUM']}, LOW={bc['LOW']}")
+    print(
+        f"  non_treatment_2026_auc      : {s['non_treatment_2026_auc']:.6f} "
+        f"(rows={s['non_treatment_2026_rows']}, pos={s['non_treatment_2026_positives']})"
+    )
+
+    print("Eligibility & Assignment Summary:")
+    rfc = s["rule_fail_counts"]
+    for r_idx in range(1, 7):
+        rid = f"ER-{r_idx:03d}"
+        print(f"  {rid} failures             : {rfc[rid]}")
+    print(
+        f"  ER-007 failures             : {rfc['ER-007_all_offers']} customers failed all offers "
+        f"({rfc['ER-007_eval_rows']} offer-eval rows failed)"
+    )
+    for k_oid, v_cnt in sorted(rfc.items()):
+        if k_oid.startswith("ER-007:"):
+            print(f"    {k_oid:24s}: {v_cnt}")
+    print(f"  eligible_customers          : {s['eligible_customers']}")
+    poc = s["planned_offer_counts"]
+    poc_str = ", ".join(f"{oid}={cnt}" for oid, cnt in sorted(poc.items()))
+    print(f"  planned_offer_counts        : {poc_str}")
+    sac = s["stratum_arm_counts"]
+    for strat in ("HIGH", "MEDIUM"):
+        st_c = sac.get(strat, {"TREATMENT": 0, "CONTROL": 0})
+        print(
+            f"  stratum {strat:6s} arms         : TREATMENT={st_c['TREATMENT']}, CONTROL={st_c['CONTROL']}"
+        )
+
+    print("Simulation & Balance Summary:")
+    print(f"  DELIVERY_FAILED             : {s['delivery_failed_count']}")
+    print(f"  responded (SENT treatment)  : {s['responded_count']}")
+    print(f"  redeemed (SENT treatment)   : {s['redeemed_count']}")
+    print(f"  SAVEABLE (both arms)        : {s['saveable_count']}")
+    print(f"  saved (TREATMENT+SENT)      : {s['saved_count']}")
+    print(
+        f"  90d_retention_rate          : TREATMENT={s['retention_90d_treatment']:.4f}, "
+        f"CONTROL={s['retention_90d_control']:.4f}"
+    )
+    smds = s["smd_by_covariate"]
+    print(
+        f"  covariate_balance_max_smd   : {s['max_smd']:.6f} "
+        f"(risk_score={smds['risk_score']:.6f}, tenure_days={smds['tenure_days']:.6f}, "
+        f"monthly_price_cents={smds['monthly_price_cents']:.6f})"
+    )
+
     print("SHA-256 Hashes:")
     for k, h in hashes.items():
-        print(f"  {k:18s}: {h}")
+        print(f"  {k:24s}: {h}")
     print(f"Elapsed seconds: {elapsed:.2f}s")
     return 0
 
@@ -378,6 +444,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
     elif command == "repro-check":
         return run_repro(scale=scale, output_dir=out_dir)
+    elif command in ("train", "campaign"):
+        print("runs as part of generate")
+        return 0
     elif command in PLANNED_MILESTONES:
         m_num = PLANNED_MILESTONES[command]
         print(f"not implemented yet (planned for milestone {m_num})")

@@ -81,6 +81,10 @@ ALLOWED_STATE_TRANSITIONS: dict[str, set[tuple[str, str]]] = {
         ("ACTIVE", "EXPIRED"),
     },
     "CAMPAIGN_CONTACT": {
+        ("INIT", "ASSIGNED"),
+        ("ASSIGNED", "SENT"),
+        ("ASSIGNED", "WITHHELD"),
+        ("ASSIGNED", "DELIVERY_FAILED"),
         ("INIT", "SENT"),
         ("INIT", "WITHHELD"),
         ("INIT", "DELIVERY_FAILED"),

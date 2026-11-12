@@ -73,9 +73,14 @@ def test_cli_generate_starter(capsys, tmp_path):
 
 
 def test_cli_stubs(capsys):
-    """All unreleased subcommands exit 2 and print planned milestone."""
-    for implemented in ("generate", "validate", "export", "repro-check"):
+    """train and campaign print 'runs as part of generate'; unreleased subcommands exit 2."""
+    for implemented in ("generate", "validate", "export", "repro-check", "train", "campaign"):
         assert implemented not in PLANNED_MILESTONES
+    for part_of_gen in ("train", "campaign"):
+        ret = main([part_of_gen])
+        assert ret == 0
+        captured = capsys.readouterr().out
+        assert "runs as part of generate" in captured
     for cmd, milestone in PLANNED_MILESTONES.items():
         ret = main([cmd])
         assert ret == 2

@@ -21,12 +21,27 @@ def test_generator_config_loaded_values():
     assert g.subscriptions.monthly_plan_change_prob == 0.012
     assert g.churn.monthly_hazard_cap == 0.08
     assert g.churn.involuntary_prob == 0.30
-    assert g.segment.persuadable_given_churn == 0.45
+    assert g.segment.persuadable_given_churn == 0.60
     assert g.segment.sleeping_dog_given_retained == 0.03
     assert g.usage.base_minutes == {"BASIC": 600.0, "STANDARD": 1200.0, "PREMIUM": 2000.0}
     assert g.billing.failure_prob_consumer == 0.025
     assert g.billing.failure_prob_smb == 0.015
     assert g.support.loud_churn_rate_multiplier == 4.0
+
+    # Campaign, offers, and experiment effects
+    assert cfg.campaign.assignment_date == date(2026, 1, 5)
+    assert cfg.campaign.contact_hour == 10
+    assert cfg.campaign.risk_bands.high_share == 0.15
+    assert cfg.campaign.risk_bands.medium_share == 0.20
+    assert cfg.campaign.min_tenure_days == 90
+    assert cfg.campaign.unsettled_invoice_grace_days == 7
+    assert cfg.campaign.expected_margin_months == 6
+    assert cfg.campaign.delivery_failure_prob == 0.03
+    assert cfg.offers.valid_from == date(2026, 1, 1)
+    assert cfg.offers.valid_to == date(2026, 12, 31)
+    assert len(cfg.offers.items) == 3
+    assert cfg.experiment.effects.redeem_given_respond == 0.90
+    assert cfg.experiment.effects.save_prob_given_redeem == {1: 0.80, 2: 0.90, 3: 0.95}
 
 
 def test_generator_config_invalid_segment_probs():
@@ -105,4 +120,44 @@ def test_generator_config_invalid_support_escalation_prob():
     bad_cfg = replace(cfg, generator=replace(cfg.generator, support=bad_sup))
     with pytest.raises(ValueError, match="escalation_prob"):
         validate_config(bad_cfg)
+
+
+def test_campaign_config_invalid_shares_and_dates():
+    """Campaign risk_bands shares, assignment_date, and delivery_failure_prob validation."""
+    cfg = load_config("starter")
+    # high_share + medium_share >= 1.0
+    bad_rb = replace(cfg.campaign.risk_bands, high_share=0.60, medium_share=0.45)
+    with pytest.raises(ValueError, match="high_share \\+ medium_share must be < 1.0"):
+        validate_config(replace(cfg, campaign=replace(cfg.campaign, risk_bands=bad_rb)))
+
+    # assignment_date before score_as_of
+    bad_camp_dt = replace(cfg.campaign, assignment_date=date(2025, 12, 20))
+    with pytest.raises(ValueError, match="assignment_date"):
+        validate_config(replace(cfg, campaign=bad_camp_dt))
+
+    # delivery_failure_prob out of [0, 1]
+    bad_camp_prob = replace(cfg.campaign, delivery_failure_prob=1.2)
+    with pytest.raises(ValueError, match="delivery_failure_prob"):
+        validate_config(replace(cfg, campaign=bad_camp_prob))
+
+
+def test_offers_and_effects_config_validation():
+    """Offers items and experiment effects probabilities must be validated."""
+    cfg = load_config("starter")
+    # Invalid PERCENT_DISCOUNT with free_months set
+    bad_item = replace(cfg.offers.items[0], free_months=2)
+    bad_offers = replace(cfg.offers, items=[bad_item, *cfg.offers.items[1:]])
+    with pytest.raises(ValueError, match="free_months=None"):
+        validate_config(replace(cfg, offers=bad_offers))
+
+    # Offer window not covering assignment_date
+    bad_window = replace(cfg.offers, valid_from=date(2026, 2, 1))
+    with pytest.raises(ValueError, match="Offers valid window"):
+        validate_config(replace(cfg, offers=bad_window))
+
+    # Invalid experiment effects probability
+    bad_eff = replace(cfg.experiment.effects, redeem_given_respond=1.5)
+    with pytest.raises(ValueError, match="redeem_given_respond"):
+        validate_config(replace(cfg, experiment=replace(cfg.experiment, effects=bad_eff)))
+
 
