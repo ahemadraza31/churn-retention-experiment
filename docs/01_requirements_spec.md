@@ -213,7 +213,13 @@ Four operational failure modes must be injected into the post-assignment data to
 
 ---
 
-## 12. Requirements Catalog & Acceptance Criteria Matrix
+## 12. Requirement catalog (added in Run 3)
+
+These IDs were assigned during Run 3 so that requirements can be traced to tests. They restate the requirements in sections 1-11 and the challenge brief. They are not a change to those requirements. The numbering differs from the planning notes used earlier in the project.
+
+### Deviations from the original plan
+- (a) FR-20: the read-only FastAPI service was not built; the Streamlit dashboard plus a read-only services layer replaces it;
+- (b) the optional gradient-boosting comparison was not built; logistic regression only.
 
 ### Functional Requirements (FR-01 to FR-20)
 - **FR-01**: Synthetic customer and subscription history generator across 18 months for starter (1k) and full (20k) scales.

@@ -157,16 +157,17 @@ Exact metrics copied from [`data/full/evaluation_results.json`](file:///Users/ah
 - **HIGH Band Decision Rule (Top 15%)**: Precision = 14.13%, Recall = 37.16%, Lift over base rate = 2.48x.
 
 ### 3. Financial Impact & Return on Investment (Integer Cents)
+*(Note: All monetary values are expressed in integer cents or synthetic currency units; currency is entirely synthetic).*
 - **Expected Margin Horizon**: 6 months
-- **Average Expected 6-Month Margin per Treated Account**: `6,027 cents` ($60.27)
-- **Realized Offer Cost (Redeemed & Retained)**: `827,795 cents` ($8,277.95)
-- **Gross Retention Benefit (30.71 incremental saves $\times$ \$60.27)**: `185,119 cents` ($1,851.19)
-- **Net Financial Impact**: **-642,676 cents** (-$6,426.76)
+- **Average Expected 6-Month Margin per Treated Account**: `6,027 cents` (60.27 currency units)
+- **Realized Offer Cost (Redeemed & Retained)**: `827,795 cents` (8,277.95 currency units)
+- **Gross Retention Benefit (30.71 incremental saves $\times$ 60.27 currency units)**: `185,119 cents` (1,851.19 currency units)
+- **Net Financial Impact**: **-642,676 cents** (-6,426.76 currency units)
 - **95% Confidence Interval of Net Impact**: `[-813,806, -471,560] cents`
-- **Cost per Incremental Retained Customer**: `26,951 cents` ($269.51)
+- **Cost per Incremental Retained Customer**: `26,951 cents` (269.51 currency units)
 
 ### Business Assessment
-The 180-day retention lift is positive (+1.30 pp) and statistically significant at the 5% level ($p = 0.0345$, CI $[+0.10, +2.51]$ pp). However, the program produces a net financial loss (-$6,426.76, CI excludes zero) because the cost per incremental retained customer ($269.51) exceeds the customer's 6-month expected gross margin ($60.27) by a factor of 4.5x. Under the simulated parameters, indiscriminately discounting all high-risk accounts is financially destructive.
+The 180-day retention lift is positive (+1.30 pp) and statistically significant at the 5% level ($p = 0.0345$, CI $[+0.10, +2.51]$ pp). However, the program produces a net financial loss (-642,676 cents / -6,426.76 currency units, CI excludes zero) because the cost per incremental retained customer (26,951 cents / 269.51 currency units) exceeds the customer's 6-month expected gross margin (6,027 cents / 60.27 currency units) by a factor of 4.5x. Under the simulated parameters, indiscriminately discounting all high-risk accounts is financially destructive.
 
 ---
 

@@ -1,7 +1,7 @@
 # Prompt 002: Phase 2 Architecture Package Proposal
 
 - **AI Tool**: Claude (Technical Lead)
-- **Date/Time**: 2026-11-11 10:15 IST
+- **Phase**: Phase 2 Architecture Specification
 - **Task / Scope**: Formulation of the Phase 2 Architecture Package, including pipeline design, ADR-001 through ADR-012, entity model (ERD), schema column definitions, eligibility rule catalogue (ER-001 - ER-007), feature engineering specifications, CLI/API/UI interfaces, testing strategy, and implementation roadmap.
 
 ## Prompt Text

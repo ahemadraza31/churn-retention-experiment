@@ -12,6 +12,11 @@ fi
 REPO_SRC="$1"
 PYTHON_BIN="${2:-python3.11}"
 
+# Resolve relative python path to absolute before changing directory
+if [[ "$PYTHON_BIN" != /* ]] && [[ -x "$PWD/$PYTHON_BIN" ]]; then
+    PYTHON_BIN="$PWD/$PYTHON_BIN"
+fi
+
 if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
     if command -v python3 >/dev/null 2>&1; then
         PYTHON_BIN="python3"

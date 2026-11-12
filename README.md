@@ -176,7 +176,7 @@ Four operational anomalies are deterministically injected at the end of the pipe
 - **Anomaly C (Group Exclusivity Violation)**: Account assigned to both `TREATMENT` and `CONTROL` arms.
 - **Anomaly D (Attribution Disruption)**: Account credited with multiple retention outcomes for distinct offers.
 
-### Separation of Church and State
+### Separation of Ground Truth and Observable Data
 - **Blind Detectors (`src/churnexp/validation/detectors.py`)**: Run exclusively on observable SQLite database tables without access to `ground_truth/` or latent parameters.
 - **Ground Truth Audit (`src/churnexp/audit/score.py`)**: Isolated audit module compares detector findings against `ground_truth/anomalies.csv`, verifying **100% precision and 100% recall**.
 - **Causal Estimator Check**: Verifies that the empirical 180-day ITT 95% confidence interval encloses the true causal treatment effect derived from `latent_customer_state.csv`.
@@ -208,6 +208,8 @@ make qa    # Executes full test suite, traces requirements, and verifies operati
 
 ## 10. Headline Results (Full 20,000-Customer Dataset)
 
+*(Note: All monetary metrics are expressed in integer cents or synthetic currency units; currency is entirely synthetic).*
+
 Exact metrics copied from [`data/full/evaluation_results.json`](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/data/full/evaluation_results.json):
 
 | Evaluation Dimension | Metric | Observed Value | 95% Confidence Interval | p-value |
@@ -219,10 +221,10 @@ Exact metrics copied from [`data/full/evaluation_results.json`](file:///Users/ah
 | **Financial Impact** | **180-Day Gross Benefit** | `185,119 cents` | `[13,989, 356,235] cents` | — |
 | **Financial Impact** | **Realized Offer Cost** | `827,795 cents` | — | — |
 | **Financial Impact** | **Net Financial Impact** | **-642,676 cents** | `[-813,806, -471,560] cents` | — |
-| **Unit Economics** | **Cost per Incremental Retained** | `26,951 cents` ($269.51) | vs Avg Margin: `6,027 cents` ($60.27) | — |
+| **Unit Economics** | **Cost per Incremental Retained** | `26,951 cents` (269.51 currency units) | vs Avg Margin: `6,027 cents` (60.27 currency units) | — |
 
 ### One-Line Honest Reading
-> While the retention campaign achieves a statistically significant 180-day causal lift of +1.30 pp ($p = 0.0345$), the program generates a net financial loss (-$6,426.76) because offer discounting costs heavily exceed incremental retained customer margins under the simulated parameters.
+> While the retention campaign achieves a statistically significant 180-day causal lift of +1.30 pp ($p = 0.0345$), the program generates a net financial loss (-642,676 cents / -6,426.76 synthetic currency units) because offer discounting costs heavily exceed incremental retained customer margins under the simulated parameters.
 
 ---
 

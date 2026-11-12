@@ -1,6 +1,8 @@
 # Requirements Traceability Matrix
 
-This document provides complete bidirectional traceability from the approved specifications in [`docs/01_requirements_spec.md`](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/docs/01_requirements_spec.md) to package implementations, automated pytest verification nodes, and committed evidence artifacts.
+This document provides complete bidirectional traceability from the approved specifications in [`docs/01_requirements_spec.md`](file:///Users/ahemadrajapathan/Projects/churn-retention-experiment/docs/01_requirements_spec.md) and the project challenge brief to package implementations, automated pytest verification nodes, and committed evidence artifacts.
+
+## 1. Specification Requirements (FR-01 to FR-20, NFR-01 to NFR-07, AC-01 to AC-12)
 
 | Requirement ID | Summary | Implemented in | Tests (pytest node names) | Evidence file |
 | :--- | :--- | :--- | :--- | :--- |
@@ -43,20 +45,33 @@ This document provides complete bidirectional traceability from the approved spe
 | **AC-10** | Financial impact evaluated in integer cents using realized costs and 6-month margins | `src/churnexp/evaluation/financial.py` | `tests/unit/test_evaluation.py::test_financial_calculations_integer_cents` | `data/starter/evaluation_report.md` |
 | **AC-11** | Multi-format exports match SQLite database with verified SHA-256 manifests | `src/churnexp/io/exporters.py` | `tests/unit/test_export.py::test_exported_csv_reloaded_equals_db_tables` | `data/starter/MANIFEST.json` |
 | **AC-12** | Independent runs with different PYTHONHASHSEED produce bitwise identical outputs | `src/churnexp/repro.py` | `tests/unit/test_repro.py::test_repro_compare_identical_passes` | `data/starter/REPRODUCIBILITY.md` |
-| **ANOM-A** | Temporal label leakage injection (churn_date < prediction_date) | `src/churnexp/anomalies/inject.py` | `tests/unit/test_detectors.py::test_detector_a_triggers_on_leakage` | `data/starter/ground_truth/anomalies.csv` |
-| **ANOM-B** | Ineligible offer contact injection (fails eligibility ER-001..ER-007) | `src/churnexp/anomalies/inject.py` | `tests/unit/test_detectors.py::test_detector_b_triggers_on_ineligible_offer` | `data/starter/ground_truth/anomalies.csv` |
-| **ANOM-C** | Group exclusivity violation injection (both Treatment and Control) | `src/churnexp/anomalies/inject.py` | `tests/unit/test_detectors.py::test_detector_c_triggers_on_group_leakage` | `data/starter/ground_truth/anomalies.csv` |
-| **ANOM-D** | Multi-offer attribution injection (multiple retained offers credited) | `src/churnexp/anomalies/inject.py` | `tests/unit/test_detectors.py::test_detector_d_triggers_on_multi_attribution` | `data/starter/ground_truth/anomalies.csv` |
-| **VAL-STRUCT-PK-UNIQUE** | Primary key uniqueness across all 12 relational database tables | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_duplicate_pk_row` | `data/starter/validation_summary.md` |
-| **VAL-STRUCT-FK** | Foreign key referential integrity across parent-child relationships | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_orphan_fk` | `data/starter/validation_summary.md` |
-| **VAL-STRUCT-ENUM** | Enumeration domain validation for plan tiers, segments, and channels | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_invalid_enum` | `data/starter/validation_summary.md` |
-| **VAL-STRUCT-ID-FORMAT** | Entity primary key GLOB format pattern validation | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_invalid_id_format` | `data/starter/validation_summary.md` |
-| **VAL-TEMP-SUB-DATES** | Subscription chronological sanity (`start_date <= end_date`) | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_end_date_before_start_date` | `data/starter/validation_summary.md` |
-| **VAL-TEMP-SUB-CHAIN** | Non-overlapping sequential subscription chaining for plan changes | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_sub_chain_gap` | `data/starter/validation_summary.md` |
-| **VAL-TEMP-SNAPSHOT-IN-SUB** | Monthly usage snapshot boundary alignment within active subscription span | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_snapshot_outside_subscription` | `data/starter/validation_summary.md` |
-| **VAL-TEMP-BILLING-IN-SUB** | Billing event timestamp alignment within active subscription span | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_event_after_churn` | `data/starter/validation_summary.md` |
-| **VAL-TEMP-SUPPORT-ORDER** | Support case lifecycle order (`opened_at <= resolved_at`) | `src/churnexp/validation/checks.py` | `tests/unit/test_schema_constraints.py::test_subscription_end_date_check` | `data/starter/validation_summary.md` |
-| **VAL-TEMP-CHURN-VS-SUB** | Churn outcome date alignment with final subscription end date | `src/churnexp/validation/checks.py` | `tests/unit/test_schema_constraints.py::test_churn_outcome_checks` | `data/starter/validation_summary.md` |
-| **VAL-REC-BALANCE** | Billing balance reconciliation (invoice sum minus payments) | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_wrong_balance` | `data/starter/validation_summary.md` |
-| **VAL-XFILE-ROWCOUNT-KEYS** | Cross-format CSV, JSON, and SQLite table row count and key consistency | `src/churnexp/validation/checks.py` | `tests/unit/test_validation_checks.py::test_negative_missing_key_in_csv_copy` | `data/starter/validation_summary.md` |
 
+---
+
+## 2. Four Mandatory Edge Cases (Anomalies A-D)
+
+| Requirement ID | Summary | Implemented in | Tests (pytest node names) | Evidence file |
+| :--- | :--- | :--- | :--- | :--- |
+| **EDGE-A** | Temporal label leakage injection (churn_date < prediction_date) | `src/churnexp/anomalies/inject.py` & `src/churnexp/validation/detectors.py` | `tests/unit/test_detectors.py::test_detector_a_triggers_on_leakage` | `data/starter/ground_truth/anomalies.csv` |
+| **EDGE-B** | Ineligible offer contact injection (fails eligibility ER-001..ER-007) | `src/churnexp/anomalies/inject.py` & `src/churnexp/validation/detectors.py` | `tests/unit/test_detectors.py::test_detector_b_triggers_on_ineligible_offer` | `data/starter/ground_truth/anomalies.csv` |
+| **EDGE-C** | Group exclusivity violation injection (both Treatment and Control) | `src/churnexp/anomalies/inject.py` & `src/churnexp/validation/detectors.py` | `tests/unit/test_detectors.py::test_detector_c_triggers_on_group_leakage` | `data/starter/ground_truth/anomalies.csv` |
+| **EDGE-D** | Multi-offer attribution injection (multiple retained offers credited) | `src/churnexp/anomalies/inject.py` & `src/churnexp/validation/detectors.py` | `tests/unit/test_detectors.py::test_detector_d_triggers_on_multi_attribution` | `data/starter/ground_truth/anomalies.csv` |
+
+---
+
+## 3. Twelve Challenge Brief Validation Rules
+
+| Requirement ID | Validation Rule (Challenge Brief) | Implemented in | Tests (pytest node names) | Evidence file |
+| :--- | :--- | :--- | :--- | :--- |
+| **RULE-01** | Evaluation temporally valid | `src/churnexp/evaluation/cohorts.py` & `src/churnexp/evaluation/report.py` | `tests/unit/test_config.py::test_validation_rule_timeline_order` | `data/starter/evaluation_report.md` |
+| **RULE-02** | No future information in features | `src/churnexp/features/builder.py` | `tests/unit/test_features.py::test_mutate_the_future_leakage_defense[P_2026-01-01]` | `data/starter/csv/feature_snapshot.csv` |
+| **RULE-03** | Explicit churn definition | `src/churnexp/generation/world.py` | `tests/unit/test_schema_constraints.py::test_churn_outcome_checks` | `data/starter/csv/churn_outcome.csv` |
+| **RULE-04** | Offer eligibility enforced | `src/churnexp/eligibility/rules.py` | `tests/unit/test_eligibility.py::test_er001_to_er006_pass_fail_and_boundaries` | `data/starter/csv/rule_evaluation.csv` |
+| **RULE-05** | Cost and margin respected | `src/churnexp/eligibility/rules.py` | `tests/unit/test_eligibility.py::test_er007_cost_and_margin_math_exact_integer_cents` | `data/starter/csv/offer_eligibility_rule.csv` |
+| **RULE-06** | Randomized valid assignment | `src/churnexp/experiment/assign.py` | `tests/unit/test_assignment.py::test_assignment_invariants_stratification_and_determinism` | `data/starter/csv/campaign_contact.csv` |
+| **RULE-07** | Traceable state changes | `src/churnexp/generation/world.py` | `tests/unit/test_schema.py::test_state_event_append_only` | `data/starter/csv/state_event.csv` |
+| **RULE-08** | Ground truth isolated | `src/churnexp/generation/world.py` & `src/churnexp/io/exporters.py` | `tests/unit/test_generation_world.py::test_8_latent_isolation` | `data/starter/ground_truth/latent_customer_state.csv` |
+| **RULE-09** | Derived values reconcile | `src/churnexp/generation/world.py` & `src/churnexp/validation/checks.py` | `tests/unit/test_generation_world.py::test_5_reconciliation_billing_and_usage` | `data/starter/validation_summary.md` |
+| **RULE-10** | Incremental lift vs correlation | `src/churnexp/evaluation/lift.py` & `src/churnexp/evaluation/report.py` | `tests/unit/test_evaluation.py::test_lift_matches_manual_contingency_math` | `data/starter/evaluation_results.json` |
+| **RULE-11** | Exceptions documented | `src/churnexp/validation/detectors.py` & `src/churnexp/evaluation/report.py` | `tests/unit/test_detectors.py::test_clean_untreated_world_has_zero_detector_findings` | `data/starter/anomaly_report.json` |
+| **RULE-12** | Reproducible generation | `src/churnexp/repro.py` & `src/churnexp/rng.py` | `tests/unit/test_pipeline.py::test_pipeline_determinism_and_base_hashes` | `data/starter/REPRODUCIBILITY.md` |
