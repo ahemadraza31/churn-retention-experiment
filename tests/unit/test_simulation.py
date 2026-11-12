@@ -27,7 +27,13 @@ def test_simulation_saves_and_invariants():
     saved_cids = set(final_world.summary["saved_customer_ids"])
     assert len(saved_cids) >= 1
 
-    cc_map = final_tables["campaign_contact"].set_index("customer_id")
+    cc_w01 = (
+        final_tables["campaign_contact"][
+            final_tables["campaign_contact"]["contact_id"].astype(str).str.endswith("-W01")
+        ]
+        .set_index("customer_id")
+    )
+    cc_by_contact = final_tables["campaign_contact"].set_index("contact_id")
 
     # Map customer -> base last subscription (end_date, end_reason)
     base_last_sub = (
@@ -44,7 +50,7 @@ def test_simulation_saves_and_invariants():
         assert lat_row["untreated_churn_date"] is not None
         assert lat_row["treated_churn_date"] is None
         assert int(lat_row["true_effect_flag"]) == 1
-        cc = cc_map.loc[cid]
+        cc = cc_w01.loc[cid]
         assert cc["experiment_group"] == "TREATMENT"
         assert cc["contact_status"] == "SENT"
         assert int(cc["responded"]) == 1
@@ -113,8 +119,8 @@ def test_simulation_saves_and_invariants():
     assert (ro["window_end"] == "2026-04-05").all()
 
     for _, ro_row in ro.iterrows():
-        cid = ro_row["customer_id"]
-        cc_row = cc_map.loc[cid]
+        cnt_id = ro_row["contact_id"]
+        cc_row = cc_by_contact.loc[cnt_id]
         expected_attr = (
             cc_row["offer_id"]
             if (
