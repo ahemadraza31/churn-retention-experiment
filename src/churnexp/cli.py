@@ -24,11 +24,7 @@ from churnexp.validation.checks import (
 )
 
 
-PLANNED_MILESTONES: dict[str, int] = {
-    "evaluate": 9,
-    "audit": 8,
-    "all": 9,
-}
+PLANNED_MILESTONES: dict[str, int] = {}
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -118,13 +114,46 @@ def build_parser() -> argparse.ArgumentParser:
         help="Custom report directory for REPRODUCIBILITY.md (default: data/<scale>)",
     )
 
+    # 7. evaluate
+    eval_parser = subparsers.add_parser(
+        "evaluate",
+        parents=[scale_parent],
+        help="Evaluate model performance, ITT lift, and financial impact",
+    )
+    eval_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom report directory (default: data/<scale>)",
+    )
+
+    # 8. audit
+    audit_parser = subparsers.add_parser(
+        "audit",
+        parents=[scale_parent],
+        help="Run blind detectors and audit precision/recall against ground truth",
+    )
+    audit_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom report directory (default: data/<scale>)",
+    )
+
+    # 9. all
+    all_parser = subparsers.add_parser(
+        "all",
+        parents=[scale_parent],
+        help="Run generate, export, validate, evaluate, and audit in order",
+    )
+    all_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Custom directory (default: data/<scale>)",
+    )
+
     # Remaining stub subcommands
     stub_names = [
-        ("train", "Train churn risk prediction model"),
-        ("campaign", "Evaluate eligibility and assign retention offers"),
-        ("evaluate", "Evaluate model performance, ITT lift, and financial impact"),
-        ("audit", "Run blind detectors and audit precision/recall against ground truth"),
-        ("all", "Run end-to-end generation, training, assignment, and evaluation"),
+        ("train", "Train churn risk prediction model (runs as part of generate)"),
+        ("campaign", "Evaluate eligibility and assign retention offers (runs as part of generate)"),
     ]
 
     for name, help_text in stub_names:
@@ -212,9 +241,21 @@ def run_generate(
     latent_path = gt_dir / "latent_customer_state.csv"
     world.latent.to_csv(latent_path, index=False, lineterminator="\n")
 
+    s = world.summary
+    if "anomalies_gt" in s and s["anomalies_gt"] is not None:
+        anom_path = gt_dir / "anomalies.csv"
+        s["anomalies_gt"].to_csv(anom_path, index=False, lineterminator="\n")
+    if "expected_decisions_gt" in s and s["expected_decisions_gt"] is not None:
+        dec_path = gt_dir / "expected_decisions.csv"
+        s["expected_decisions_gt"].to_csv(dec_path, index=False, lineterminator="\n")
+    if "model_info" in s and s["model_info"] is not None:
+        import json
+
+        info_path = scale_dir / "model_info.json"
+        info_path.write_text(json.dumps(s["model_info"], indent=2), encoding="utf-8")
+
     hashes = hash_world(world)
     elapsed = time.perf_counter() - t0
-    s = world.summary
 
     print(f"=== Generation Summary (scale={cfg.scale}, seed={cfg.seed}) ===")
     print("Base Untreated World SHA-256 Hashes:")
@@ -302,6 +343,14 @@ def run_generate(
         f"monthly_price_cents={smds['monthly_price_cents']:.6f})"
     )
 
+    if "anomaly_counts" in s:
+        ac = s["anomaly_counts"]
+        print("Anomaly Injection Summary:")
+        print(f"  A (Temporal label leakage)        : {ac.get('A', 0)} injected")
+        print(f"  B (Ineligible offer contact)      : {ac.get('B', 0)} injected")
+        print(f"  C (Group leakage)                 : {ac.get('C', 0)} injected")
+        print(f"  D (Multi-offer attribution)       : {ac.get('D', 0)} injected")
+
     print("SHA-256 Hashes:")
     for k, h in hashes.items():
         print(f"  {k:24s}: {h}")
@@ -314,10 +363,12 @@ def run_validate(
     db_path: Path | str | None = None,
     output_dir: Path | str | None = None,
 ) -> int:
-    """Validate structural, temporal, reconciliation, and cross-file rules."""
+    """Validate structural, temporal, reconciliation, cross-file, and detector rules."""
     repo_root = Path(__file__).resolve().parent.parent.parent
     if db_path is None:
         db_p = repo_root / "output" / scale / "churnexp.db"
+        if not db_p.is_file():
+            db_p = repo_root / "data" / scale / "churnexp.db"
     else:
         db_p = Path(db_path)
 
@@ -339,12 +390,26 @@ def run_validate(
         csv_tables = load_tables_from_csv_dir(csv_dir) if csv_dir.is_dir() else None
         json_tables = load_tables_from_json_dir(json_dir) if json_dir.is_dir() else None
 
-        report = validate_tables(
+        base_report = validate_tables(
             tables=db_tables,
             csv_tables=csv_tables,
             json_tables=json_tables,
             conn=conn,
             scale=scale,
+        )
+
+        from churnexp.validation.detectors import run_detectors, summarize_detector_findings
+        from churnexp.validation.report import Report
+
+        det_findings = run_detectors(db_tables)
+        det_summaries = summarize_detector_findings(det_findings)
+
+        report = Report(
+            findings=base_report.findings,
+            rule_summaries=base_report.rule_summaries,
+            scale=scale,
+            detector_findings=det_findings,
+            detector_summaries=det_summaries,
         )
     finally:
         conn.close()
@@ -356,7 +421,8 @@ def run_validate(
     md_path, json_path = report.write_reports(data_dir)
     overall = "PASS" if report.passed else "FAIL"
     print(
-        f"Overall: {overall} (total_findings={len(report.findings)}, "
+        f"Overall: {overall} (data_quality_findings={len(report.findings)}, "
+        f"detector_findings={len(report.detector_findings)}, "
         f"summary={md_path.name}, report={json_path.name})"
     )
     return 1 if report.has_critical_or_high else 0
@@ -416,6 +482,180 @@ def run_repro(scale: str, output_dir: Path | str | None = None) -> int:
     return 0 if comp.passed else 1
 
 
+def run_evaluate(
+    scale: str,
+    output_dir: Path | str | None = None,
+    db_path: Path | str | None = None,
+) -> int:
+    """Evaluate model metrics, causal ITT lift, and financial impact excluding detector anomalies."""
+    repo_root = Path(__file__).resolve().parent.parent.parent
+    if db_path is not None:
+        db_p = Path(db_path)
+    elif (repo_root / "data" / scale / "churnexp.db").is_file():
+        db_p = repo_root / "data" / scale / "churnexp.db"
+    elif (repo_root / "output" / scale / "churnexp.db").is_file():
+        db_p = repo_root / "output" / scale / "churnexp.db"
+    else:
+        db_p = repo_root / "output" / scale / "churnexp.db"
+
+    if not db_p.is_file():
+        print(f"ERROR: Database not found at {db_p}", file=sys.stderr)
+        return 1
+
+    out_dir = Path(output_dir) if output_dir is not None else (repo_root / "data" / scale)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    from churnexp.evaluation.report import run_evaluation
+
+    conn = sqlite3.connect(str(db_p))
+    try:
+        tables = load_tables_from_db(conn)
+    finally:
+        conn.close()
+
+    model_info_obj = None
+    for p_try in [db_p.parent / "model_info.json", out_dir / "model_info.json"]:
+        if p_try.is_file():
+            try:
+                model_info_obj = json.loads(p_try.read_text(encoding="utf-8"))
+                break
+            except Exception:
+                pass
+
+    results, _ = run_evaluation(
+        tables,
+        output_dir=out_dir,
+        scale=scale,
+        model_info=model_info_obj,
+    )
+
+    exp = results["experiment"]
+    p90 = exp["primary_90d"]
+    s180 = exp["secondary_180d"]
+    fin = results["financial"]
+    excl = results["exclusions"]
+    mm = results["model_metrics"]
+
+    m180 = mm.get("label_180d", mm.get("untreated_180d", {}))
+    m90 = mm.get("label_90d", mm.get("untreated_90d", {}))
+    f180 = fin.get("headline_180d", {})
+
+    print(f"=== Evaluation Summary (scale={scale}) ===")
+    print(
+        f"Detector Exclusions: {excl['total_unique_excluded_customers']} unique customers"
+    )
+    print(
+        f"Untreated Model AUC: 180d={m180.get('roc_auc')}, "
+        f"90d={m90.get('roc_auc')}"
+    )
+    print(
+        f"Primary 90d ITT Lift: {p90['absolute_lift_pp']:+.2f} pp "
+        f"[{p90['ci_95_low_pp']:+.2f}, {p90['ci_95_high_pp']:+.2f}] (p={p90['p_value']:.4f})"
+    )
+    print(
+        f"Secondary 180d ITT Lift: {s180['absolute_lift_pp']:+.2f} pp "
+        f"[{s180['ci_95_low_pp']:+.2f}, {s180['ci_95_high_pp']:+.2f}] (p={s180['p_value']:.4f})"
+    )
+    print(
+        f"Financial Impact (180d headline): Net Impact=${f180.get('net_impact_cents', 0) / 100.0:+,.2f}, "
+        f"Benefit=${f180.get('benefit_cents', 0) / 100.0:+,.2f}, "
+        f"Cost=${fin.get('realized_cost_cents', 0) / 100.0:+,.2f}"
+    )
+    print(
+        f"Reports written: {out_dir / 'evaluation_results.json'}, "
+        f"{out_dir / 'evaluation_report.md'}"
+    )
+    return 0
+
+
+def run_audit_cli(
+    scale: str,
+    output_dir: Path | str | None = None,
+    db_path: Path | str | None = None,
+    gt_dir: Path | str | None = None,
+) -> int:
+    """Run ground truth audit against detectors and causal effects."""
+    repo_root = Path(__file__).resolve().parent.parent.parent
+    if db_path is not None:
+        db_p = Path(db_path)
+    elif (repo_root / "data" / scale / "churnexp.db").is_file():
+        db_p = repo_root / "data" / scale / "churnexp.db"
+    elif (repo_root / "output" / scale / "churnexp.db").is_file():
+        db_p = repo_root / "output" / scale / "churnexp.db"
+    else:
+        db_p = repo_root / "output" / scale / "churnexp.db"
+
+    if not db_p.is_file():
+        print(f"ERROR: Database not found at {db_p}", file=sys.stderr)
+        return 1
+
+    out_dir = Path(output_dir) if output_dir is not None else (repo_root / "data" / scale)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if gt_dir is not None:
+        g_dir = Path(gt_dir)
+    elif (out_dir / "ground_truth").is_dir():
+        g_dir = out_dir / "ground_truth"
+    elif (db_p.parent / "ground_truth").is_dir():
+        g_dir = db_p.parent / "ground_truth"
+    else:
+        g_dir = repo_root / "data" / scale / "ground_truth"
+
+    from churnexp.audit.score import run_audit
+
+    conn = sqlite3.connect(str(db_p))
+    try:
+        tables = load_tables_from_db(conn)
+    finally:
+        conn.close()
+
+    audit_res, report_md, passed = run_audit(
+        tables=tables,
+        gt_dir=g_dir,
+        output_dir=out_dir,
+        scale=scale,
+    )
+    print(report_md)
+    return 0 if passed else 1
+
+
+def run_all(
+    scale: str,
+    output_dir: Path | str | None = None,
+) -> int:
+    """Run generate, export, validate, evaluate, audit in order. Print one PASS/FAIL line per stage."""
+    stages = [
+        ("generate", lambda: run_generate(scale=scale, output_dir=output_dir)),
+        ("export", lambda: run_export(scale=scale, output_dir=output_dir)),
+        ("validate", lambda: run_validate(scale=scale, output_dir=output_dir)),
+        ("evaluate", lambda: run_evaluate(scale=scale, output_dir=output_dir)),
+        ("audit", lambda: run_audit_cli(scale=scale, output_dir=output_dir)),
+    ]
+
+    stage_results: list[tuple[str, str]] = []
+    overall_exit = 0
+
+    print(f"=== Running Full Pipeline ('all') (scale={scale}) ===")
+    for name, fn in stages:
+        try:
+            code = fn()
+            status = "PASS" if code == 0 else "FAIL"
+        except Exception as exc:
+            print(f"Stage {name} crashed with exception: {exc}", file=sys.stderr)
+            status = "FAIL"
+            code = 1
+
+        stage_results.append((name, status))
+        if code != 0 and overall_exit == 0:
+            overall_exit = code
+
+    print("\n=== Pipeline Execution Summary ===")
+    for name, st in stage_results:
+        print(f"  {name:10s}: {st}")
+
+    return overall_exit
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     """CLI entrypoint function."""
     parser = build_parser()
@@ -444,6 +684,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
     elif command == "repro-check":
         return run_repro(scale=scale, output_dir=out_dir)
+    elif command == "evaluate":
+        return run_evaluate(scale=scale, output_dir=out_dir)
+    elif command == "audit":
+        return run_audit_cli(scale=scale, output_dir=out_dir)
+    elif command == "all":
+        return run_all(scale=scale, output_dir=out_dir)
     elif command in ("train", "campaign"):
         print("runs as part of generate")
         return 0

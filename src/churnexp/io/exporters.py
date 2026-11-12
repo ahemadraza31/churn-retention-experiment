@@ -216,7 +216,15 @@ def export_database(
     finally:
         conn.close()
 
-    # Copy ground_truth/latent_customer_state.csv unchanged
+    # Copy model_info.json if present
+    src_model_info = db_p.parent / "model_info.json"
+    if src_model_info.is_file():
+        dst_model_info = out_dir / "model_info.json"
+        if src_model_info.resolve() != dst_model_info.resolve():
+            shutil.copyfile(src_model_info, dst_model_info)
+        written_files.append(dst_model_info)
+
+    # Copy ground_truth/*.csv unchanged
     if source_gt_dir is None:
         src_gt = db_p.parent / "ground_truth"
     else:

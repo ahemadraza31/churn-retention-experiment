@@ -1,2 +1,1 @@
-"""Evaluation and metrics subpackage."""
-
+"""Model performance, causal ITT lift, and financial evaluation package."""

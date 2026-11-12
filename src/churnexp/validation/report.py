@@ -46,6 +46,8 @@ class Report:
     findings: list[Finding]
     rule_summaries: list[RuleSummary]
     scale: str = "starter"
+    detector_findings: list[Finding] = field(default_factory=list)
+    detector_summaries: list[RuleSummary] = field(default_factory=list)
 
     @property
     def has_critical_or_high(self) -> bool:
@@ -59,11 +61,17 @@ class Report:
         return [f for f in self.findings if f.rule_id == rule_id]
 
     def format_cli_lines(self) -> list[str]:
-        lines: list[str] = []
+        lines: list[str] = ["DATA QUALITY:"]
         for rs in self.rule_summaries:
             lines.append(
-                f"{rs.rule_id:22s} | {rs.status:4s} | findings={rs.finding_count:5d} | severity={rs.severity}"
+                f"  {rs.rule_id:29s} | {rs.status:4s} | findings={rs.finding_count:5d} | severity={rs.severity}"
             )
+        if self.detector_summaries:
+            lines.append("BUSINESS-RULE DETECTORS:")
+            for ds in self.detector_summaries:
+                lines.append(
+                    f"  {ds.rule_id:29s} | {ds.status:4s} | findings={ds.finding_count:5d} | severity={ds.severity}"
+                )
         return lines
 
     def to_dict(self) -> dict[str, Any]:
@@ -81,8 +89,27 @@ class Report:
             "findings": [asdict(f) for f in self.findings],
         }
 
+    def to_anomaly_report_dict(self) -> dict[str, Any]:
+        sorted_det = sorted(self.detector_findings, key=lambda f: f.sort_key())
+        counts_by_detector = {
+            ds.rule_id: ds.finding_count for ds in self.detector_summaries
+        }
+        return {
+            "scale": self.scale,
+            "total_detector_findings": len(sorted_det),
+            "counts_by_detector": counts_by_detector,
+            "detectors": [asdict(ds) for ds in self.detector_summaries],
+            "findings": [asdict(f) for f in sorted_det],
+        }
+
     def to_json(self, indent: int = 2) -> str:
         return json.dumps(self.to_dict(), indent=indent, sort_keys=False) + "\n"
+
+    def to_anomaly_json(self, indent: int = 2) -> str:
+        return (
+            json.dumps(self.to_anomaly_report_dict(), indent=indent, sort_keys=False)
+            + "\n"
+        )
 
     def to_markdown(self) -> str:
         overall = "PASS" if self.passed else "FAIL"
@@ -120,6 +147,48 @@ class Report:
         else:
             lines.extend(["", "No validation findings detected."])
 
+        if self.detector_summaries:
+            lines.extend(
+                [
+                    "",
+                    "## Detected business-rule anomalies",
+                    "",
+                    "| Detector ID | Status | Severity | Findings | Description |",
+                    "| :--- | :--- | :--- | ---: | :--- |",
+                ]
+            )
+            for ds in self.detector_summaries:
+                lines.append(
+                    f"| `{ds.rule_id}` | **{ds.status}** | `{ds.severity}` | {ds.finding_count} | {ds.description} |"
+                )
+
+            sorted_det = sorted(self.detector_findings, key=lambda f: f.sort_key())
+            for ds in self.detector_summaries:
+                rule_det_findings = [
+                    f for f in sorted_det if f.rule_id == ds.rule_id
+                ][:5]
+                lines.extend(
+                    [
+                        "",
+                        f"### `{ds.rule_id}` (First 5 of {ds.finding_count})",
+                        "",
+                    ]
+                )
+                if not rule_det_findings:
+                    lines.append("No findings.")
+                else:
+                    lines.extend(
+                        [
+                            "| Entity Type | Entity ID | Customer ID | Message |",
+                            "| :--- | :--- | :--- | :--- |",
+                        ]
+                    )
+                    for df_item in rule_det_findings:
+                        cid_str = str(df_item.evidence.get("customer_id", ""))
+                        lines.append(
+                            f"| `{df_item.entity_type}` | `{df_item.entity_id}` | `{cid_str}` | {df_item.message} |"
+                        )
+
         return "\n".join(lines) + "\n"
 
     def write_reports(self, output_dir: Path | str) -> tuple[Path, Path]:
@@ -127,7 +196,8 @@ class Report:
         out.mkdir(parents=True, exist_ok=True)
         md_path = out / "validation_summary.md"
         json_path = out / "validation_report.json"
+        anom_json_path = out / "anomaly_report.json"
         md_path.write_text(self.to_markdown(), encoding="utf-8")
         json_path.write_text(self.to_json(), encoding="utf-8")
+        anom_json_path.write_text(self.to_anomaly_json(), encoding="utf-8")
         return md_path, json_path
-

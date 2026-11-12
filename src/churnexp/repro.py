@@ -266,6 +266,20 @@ def collect_run_snapshot(
                     rel = fp.relative_to(rdir).as_posix()
                     exported_hashes[rel] = file_sha256(fp)
 
+    for extra_rel in (
+        "ground_truth/anomalies.csv",
+        "ground_truth/expected_decisions.csv",
+        "ground_truth/latent_customer_state.csv",
+        "anomaly_report.json",
+        "evaluation_results.json",
+        "model_info.json",
+    ):
+        efp = rdir / extra_rel
+        if efp.is_file():
+            exported_hashes[extra_rel] = file_sha256(efp)
+        else:
+            exported_hashes[extra_rel] = "MISSING"
+
     latent_path = rdir / "ground_truth" / "latent_customer_state.csv"
     latent_sha = file_sha256(latent_path) if latent_path.is_file() else "MISSING"
 
@@ -342,39 +356,23 @@ def _run_subprocess_pipeline(scale: str, out_dir: Path, hashseed: str) -> None:
     env = dict(os.environ)
     env["PYTHONHASHSEED"] = str(hashseed)
 
-    gen_cmd = [
-        sys.executable,
-        "-m",
-        "churnexp",
-        "generate",
-        "--scale",
-        scale,
-        "--output-dir",
-        str(out_dir),
-    ]
-    res_gen = subprocess.run(gen_cmd, env=env, capture_output=True, text=True)
-    if res_gen.returncode != 0:
-        raise RuntimeError(
-            f"Subprocess generate failed (PYTHONHASHSEED={hashseed}):\n"
-            f"STDOUT:\n{res_gen.stdout}\nSTDERR:\n{res_gen.stderr}"
-        )
-
-    exp_cmd = [
-        sys.executable,
-        "-m",
-        "churnexp",
-        "export",
-        "--scale",
-        scale,
-        "--output-dir",
-        str(out_dir),
-    ]
-    res_exp = subprocess.run(exp_cmd, env=env, capture_output=True, text=True)
-    if res_exp.returncode != 0:
-        raise RuntimeError(
-            f"Subprocess export failed (PYTHONHASHSEED={hashseed}):\n"
-            f"STDOUT:\n{res_exp.stdout}\nSTDERR:\n{res_exp.stderr}"
-        )
+    for subcmd in ("generate", "export", "validate", "evaluate"):
+        cmd = [
+            sys.executable,
+            "-m",
+            "churnexp",
+            subcmd,
+            "--scale",
+            scale,
+            "--output-dir",
+            str(out_dir),
+        ]
+        res = subprocess.run(cmd, env=env, capture_output=True, text=True)
+        if res.returncode != 0:
+            raise RuntimeError(
+                f"Subprocess {subcmd} failed (PYTHONHASHSEED={hashseed}):\n"
+                f"STDOUT:\n{res.stdout}\nSTDERR:\n{res.stderr}"
+            )
 
 
 def run_repro_check(

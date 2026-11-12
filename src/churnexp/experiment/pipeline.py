@@ -6,6 +6,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from churnexp.anomalies.inject import inject_anomalies
 from churnexp.config import Config
 from churnexp.eligibility.catalog import build_catalog
 from churnexp.eligibility.engine import (
@@ -90,6 +91,43 @@ def run_pipeline(cfg: Config) -> World:
     y_train = train_merged["churned"].astype(int).to_numpy(dtype=np.int64)
     p_train = model.predict_proba(X_train)[:, 1]
     train_metrics = compute_metrics(y_train, p_train)
+
+    # Model metadata and top 10 coefficients for model_info.json
+    prep = model.named_steps["preprocess"]
+    clf = model.named_steps["clf"]
+    raw_feature_names = prep.get_feature_names_out()
+    cleaned_feature_names = [
+        str(f).replace("num__", "").replace("cat__", "") for f in raw_feature_names
+    ]
+    coefs = clf.coef_[0]
+    top_10_pairs = sorted(
+        zip(cleaned_feature_names, coefs),
+        key=lambda pair: abs(float(pair[1])),
+        reverse=True,
+    )[:10]
+    top_10_coefficients = [
+        {
+            "feature": str(f_name),
+            "coefficient": float(c_val),
+            "sign": "+" if float(c_val) >= 0 else "-",
+        }
+        for f_name, c_val in top_10_pairs
+    ]
+    train_as_of_val = (
+        str(features_P0["as_of_date"].iloc[0])
+        if not features_P0.empty
+        else "2025-07-01"
+    )
+    model_info: dict[str, Any] = {
+        "model_version": "logreg-v1",
+        "label_type": "in_sample",
+        "train_as_of": train_as_of_val,
+        "training_rows": int(len(train_merged)),
+        "training_positives": int(y_train.sum()),
+        "in_sample_roc_auc": float(train_metrics["roc_auc"]),
+        "feature_names": cleaned_feature_names,
+        "top_10_coefficients": top_10_coefficients,
+    }
 
     risk_score_df = score_customers(
         model=model,
@@ -259,6 +297,15 @@ def run_pipeline(cfg: Config) -> World:
             "non_treatment_2026_positives": int(non_treat_eval["churned"].astype(int).sum()),
         }
     )
+
+    # 7. Anomaly injection (Run 2B)
+    anom_res = inject_anomalies(final_tables, cfg, rng_factory)
+    final_tables = anom_res.tables
+
+    pipeline_summary["anomaly_counts"] = anom_res.counts_by_type
+    pipeline_summary["anomalies_gt"] = anom_res.anomalies_gt
+    pipeline_summary["expected_decisions_gt"] = anom_res.expected_decisions_gt
+    pipeline_summary["model_info"] = model_info
 
     return World(
         tables=final_tables,
