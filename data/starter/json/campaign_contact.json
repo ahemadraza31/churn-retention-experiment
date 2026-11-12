@@ -288,6 +288,30 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000105-2026-W02",
+    "customer_id": "CUS-000105",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000108-2026-W01",
+    "customer_id": "CUS-000108",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000113-2026-W01",
     "customer_id": "CUS-000113",
     "offer_id": "OFF-2026-000001",
@@ -408,6 +432,18 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000148-2026-W02",
+    "customer_id": "CUS-000148",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000156-2026-W01",
     "customer_id": "CUS-000156",
     "offer_id": "OFF-2026-000002",
@@ -422,6 +458,18 @@
   {
     "contact_id": "CMP-CUS-000160-2026-W01",
     "customer_id": "CUS-000160",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000161-2026-W01",
+    "customer_id": "CUS-000161",
     "offer_id": "OFF-2026-000001",
     "experiment_group": "TREATMENT",
     "contact_status": "SENT",
@@ -612,12 +660,36 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000207-2026-W02",
+    "customer_id": "CUS-000207",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000214-2026-W01",
     "customer_id": "CUS-000214",
     "offer_id": "OFF-2026-000001",
     "experiment_group": "TREATMENT",
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000214-2026-W02",
+    "customer_id": "CUS-000214",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
     "sent_at": "2026-01-05T10:00:00",
     "stratum": "MEDIUM",
     "responded": 1,
@@ -684,6 +756,18 @@
     "redeemed": 0
   },
   {
+    "contact_id": "CMP-CUS-000240-2026-W02",
+    "customer_id": "CUS-000240",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000241-2026-W01",
     "customer_id": "CUS-000241",
     "offer_id": "OFF-2026-000002",
@@ -732,12 +816,36 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000249-2026-W02",
+    "customer_id": "CUS-000249",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
     "contact_id": "CMP-CUS-000254-2026-W01",
     "customer_id": "CUS-000254",
     "offer_id": "OFF-2026-000002",
     "experiment_group": "TREATMENT",
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000254-2026-W02",
+    "customer_id": "CUS-000254",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
     "sent_at": "2026-01-05T10:00:00",
     "stratum": "HIGH",
     "responded": 1,
@@ -835,6 +943,18 @@
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000298-2026-W02",
+    "customer_id": "CUS-000298",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
     "stratum": "MEDIUM",
     "responded": 0,
     "redeemed": 0
@@ -1212,6 +1332,18 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000437-2026-W02",
+    "customer_id": "CUS-000437",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
     "contact_id": "CMP-CUS-000443-2026-W01",
     "customer_id": "CUS-000443",
     "offer_id": "OFF-2026-000002",
@@ -1255,6 +1387,18 @@
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000465-2026-W02",
+    "customer_id": "CUS-000465",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
     "stratum": "MEDIUM",
     "responded": 0,
     "redeemed": 0
@@ -1435,6 +1579,18 @@
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000502-2026-W02",
+    "customer_id": "CUS-000502",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
     "stratum": "MEDIUM",
     "responded": 0,
     "redeemed": 0
@@ -1692,6 +1848,18 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000582-2026-W01",
+    "customer_id": "CUS-000582",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000585-2026-W01",
     "customer_id": "CUS-000585",
     "offer_id": "OFF-2026-000002",
@@ -1700,6 +1868,30 @@
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": null,
     "stratum": "HIGH",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000587-2026-W01",
+    "customer_id": "CUS-000587",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000597-2026-W01",
+    "customer_id": "CUS-000597",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
     "responded": 0,
     "redeemed": 0
   },
@@ -1716,6 +1908,18 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000599-2026-W02",
+    "customer_id": "CUS-000599",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
     "contact_id": "CMP-CUS-000600-2026-W01",
     "customer_id": "CUS-000600",
     "offer_id": "OFF-2026-000001",
@@ -1726,6 +1930,18 @@
     "stratum": "HIGH",
     "responded": 1,
     "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000600-2026-W02",
+    "customer_id": "CUS-000600",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
+    "stratum": "HIGH",
+    "responded": 0,
+    "redeemed": 0
   },
   {
     "contact_id": "CMP-CUS-000602-2026-W01",
@@ -1758,6 +1974,18 @@
     "experiment_group": "TREATMENT",
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000611-2026-W02",
+    "customer_id": "CUS-000611",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
     "sent_at": "2026-01-05T10:00:00",
     "stratum": "MEDIUM",
     "responded": 1,
@@ -1884,6 +2112,18 @@
     "redeemed": 0
   },
   {
+    "contact_id": "CMP-CUS-000664-2026-W01",
+    "customer_id": "CUS-000664",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000677-2026-W01",
     "customer_id": "CUS-000677",
     "offer_id": "OFF-2026-000002",
@@ -1910,6 +2150,18 @@
   {
     "contact_id": "CMP-CUS-000682-2026-W01",
     "customer_id": "CUS-000682",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000686-2026-W01",
+    "customer_id": "CUS-000686",
     "offer_id": "OFF-2026-000001",
     "experiment_group": "TREATMENT",
     "contact_status": "SENT",
@@ -1956,6 +2208,18 @@
     "redeemed": 0
   },
   {
+    "contact_id": "CMP-CUS-000694-2026-W02",
+    "customer_id": "CUS-000694",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
+    "stratum": "HIGH",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000698-2026-W01",
     "customer_id": "CUS-000698",
     "offer_id": "OFF-2026-000002",
@@ -1975,6 +2239,18 @@
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000704-2026-W02",
+    "customer_id": "CUS-000704",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
     "stratum": "MEDIUM",
     "responded": 0,
     "redeemed": 0
@@ -2124,6 +2400,18 @@
     "redeemed": 0
   },
   {
+    "contact_id": "CMP-CUS-000796-2026-W01",
+    "customer_id": "CUS-000796",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
     "contact_id": "CMP-CUS-000802-2026-W01",
     "customer_id": "CUS-000802",
     "offer_id": "OFF-2026-000002",
@@ -2172,6 +2460,18 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000807-2026-W02",
+    "customer_id": "CUS-000807",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
     "contact_id": "CMP-CUS-000816-2026-W01",
     "customer_id": "CUS-000816",
     "offer_id": "OFF-2026-000002",
@@ -2192,6 +2492,18 @@
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": null,
     "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000820-2026-W01",
+    "customer_id": "CUS-000820",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "LOW",
     "responded": 0,
     "redeemed": 0
   },
@@ -2244,6 +2556,18 @@
     "redeemed": 1
   },
   {
+    "contact_id": "CMP-CUS-000847-2026-W02",
+    "customer_id": "CUS-000847",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
     "contact_id": "CMP-CUS-000852-2026-W01",
     "customer_id": "CUS-000852",
     "offer_id": "OFF-2026-000001",
@@ -2263,6 +2587,18 @@
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
     "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
+  },
+  {
+    "contact_id": "CMP-CUS-000859-2026-W02",
+    "customer_id": "CUS-000859",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "CONTROL",
+    "contact_status": "WITHHELD",
+    "assigned_at": "2026-01-05T09:00:00",
+    "sent_at": null,
     "stratum": "MEDIUM",
     "responded": 0,
     "redeemed": 0
@@ -2298,6 +2634,18 @@
     "experiment_group": "TREATMENT",
     "contact_status": "SENT",
     "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "HIGH",
+    "responded": 1,
+    "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000869-2026-W02",
+    "customer_id": "CUS-000869",
+    "offer_id": "OFF-2026-000002",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T09:00:00",
     "sent_at": "2026-01-05T10:00:00",
     "stratum": "HIGH",
     "responded": 1,
@@ -2674,5 +3022,17 @@
     "stratum": "MEDIUM",
     "responded": 1,
     "redeemed": 1
+  },
+  {
+    "contact_id": "CMP-CUS-000996-2026-W01",
+    "customer_id": "CUS-000996",
+    "offer_id": "OFF-2026-000001",
+    "experiment_group": "TREATMENT",
+    "contact_status": "SENT",
+    "assigned_at": "2026-01-05T08:00:00",
+    "sent_at": "2026-01-05T10:00:00",
+    "stratum": "MEDIUM",
+    "responded": 0,
+    "redeemed": 0
   }
 ]

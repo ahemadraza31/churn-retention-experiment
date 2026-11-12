@@ -1,0 +1,2992 @@
+{
+  "scale": "full",
+  "total_detector_findings": 160,
+  "counts_by_detector": {
+    "DET-A-LABEL-BEFORE-PREDICTION": 40,
+    "DET-B-INELIGIBLE-OFFER": 40,
+    "DET-C-GROUP-LEAKAGE": 40,
+    "DET-D-MULTI-ATTRIBUTION": 40
+  },
+  "detectors": [
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "status": "FAIL",
+      "finding_count": 40,
+      "description": "Churn outcome has churned=1 with churn_date strictly before prediction_date"
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "status": "FAIL",
+      "finding_count": 40,
+      "description": "Campaign contact assigned to customer/offer failing one or more of ER-001..ER-007"
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "status": "FAIL",
+      "finding_count": 40,
+      "description": "Customer assigned to both TREATMENT and CONTROL campaign contacts"
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "status": "FAIL",
+      "finding_count": 40,
+      "description": "Customer has multiple retained outcomes attributed to distinct non-null offers"
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-002351-2026",
+      "message": "Churn outcome CHURN-CUS-002351-2026 for customer CUS-002351 has churn_date (2025-07-07) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-002351",
+        "churn_id": "CHURN-CUS-002351-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-07-07"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-002813-2026",
+      "message": "Churn outcome CHURN-CUS-002813-2026 for customer CUS-002813 has churn_date (2025-08-23) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-002813",
+        "churn_id": "CHURN-CUS-002813-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-23"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-003132-2026",
+      "message": "Churn outcome CHURN-CUS-003132-2026 for customer CUS-003132 has churn_date (2025-11-10) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-003132",
+        "churn_id": "CHURN-CUS-003132-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-11-10"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-003430-2026",
+      "message": "Churn outcome CHURN-CUS-003430-2026 for customer CUS-003430 has churn_date (2025-10-01) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-003430",
+        "churn_id": "CHURN-CUS-003430-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-01"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-003903-2026",
+      "message": "Churn outcome CHURN-CUS-003903-2026 for customer CUS-003903 has churn_date (2025-07-22) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-003903",
+        "churn_id": "CHURN-CUS-003903-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-07-22"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-004010-2026",
+      "message": "Churn outcome CHURN-CUS-004010-2026 for customer CUS-004010 has churn_date (2025-12-18) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-004010",
+        "churn_id": "CHURN-CUS-004010-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-18"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-004110-2026",
+      "message": "Churn outcome CHURN-CUS-004110-2026 for customer CUS-004110 has churn_date (2025-12-11) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-004110",
+        "churn_id": "CHURN-CUS-004110-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-11"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-004714-2026",
+      "message": "Churn outcome CHURN-CUS-004714-2026 for customer CUS-004714 has churn_date (2025-09-24) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-004714",
+        "churn_id": "CHURN-CUS-004714-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-24"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-004860-2026",
+      "message": "Churn outcome CHURN-CUS-004860-2026 for customer CUS-004860 has churn_date (2025-08-02) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-004860",
+        "churn_id": "CHURN-CUS-004860-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-02"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-005721-2026",
+      "message": "Churn outcome CHURN-CUS-005721-2026 for customer CUS-005721 has churn_date (2025-11-17) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-005721",
+        "churn_id": "CHURN-CUS-005721-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-11-17"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-006438-2026",
+      "message": "Churn outcome CHURN-CUS-006438-2026 for customer CUS-006438 has churn_date (2025-09-06) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-006438",
+        "churn_id": "CHURN-CUS-006438-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-06"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-006961-2026",
+      "message": "Churn outcome CHURN-CUS-006961-2026 for customer CUS-006961 has churn_date (2025-07-25) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-006961",
+        "churn_id": "CHURN-CUS-006961-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-07-25"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-006965-2026",
+      "message": "Churn outcome CHURN-CUS-006965-2026 for customer CUS-006965 has churn_date (2025-12-27) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-006965",
+        "churn_id": "CHURN-CUS-006965-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-27"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-007541-2026",
+      "message": "Churn outcome CHURN-CUS-007541-2026 for customer CUS-007541 has churn_date (2025-10-06) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-007541",
+        "churn_id": "CHURN-CUS-007541-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-06"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-007727-2026",
+      "message": "Churn outcome CHURN-CUS-007727-2026 for customer CUS-007727 has churn_date (2025-11-07) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-007727",
+        "churn_id": "CHURN-CUS-007727-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-11-07"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-007774-2026",
+      "message": "Churn outcome CHURN-CUS-007774-2026 for customer CUS-007774 has churn_date (2025-11-21) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-007774",
+        "churn_id": "CHURN-CUS-007774-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-11-21"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-008078-2026",
+      "message": "Churn outcome CHURN-CUS-008078-2026 for customer CUS-008078 has churn_date (2025-09-16) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-008078",
+        "churn_id": "CHURN-CUS-008078-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-16"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-008395-2026",
+      "message": "Churn outcome CHURN-CUS-008395-2026 for customer CUS-008395 has churn_date (2025-10-06) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-008395",
+        "churn_id": "CHURN-CUS-008395-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-06"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-008561-2026",
+      "message": "Churn outcome CHURN-CUS-008561-2026 for customer CUS-008561 has churn_date (2025-12-26) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-008561",
+        "churn_id": "CHURN-CUS-008561-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-26"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-009229-2026",
+      "message": "Churn outcome CHURN-CUS-009229-2026 for customer CUS-009229 has churn_date (2025-11-28) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-009229",
+        "churn_id": "CHURN-CUS-009229-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-11-28"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-009685-2026",
+      "message": "Churn outcome CHURN-CUS-009685-2026 for customer CUS-009685 has churn_date (2025-09-23) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-009685",
+        "churn_id": "CHURN-CUS-009685-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-23"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-010561-2026",
+      "message": "Churn outcome CHURN-CUS-010561-2026 for customer CUS-010561 has churn_date (2025-07-06) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-010561",
+        "churn_id": "CHURN-CUS-010561-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-07-06"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-010752-2026",
+      "message": "Churn outcome CHURN-CUS-010752-2026 for customer CUS-010752 has churn_date (2025-08-13) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-010752",
+        "churn_id": "CHURN-CUS-010752-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-13"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-012048-2026",
+      "message": "Churn outcome CHURN-CUS-012048-2026 for customer CUS-012048 has churn_date (2025-09-22) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-012048",
+        "churn_id": "CHURN-CUS-012048-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-22"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-012690-2026",
+      "message": "Churn outcome CHURN-CUS-012690-2026 for customer CUS-012690 has churn_date (2025-09-15) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-012690",
+        "churn_id": "CHURN-CUS-012690-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-15"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-014079-2026",
+      "message": "Churn outcome CHURN-CUS-014079-2026 for customer CUS-014079 has churn_date (2025-09-22) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-014079",
+        "churn_id": "CHURN-CUS-014079-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-22"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-014310-2026",
+      "message": "Churn outcome CHURN-CUS-014310-2026 for customer CUS-014310 has churn_date (2025-08-24) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-014310",
+        "churn_id": "CHURN-CUS-014310-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-24"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-015625-2026",
+      "message": "Churn outcome CHURN-CUS-015625-2026 for customer CUS-015625 has churn_date (2025-10-09) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-015625",
+        "churn_id": "CHURN-CUS-015625-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-09"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-015782-2026",
+      "message": "Churn outcome CHURN-CUS-015782-2026 for customer CUS-015782 has churn_date (2025-08-27) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-015782",
+        "churn_id": "CHURN-CUS-015782-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-27"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-015902-2026",
+      "message": "Churn outcome CHURN-CUS-015902-2026 for customer CUS-015902 has churn_date (2025-08-01) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-015902",
+        "churn_id": "CHURN-CUS-015902-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-01"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-016938-2026",
+      "message": "Churn outcome CHURN-CUS-016938-2026 for customer CUS-016938 has churn_date (2025-09-24) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-016938",
+        "churn_id": "CHURN-CUS-016938-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-24"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-017206-2026",
+      "message": "Churn outcome CHURN-CUS-017206-2026 for customer CUS-017206 has churn_date (2025-12-18) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-017206",
+        "churn_id": "CHURN-CUS-017206-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-18"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-017250-2026",
+      "message": "Churn outcome CHURN-CUS-017250-2026 for customer CUS-017250 has churn_date (2025-12-02) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-017250",
+        "churn_id": "CHURN-CUS-017250-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-02"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-017344-2026",
+      "message": "Churn outcome CHURN-CUS-017344-2026 for customer CUS-017344 has churn_date (2025-11-04) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-017344",
+        "churn_id": "CHURN-CUS-017344-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-11-04"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-017849-2026",
+      "message": "Churn outcome CHURN-CUS-017849-2026 for customer CUS-017849 has churn_date (2025-10-11) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-017849",
+        "churn_id": "CHURN-CUS-017849-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-11"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-018011-2026",
+      "message": "Churn outcome CHURN-CUS-018011-2026 for customer CUS-018011 has churn_date (2025-10-05) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-018011",
+        "churn_id": "CHURN-CUS-018011-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-05"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-018089-2026",
+      "message": "Churn outcome CHURN-CUS-018089-2026 for customer CUS-018089 has churn_date (2025-09-14) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-018089",
+        "churn_id": "CHURN-CUS-018089-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-09-14"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-018097-2026",
+      "message": "Churn outcome CHURN-CUS-018097-2026 for customer CUS-018097 has churn_date (2025-10-20) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-018097",
+        "churn_id": "CHURN-CUS-018097-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-10-20"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-018103-2026",
+      "message": "Churn outcome CHURN-CUS-018103-2026 for customer CUS-018103 has churn_date (2025-08-08) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-018103",
+        "churn_id": "CHURN-CUS-018103-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-08-08"
+      }
+    },
+    {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "severity": "CRITICAL",
+      "entity_type": "churn_outcome",
+      "entity_id": "CHURN-CUS-018597-2026",
+      "message": "Churn outcome CHURN-CUS-018597-2026 for customer CUS-018597 has churn_date (2025-12-10) < prediction_date (2026-01-01)",
+      "evidence": {
+        "customer_id": "CUS-018597",
+        "churn_id": "CHURN-CUS-018597-2026",
+        "cycle_year": 2026,
+        "prediction_date": "2026-01-01",
+        "churn_date": "2025-12-10"
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-000108-2026-W01",
+      "message": "Campaign contact CMP-CUS-000108-2026-W01 for customer CUS-000108 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-000108",
+        "contact_id": "CMP-CUS-000108-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-001294-2026-W01",
+      "message": "Campaign contact CMP-CUS-001294-2026-W01 for customer CUS-001294 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005, ER-006",
+      "evidence": {
+        "customer_id": "CUS-001294",
+        "contact_id": "CMP-CUS-001294-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-001555-2026-W01",
+      "message": "Campaign contact CMP-CUS-001555-2026-W01 for customer CUS-001555 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-001555",
+        "contact_id": "CMP-CUS-001555-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-001637-2026-W01",
+      "message": "Campaign contact CMP-CUS-001637-2026-W01 for customer CUS-001637 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-001637",
+        "contact_id": "CMP-CUS-001637-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-002074-2026-W01",
+      "message": "Campaign contact CMP-CUS-002074-2026-W01 for customer CUS-002074 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002",
+      "evidence": {
+        "customer_id": "CUS-002074",
+        "contact_id": "CMP-CUS-002074-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "36",
+            "threshold_value": "90"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-002380-2026-W01",
+      "message": "Campaign contact CMP-CUS-002380-2026-W01 for customer CUS-002380 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004",
+      "evidence": {
+        "customer_id": "CUS-002380",
+        "contact_id": "CMP-CUS-002380-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-002635-2026-W01",
+      "message": "Campaign contact CMP-CUS-002635-2026-W01 for customer CUS-002635 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003",
+      "evidence": {
+        "customer_id": "CUS-002635",
+        "contact_id": "CMP-CUS-002635-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-002754-2026-W01",
+      "message": "Campaign contact CMP-CUS-002754-2026-W01 for customer CUS-002754 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-002754",
+        "contact_id": "CMP-CUS-002754-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-003107-2026-W01",
+      "message": "Campaign contact CMP-CUS-003107-2026-W01 for customer CUS-003107 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004, ER-005",
+      "evidence": {
+        "customer_id": "CUS-003107",
+        "contact_id": "CMP-CUS-003107-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          },
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-003485-2026-W01",
+      "message": "Campaign contact CMP-CUS-003485-2026-W01 for customer CUS-003485 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003",
+      "evidence": {
+        "customer_id": "CUS-003485",
+        "contact_id": "CMP-CUS-003485-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-003661-2026-W01",
+      "message": "Campaign contact CMP-CUS-003661-2026-W01 for customer CUS-003661 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003",
+      "evidence": {
+        "customer_id": "CUS-003661",
+        "contact_id": "CMP-CUS-003661-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-005972-2026-W01",
+      "message": "Campaign contact CMP-CUS-005972-2026-W01 for customer CUS-005972 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-005972",
+        "contact_id": "CMP-CUS-005972-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-006221-2026-W01",
+      "message": "Campaign contact CMP-CUS-006221-2026-W01 for customer CUS-006221 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-006221",
+        "contact_id": "CMP-CUS-006221-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-006418-2026-W01",
+      "message": "Campaign contact CMP-CUS-006418-2026-W01 for customer CUS-006418 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004, ER-006",
+      "evidence": {
+        "customer_id": "CUS-006418",
+        "contact_id": "CMP-CUS-006418-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-007316-2026-W01",
+      "message": "Campaign contact CMP-CUS-007316-2026-W01 for customer CUS-007316 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-007316",
+        "contact_id": "CMP-CUS-007316-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-007572-2026-W01",
+      "message": "Campaign contact CMP-CUS-007572-2026-W01 for customer CUS-007572 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004",
+      "evidence": {
+        "customer_id": "CUS-007572",
+        "contact_id": "CMP-CUS-007572-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-007871-2026-W01",
+      "message": "Campaign contact CMP-CUS-007871-2026-W01 for customer CUS-007871 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002, ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-007871",
+        "contact_id": "CMP-CUS-007871-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "43",
+            "threshold_value": "90"
+          },
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-008053-2026-W01",
+      "message": "Campaign contact CMP-CUS-008053-2026-W01 for customer CUS-008053 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-004",
+      "evidence": {
+        "customer_id": "CUS-008053",
+        "contact_id": "CMP-CUS-008053-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-008293-2026-W01",
+      "message": "Campaign contact CMP-CUS-008293-2026-W01 for customer CUS-008293 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002",
+      "evidence": {
+        "customer_id": "CUS-008293",
+        "contact_id": "CMP-CUS-008293-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "82",
+            "threshold_value": "90"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-008965-2026-W01",
+      "message": "Campaign contact CMP-CUS-008965-2026-W01 for customer CUS-008965 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003",
+      "evidence": {
+        "customer_id": "CUS-008965",
+        "contact_id": "CMP-CUS-008965-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-010147-2026-W01",
+      "message": "Campaign contact CMP-CUS-010147-2026-W01 for customer CUS-010147 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002",
+      "evidence": {
+        "customer_id": "CUS-010147",
+        "contact_id": "CMP-CUS-010147-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "51",
+            "threshold_value": "90"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-010335-2026-W01",
+      "message": "Campaign contact CMP-CUS-010335-2026-W01 for customer CUS-010335 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-010335",
+        "contact_id": "CMP-CUS-010335-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-011738-2026-W01",
+      "message": "Campaign contact CMP-CUS-011738-2026-W01 for customer CUS-011738 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-005",
+      "evidence": {
+        "customer_id": "CUS-011738",
+        "contact_id": "CMP-CUS-011738-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-012291-2026-W01",
+      "message": "Campaign contact CMP-CUS-012291-2026-W01 for customer CUS-012291 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004, ER-006",
+      "evidence": {
+        "customer_id": "CUS-012291",
+        "contact_id": "CMP-CUS-012291-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-012561-2026-W01",
+      "message": "Campaign contact CMP-CUS-012561-2026-W01 for customer CUS-012561 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002, ER-006",
+      "evidence": {
+        "customer_id": "CUS-012561",
+        "contact_id": "CMP-CUS-012561-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "38",
+            "threshold_value": "90"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-012792-2026-W01",
+      "message": "Campaign contact CMP-CUS-012792-2026-W01 for customer CUS-012792 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004",
+      "evidence": {
+        "customer_id": "CUS-012792",
+        "contact_id": "CMP-CUS-012792-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-012904-2026-W01",
+      "message": "Campaign contact CMP-CUS-012904-2026-W01 for customer CUS-012904 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002",
+      "evidence": {
+        "customer_id": "CUS-012904",
+        "contact_id": "CMP-CUS-012904-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "88",
+            "threshold_value": "90"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-013221-2026-W01",
+      "message": "Campaign contact CMP-CUS-013221-2026-W01 for customer CUS-013221 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002, ER-006",
+      "evidence": {
+        "customer_id": "CUS-013221",
+        "contact_id": "CMP-CUS-013221-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "56",
+            "threshold_value": "90"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-013666-2026-W01",
+      "message": "Campaign contact CMP-CUS-013666-2026-W01 for customer CUS-013666 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-013666",
+        "contact_id": "CMP-CUS-013666-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-013838-2026-W01",
+      "message": "Campaign contact CMP-CUS-013838-2026-W01 for customer CUS-013838 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-004",
+      "evidence": {
+        "customer_id": "CUS-013838",
+        "contact_id": "CMP-CUS-013838-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-014364-2026-W01",
+      "message": "Campaign contact CMP-CUS-014364-2026-W01 for customer CUS-014364 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-014364",
+        "contact_id": "CMP-CUS-014364-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-014777-2026-W01",
+      "message": "Campaign contact CMP-CUS-014777-2026-W01 for customer CUS-014777 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-014777",
+        "contact_id": "CMP-CUS-014777-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-015417-2026-W01",
+      "message": "Campaign contact CMP-CUS-015417-2026-W01 for customer CUS-015417 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004, ER-006",
+      "evidence": {
+        "customer_id": "CUS-015417",
+        "contact_id": "CMP-CUS-015417-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-015985-2026-W01",
+      "message": "Campaign contact CMP-CUS-015985-2026-W01 for customer CUS-015985 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002",
+      "evidence": {
+        "customer_id": "CUS-015985",
+        "contact_id": "CMP-CUS-015985-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "34",
+            "threshold_value": "90"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-016214-2026-W01",
+      "message": "Campaign contact CMP-CUS-016214-2026-W01 for customer CUS-016214 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-004, ER-006",
+      "evidence": {
+        "customer_id": "CUS-016214",
+        "contact_id": "CMP-CUS-016214-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-016433-2026-W01",
+      "message": "Campaign contact CMP-CUS-016433-2026-W01 for customer CUS-016433 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-003, ER-006",
+      "evidence": {
+        "customer_id": "CUS-016433",
+        "contact_id": "CMP-CUS-016433-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-006",
+            "observed_value": "LOW",
+            "threshold_value": "HIGH,MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-018150-2026-W01",
+      "message": "Campaign contact CMP-CUS-018150-2026-W01 for customer CUS-018150 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-005",
+      "evidence": {
+        "customer_id": "CUS-018150",
+        "contact_id": "CMP-CUS-018150-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-005",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-018970-2026-W01",
+      "message": "Campaign contact CMP-CUS-018970-2026-W01 for customer CUS-018970 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002, ER-003",
+      "evidence": {
+        "customer_id": "CUS-018970",
+        "contact_id": "CMP-CUS-018970-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "66",
+            "threshold_value": "90"
+          },
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-019680-2026-W01",
+      "message": "Campaign contact CMP-CUS-019680-2026-W01 for customer CUS-019680 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002",
+      "evidence": {
+        "customer_id": "CUS-019680",
+        "contact_id": "CMP-CUS-019680-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "43",
+            "threshold_value": "90"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "severity": "CRITICAL",
+      "entity_type": "campaign_contact",
+      "entity_id": "CMP-CUS-019919-2026-W01",
+      "message": "Campaign contact CMP-CUS-019919-2026-W01 for customer CUS-019919 (offer=OFF-2026-000001, group=TREATMENT) failed eligibility: ER-002, ER-003, ER-004",
+      "evidence": {
+        "customer_id": "CUS-019919",
+        "contact_id": "CMP-CUS-019919-2026-W01",
+        "offer_id": "OFF-2026-000001",
+        "experiment_group": "TREATMENT",
+        "assigned_date": "2026-01-05",
+        "failed_rules": [
+          {
+            "rule_id": "ER-002",
+            "observed_value": "70",
+            "threshold_value": "90"
+          },
+          {
+            "rule_id": "ER-003",
+            "observed_value": "0",
+            "threshold_value": "1"
+          },
+          {
+            "rule_id": "ER-004",
+            "observed_value": "1",
+            "threshold_value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-000433",
+      "message": "Customer CUS-000433 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-000433-2026-W01', 'CMP-CUS-000433-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-000433",
+        "contact_ids": [
+          "CMP-CUS-000433-2026-W01",
+          "CMP-CUS-000433-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-000693",
+      "message": "Customer CUS-000693 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-000693-2026-W01', 'CMP-CUS-000693-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-000693",
+        "contact_ids": [
+          "CMP-CUS-000693-2026-W01",
+          "CMP-CUS-000693-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-001682",
+      "message": "Customer CUS-001682 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-001682-2026-W01', 'CMP-CUS-001682-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-001682",
+        "contact_ids": [
+          "CMP-CUS-001682-2026-W01",
+          "CMP-CUS-001682-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-001795",
+      "message": "Customer CUS-001795 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-001795-2026-W01', 'CMP-CUS-001795-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-001795",
+        "contact_ids": [
+          "CMP-CUS-001795-2026-W01",
+          "CMP-CUS-001795-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-002315",
+      "message": "Customer CUS-002315 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-002315-2026-W01', 'CMP-CUS-002315-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-002315",
+        "contact_ids": [
+          "CMP-CUS-002315-2026-W01",
+          "CMP-CUS-002315-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-002330",
+      "message": "Customer CUS-002330 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-002330-2026-W01', 'CMP-CUS-002330-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-002330",
+        "contact_ids": [
+          "CMP-CUS-002330-2026-W01",
+          "CMP-CUS-002330-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-002722",
+      "message": "Customer CUS-002722 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-002722-2026-W01', 'CMP-CUS-002722-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-002722",
+        "contact_ids": [
+          "CMP-CUS-002722-2026-W01",
+          "CMP-CUS-002722-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-002862",
+      "message": "Customer CUS-002862 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-002862-2026-W01', 'CMP-CUS-002862-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-002862",
+        "contact_ids": [
+          "CMP-CUS-002862-2026-W01",
+          "CMP-CUS-002862-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-003134",
+      "message": "Customer CUS-003134 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-003134-2026-W01', 'CMP-CUS-003134-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-003134",
+        "contact_ids": [
+          "CMP-CUS-003134-2026-W01",
+          "CMP-CUS-003134-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-003146",
+      "message": "Customer CUS-003146 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-003146-2026-W01', 'CMP-CUS-003146-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-003146",
+        "contact_ids": [
+          "CMP-CUS-003146-2026-W01",
+          "CMP-CUS-003146-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-004074",
+      "message": "Customer CUS-004074 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-004074-2026-W01', 'CMP-CUS-004074-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-004074",
+        "contact_ids": [
+          "CMP-CUS-004074-2026-W01",
+          "CMP-CUS-004074-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-005426",
+      "message": "Customer CUS-005426 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-005426-2026-W01', 'CMP-CUS-005426-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-005426",
+        "contact_ids": [
+          "CMP-CUS-005426-2026-W01",
+          "CMP-CUS-005426-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-006338",
+      "message": "Customer CUS-006338 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-006338-2026-W01', 'CMP-CUS-006338-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-006338",
+        "contact_ids": [
+          "CMP-CUS-006338-2026-W01",
+          "CMP-CUS-006338-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-007579",
+      "message": "Customer CUS-007579 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-007579-2026-W01', 'CMP-CUS-007579-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-007579",
+        "contact_ids": [
+          "CMP-CUS-007579-2026-W01",
+          "CMP-CUS-007579-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-008120",
+      "message": "Customer CUS-008120 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-008120-2026-W01', 'CMP-CUS-008120-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-008120",
+        "contact_ids": [
+          "CMP-CUS-008120-2026-W01",
+          "CMP-CUS-008120-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-008244",
+      "message": "Customer CUS-008244 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-008244-2026-W01', 'CMP-CUS-008244-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-008244",
+        "contact_ids": [
+          "CMP-CUS-008244-2026-W01",
+          "CMP-CUS-008244-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-009026",
+      "message": "Customer CUS-009026 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-009026-2026-W01', 'CMP-CUS-009026-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-009026",
+        "contact_ids": [
+          "CMP-CUS-009026-2026-W01",
+          "CMP-CUS-009026-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-009324",
+      "message": "Customer CUS-009324 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-009324-2026-W01', 'CMP-CUS-009324-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-009324",
+        "contact_ids": [
+          "CMP-CUS-009324-2026-W01",
+          "CMP-CUS-009324-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-009400",
+      "message": "Customer CUS-009400 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-009400-2026-W01', 'CMP-CUS-009400-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-009400",
+        "contact_ids": [
+          "CMP-CUS-009400-2026-W01",
+          "CMP-CUS-009400-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-009534",
+      "message": "Customer CUS-009534 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-009534-2026-W01', 'CMP-CUS-009534-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-009534",
+        "contact_ids": [
+          "CMP-CUS-009534-2026-W01",
+          "CMP-CUS-009534-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-011042",
+      "message": "Customer CUS-011042 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-011042-2026-W01', 'CMP-CUS-011042-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-011042",
+        "contact_ids": [
+          "CMP-CUS-011042-2026-W01",
+          "CMP-CUS-011042-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-011079",
+      "message": "Customer CUS-011079 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-011079-2026-W01', 'CMP-CUS-011079-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-011079",
+        "contact_ids": [
+          "CMP-CUS-011079-2026-W01",
+          "CMP-CUS-011079-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-011380",
+      "message": "Customer CUS-011380 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-011380-2026-W01', 'CMP-CUS-011380-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-011380",
+        "contact_ids": [
+          "CMP-CUS-011380-2026-W01",
+          "CMP-CUS-011380-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-011659",
+      "message": "Customer CUS-011659 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-011659-2026-W01', 'CMP-CUS-011659-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-011659",
+        "contact_ids": [
+          "CMP-CUS-011659-2026-W01",
+          "CMP-CUS-011659-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-011920",
+      "message": "Customer CUS-011920 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-011920-2026-W01', 'CMP-CUS-011920-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-011920",
+        "contact_ids": [
+          "CMP-CUS-011920-2026-W01",
+          "CMP-CUS-011920-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-012012",
+      "message": "Customer CUS-012012 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-012012-2026-W01', 'CMP-CUS-012012-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-012012",
+        "contact_ids": [
+          "CMP-CUS-012012-2026-W01",
+          "CMP-CUS-012012-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-012292",
+      "message": "Customer CUS-012292 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-012292-2026-W01', 'CMP-CUS-012292-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-012292",
+        "contact_ids": [
+          "CMP-CUS-012292-2026-W01",
+          "CMP-CUS-012292-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-012655",
+      "message": "Customer CUS-012655 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-012655-2026-W01', 'CMP-CUS-012655-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-012655",
+        "contact_ids": [
+          "CMP-CUS-012655-2026-W01",
+          "CMP-CUS-012655-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-014105",
+      "message": "Customer CUS-014105 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-014105-2026-W01', 'CMP-CUS-014105-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-014105",
+        "contact_ids": [
+          "CMP-CUS-014105-2026-W01",
+          "CMP-CUS-014105-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-015223",
+      "message": "Customer CUS-015223 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-015223-2026-W01', 'CMP-CUS-015223-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-015223",
+        "contact_ids": [
+          "CMP-CUS-015223-2026-W01",
+          "CMP-CUS-015223-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-015566",
+      "message": "Customer CUS-015566 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-015566-2026-W01', 'CMP-CUS-015566-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-015566",
+        "contact_ids": [
+          "CMP-CUS-015566-2026-W01",
+          "CMP-CUS-015566-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-016233",
+      "message": "Customer CUS-016233 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-016233-2026-W01', 'CMP-CUS-016233-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-016233",
+        "contact_ids": [
+          "CMP-CUS-016233-2026-W01",
+          "CMP-CUS-016233-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-017099",
+      "message": "Customer CUS-017099 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-017099-2026-W01', 'CMP-CUS-017099-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-017099",
+        "contact_ids": [
+          "CMP-CUS-017099-2026-W01",
+          "CMP-CUS-017099-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-017299",
+      "message": "Customer CUS-017299 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-017299-2026-W01', 'CMP-CUS-017299-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-017299",
+        "contact_ids": [
+          "CMP-CUS-017299-2026-W01",
+          "CMP-CUS-017299-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-017477",
+      "message": "Customer CUS-017477 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-017477-2026-W01', 'CMP-CUS-017477-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-017477",
+        "contact_ids": [
+          "CMP-CUS-017477-2026-W01",
+          "CMP-CUS-017477-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-017832",
+      "message": "Customer CUS-017832 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-017832-2026-W01', 'CMP-CUS-017832-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-017832",
+        "contact_ids": [
+          "CMP-CUS-017832-2026-W01",
+          "CMP-CUS-017832-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-018079",
+      "message": "Customer CUS-018079 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-018079-2026-W01', 'CMP-CUS-018079-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-018079",
+        "contact_ids": [
+          "CMP-CUS-018079-2026-W01",
+          "CMP-CUS-018079-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-018595",
+      "message": "Customer CUS-018595 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-018595-2026-W01', 'CMP-CUS-018595-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-018595",
+        "contact_ids": [
+          "CMP-CUS-018595-2026-W01",
+          "CMP-CUS-018595-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-019044",
+      "message": "Customer CUS-019044 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-019044-2026-W01', 'CMP-CUS-019044-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-019044",
+        "contact_ids": [
+          "CMP-CUS-019044-2026-W01",
+          "CMP-CUS-019044-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "severity": "CRITICAL",
+      "entity_type": "customer",
+      "entity_id": "CUS-019816",
+      "message": "Customer CUS-019816 has campaign contacts in both TREATMENT and CONTROL groups: ['CMP-CUS-019816-2026-W01', 'CMP-CUS-019816-2026-W02']",
+      "evidence": {
+        "customer_id": "CUS-019816",
+        "contact_ids": [
+          "CMP-CUS-019816-2026-W01",
+          "CMP-CUS-019816-2026-W02"
+        ],
+        "groups": [
+          "TREATMENT",
+          "CONTROL"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-000600",
+      "message": "Customer CUS-000600 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-000600",
+        "contact_ids": [
+          "CMP-CUS-000600-2026-W01",
+          "CMP-CUS-000600-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-001147",
+      "message": "Customer CUS-001147 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-001147",
+        "contact_ids": [
+          "CMP-CUS-001147-2026-W01",
+          "CMP-CUS-001147-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-001288",
+      "message": "Customer CUS-001288 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-001288",
+        "contact_ids": [
+          "CMP-CUS-001288-2026-W01",
+          "CMP-CUS-001288-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-001723",
+      "message": "Customer CUS-001723 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000003']",
+      "evidence": {
+        "customer_id": "CUS-001723",
+        "contact_ids": [
+          "CMP-CUS-001723-2026-W01",
+          "CMP-CUS-001723-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000003",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-002322",
+      "message": "Customer CUS-002322 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-002322",
+        "contact_ids": [
+          "CMP-CUS-002322-2026-W01",
+          "CMP-CUS-002322-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-002396",
+      "message": "Customer CUS-002396 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-002396",
+        "contact_ids": [
+          "CMP-CUS-002396-2026-W01",
+          "CMP-CUS-002396-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-002688",
+      "message": "Customer CUS-002688 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-002688",
+        "contact_ids": [
+          "CMP-CUS-002688-2026-W01",
+          "CMP-CUS-002688-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-003205",
+      "message": "Customer CUS-003205 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-003205",
+        "contact_ids": [
+          "CMP-CUS-003205-2026-W01",
+          "CMP-CUS-003205-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-003492",
+      "message": "Customer CUS-003492 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000002', 'OFF-2026-000003']",
+      "evidence": {
+        "customer_id": "CUS-003492",
+        "contact_ids": [
+          "CMP-CUS-003492-2026-W01",
+          "CMP-CUS-003492-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000003"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-004526",
+      "message": "Customer CUS-004526 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-004526",
+        "contact_ids": [
+          "CMP-CUS-004526-2026-W01",
+          "CMP-CUS-004526-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-005421",
+      "message": "Customer CUS-005421 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-005421",
+        "contact_ids": [
+          "CMP-CUS-005421-2026-W01",
+          "CMP-CUS-005421-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-005870",
+      "message": "Customer CUS-005870 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-005870",
+        "contact_ids": [
+          "CMP-CUS-005870-2026-W01",
+          "CMP-CUS-005870-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-006716",
+      "message": "Customer CUS-006716 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-006716",
+        "contact_ids": [
+          "CMP-CUS-006716-2026-W01",
+          "CMP-CUS-006716-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-007036",
+      "message": "Customer CUS-007036 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-007036",
+        "contact_ids": [
+          "CMP-CUS-007036-2026-W01",
+          "CMP-CUS-007036-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-007077",
+      "message": "Customer CUS-007077 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-007077",
+        "contact_ids": [
+          "CMP-CUS-007077-2026-W01",
+          "CMP-CUS-007077-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-007320",
+      "message": "Customer CUS-007320 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-007320",
+        "contact_ids": [
+          "CMP-CUS-007320-2026-W01",
+          "CMP-CUS-007320-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-007598",
+      "message": "Customer CUS-007598 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-007598",
+        "contact_ids": [
+          "CMP-CUS-007598-2026-W01",
+          "CMP-CUS-007598-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-007611",
+      "message": "Customer CUS-007611 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-007611",
+        "contact_ids": [
+          "CMP-CUS-007611-2026-W01",
+          "CMP-CUS-007611-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-008028",
+      "message": "Customer CUS-008028 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-008028",
+        "contact_ids": [
+          "CMP-CUS-008028-2026-W01",
+          "CMP-CUS-008028-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-008132",
+      "message": "Customer CUS-008132 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-008132",
+        "contact_ids": [
+          "CMP-CUS-008132-2026-W01",
+          "CMP-CUS-008132-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-008604",
+      "message": "Customer CUS-008604 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-008604",
+        "contact_ids": [
+          "CMP-CUS-008604-2026-W01",
+          "CMP-CUS-008604-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-009064",
+      "message": "Customer CUS-009064 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-009064",
+        "contact_ids": [
+          "CMP-CUS-009064-2026-W01",
+          "CMP-CUS-009064-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-009565",
+      "message": "Customer CUS-009565 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-009565",
+        "contact_ids": [
+          "CMP-CUS-009565-2026-W01",
+          "CMP-CUS-009565-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-009733",
+      "message": "Customer CUS-009733 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-009733",
+        "contact_ids": [
+          "CMP-CUS-009733-2026-W01",
+          "CMP-CUS-009733-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-010474",
+      "message": "Customer CUS-010474 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-010474",
+        "contact_ids": [
+          "CMP-CUS-010474-2026-W01",
+          "CMP-CUS-010474-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-010976",
+      "message": "Customer CUS-010976 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000002', 'OFF-2026-000003']",
+      "evidence": {
+        "customer_id": "CUS-010976",
+        "contact_ids": [
+          "CMP-CUS-010976-2026-W01",
+          "CMP-CUS-010976-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000003"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-011224",
+      "message": "Customer CUS-011224 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-011224",
+        "contact_ids": [
+          "CMP-CUS-011224-2026-W01",
+          "CMP-CUS-011224-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-011361",
+      "message": "Customer CUS-011361 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000002', 'OFF-2026-000003']",
+      "evidence": {
+        "customer_id": "CUS-011361",
+        "contact_ids": [
+          "CMP-CUS-011361-2026-W01",
+          "CMP-CUS-011361-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000003"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-011856",
+      "message": "Customer CUS-011856 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-011856",
+        "contact_ids": [
+          "CMP-CUS-011856-2026-W01",
+          "CMP-CUS-011856-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-011905",
+      "message": "Customer CUS-011905 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-011905",
+        "contact_ids": [
+          "CMP-CUS-011905-2026-W01",
+          "CMP-CUS-011905-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-012186",
+      "message": "Customer CUS-012186 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-012186",
+        "contact_ids": [
+          "CMP-CUS-012186-2026-W01",
+          "CMP-CUS-012186-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-013233",
+      "message": "Customer CUS-013233 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-013233",
+        "contact_ids": [
+          "CMP-CUS-013233-2026-W01",
+          "CMP-CUS-013233-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-014073",
+      "message": "Customer CUS-014073 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-014073",
+        "contact_ids": [
+          "CMP-CUS-014073-2026-W01",
+          "CMP-CUS-014073-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-015048",
+      "message": "Customer CUS-015048 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-015048",
+        "contact_ids": [
+          "CMP-CUS-015048-2026-W01",
+          "CMP-CUS-015048-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-015919",
+      "message": "Customer CUS-015919 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-015919",
+        "contact_ids": [
+          "CMP-CUS-015919-2026-W01",
+          "CMP-CUS-015919-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-016006",
+      "message": "Customer CUS-016006 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-016006",
+        "contact_ids": [
+          "CMP-CUS-016006-2026-W01",
+          "CMP-CUS-016006-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-016720",
+      "message": "Customer CUS-016720 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-016720",
+        "contact_ids": [
+          "CMP-CUS-016720-2026-W01",
+          "CMP-CUS-016720-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-018090",
+      "message": "Customer CUS-018090 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-018090",
+        "contact_ids": [
+          "CMP-CUS-018090-2026-W01",
+          "CMP-CUS-018090-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000001",
+          "OFF-2026-000002"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-018489",
+      "message": "Customer CUS-018489 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000002', 'OFF-2026-000003']",
+      "evidence": {
+        "customer_id": "CUS-018489",
+        "contact_ids": [
+          "CMP-CUS-018489-2026-W01",
+          "CMP-CUS-018489-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000003"
+        ]
+      }
+    },
+    {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "severity": "HIGH",
+      "entity_type": "customer",
+      "entity_id": "CUS-018676",
+      "message": "Customer CUS-018676 has multiple retained outcomes with distinct attributed offers: ['OFF-2026-000001', 'OFF-2026-000002']",
+      "evidence": {
+        "customer_id": "CUS-018676",
+        "contact_ids": [
+          "CMP-CUS-018676-2026-W01",
+          "CMP-CUS-018676-2026-W02"
+        ],
+        "offers": [
+          "OFF-2026-000002",
+          "OFF-2026-000001"
+        ]
+      }
+    }
+  ]
+}

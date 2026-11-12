@@ -682,6 +682,43 @@ If delivery timelines slip, features will be trimmed in the following strict ord
   - Saved `PERSUADABLE` voluntary 2026 churners who redeemed and passed the offer save draw: cleared subscription `end_date`/`end_reason`, updated 2026 `churn_outcome` and `latent_customer_state`, and generated post-churn usage and billing rows through `2026-06-30` on isolated per-customer RNG sub-streams.
   - Built `retention_outcome` over the 90-day outcome window (`2026-01-05` to `2026-04-05`) and rebuilt `state_event` across `CUSTOMER`, `SUBSCRIPTION`, and `CAMPAIGN_CONTACT` lifecycles.
 
+## Addendum: Anomalies, detectors, audit and evaluation (Run 2B)
+
+- **Deterministic Anomaly Injection (`src/churnexp/anomalies/inject.py`)**:
+  - Implemented deterministic injection of $N$ records each (`records_per_type = 10` starter, `40` full) across four anomaly types at the end of the generation pipeline:
+    - **Anomaly A (Temporal label leakage)**: Adds 2026 `churn_outcome` rows for customers who churned in 2025, with `churn_date < prediction_date`.
+    - **Anomaly B (Ineligible offer contact)**: Adds `campaign_contact` (and associated `retention_outcome`) for customers active on assignment date who fail one or more eligibility rules (`ER-002` through `ER-005`).
+    - **Anomaly C (Group leakage)**: Adds a second `CONTROL + WITHHELD` contact (`-W02`) for customers who already hold a valid `TREATMENT + SENT` contact.
+    - **Anomaly D (Multi-offer attribution)**: Adds a second `TREATMENT + SENT` contact (`-W02`) and associated `retention_outcome` with a distinct attributed offer for retained customers who redeemed their primary offer.
+  - Injected records strictly ADD rows (never modifying or deleting valid rows), ensuring all 18 structural and data-quality rules continue to pass with zero findings.
+  - Emits isolated ground-truth files `anomalies.csv` and `expected_decisions.csv` under `ground_truth/`.
+
+- **Blind Business-Rule Detectors (`src/churnexp/validation/detectors.py`)**:
+  - Operates strictly on observable database tables without access to `ground_truth/` or latent parameters.
+  - Implements four dedicated detectors:
+    - `DET-A-LABEL-BEFORE-PREDICTION` (`CRITICAL`): Flags churn outcomes with `churn_date < prediction_date`.
+    - `DET-B-INELIGIBLE-OFFER` (`CRITICAL`): Flags contacts failing eligibility rules `ER-001` through `ER-007`.
+    - `DET-C-GROUP-LEAKAGE` (`CRITICAL`): Flags customers assigned to both `TREATMENT` and `CONTROL` arms.
+    - `DET-D-MULTI-ATTRIBUTION` (`HIGH`): Flags customers retained and attributed to multiple distinct offers.
+  - `validate` reports both data-quality and business-rule detector findings, writing `data/<scale>/anomaly_report.json` and appending findings to `validation_summary.md`. Data-quality rules alone dictate exit codes (exit 0 when only business anomalies are present).
+
+- **Ground Truth Audit (`src/churnexp/audit/score.py`)**:
+  - Compares detector findings against `ground_truth/anomalies.csv` on `(rule_id, customer_id)`, computing TP, FP, FN, precision, and recall per detector.
+  - Audits causal estimators by checking whether the unflagged 180-day ITT 95% confidence interval encompasses the true 180-day treatment effect computed from `latent_customer_state.csv`.
+  - CLI subcommand `python -m churnexp audit --scale starter|full` writes `audit_report.json` and `audit_report.md`, exiting with code 0 if all detectors achieve 100% precision and recall, else 1.
+
+- **Evaluation & Causal Lift Estimation (`src/churnexp/evaluation/`)**:
+  - Filters out all customers flagged by detectors prior to analysis.
+  - Evaluates untreated predictive model metrics (180-day and 90-day ROC-AUC, Brier score, decision rule table).
+  - Estimates causal Intention-to-Treat (ITT) lift with two-proportion z-tests and 95% confidence intervals for primary 90-day retention, secondary 180-day retention, and exploratory subgroups (by offer and by stratum).
+  - Computes exact integer-cents financial impact (total offer cost, incremental retained margin, net program impact, and ROI) using margin rules from `eligibility.rules`.
+  - Outputs `model_info.json`, `evaluation_results.json`, and `evaluation_report.md`.
+
+- **End-to-End Orchestration & Reproducibility (`cli.py`, `repro.py`)**:
+  - Added CLI `python -m churnexp all --scale starter|full` to sequentially execute `generate`, `export`, `validate`, `evaluate`, and `audit`.
+  - Updated `repro-check` to enforce identical SHA-256 hashes across isolated runs with `PYTHONHASHSEED=1` and `2` for exported CSVs, SQL, JSON, `anomalies.csv`, `expected_decisions.csv`, `latent_customer_state.csv`, `anomaly_report.json`, `evaluation_results.json`, and `model_info.json`.
+
+
 
 
 

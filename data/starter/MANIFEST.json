@@ -12,9 +12,9 @@
     "offer": 3,
     "eligibility_rule": 7,
     "offer_eligibility_rule": 21,
-    "campaign_contact": 223,
-    "churn_outcome": 1793,
-    "retention_outcome": 223,
+    "campaign_contact": 253,
+    "churn_outcome": 1803,
+    "retention_outcome": 253,
     "state_event": 3165,
     "risk_score": 917,
     "feature_snapshot": 1793,
@@ -26,12 +26,12 @@
       "bytes": 3449168
     },
     "csv/campaign_contact.csv": {
-      "sha256": "142f7638a3e43ff96bfa259e50bb1c68108bde398aa1d6c8a960db49e27915fe",
-      "bytes": 24169
+      "sha256": "cbdb6f55533d58f9209aae36e2c6b31592aac83f381b9d6d392d4651ed8835d4",
+      "bytes": 27482
     },
     "csv/churn_outcome.csv": {
-      "sha256": "ed96d095978555c8df34833bdf374d1d527dc72e1f09580a6c296e479ecd1804",
-      "bytes": 116159
+      "sha256": "860834071a2a50caae31e46137df15851518c53d378ae08d140fb34d79957cf0",
+      "bytes": 116993
     },
     "csv/customer.csv": {
       "sha256": "42fceda91e1115b8cb1ceab10d66b873c9e102d79fcc5604a056209c8c6aa951",
@@ -54,8 +54,8 @@
       "bytes": 500
     },
     "csv/retention_outcome.csv": {
-      "sha256": "05005473360b3f95a79ec413b514e401919b4862093d9234f797fe487f6739f4",
-      "bytes": 20597
+      "sha256": "491d5157b7aaaf533019055523737b697f9a600ef2cb9739c935716896a5a169",
+      "bytes": 23427
     },
     "csv/risk_score.csv": {
       "sha256": "1e632894586b39137d89bbdc94b3dd78a439bc1fe15ed3a635a32abe9fbee7ed",
@@ -86,12 +86,12 @@
       "bytes": 10442479
     },
     "json/campaign_contact.json": {
-      "sha256": "599936029804d71313a2b1a9c8a2318c161766c0183605f8fe9ec7d8f6515c18",
-      "bytes": 72228
+      "sha256": "49851a601ade249940b6478b94142a58b01e1c9ee90ec072eaea7460da7ea2fc",
+      "bytes": 82011
     },
     "json/churn_outcome.json": {
-      "sha256": "f947428601aebdb15a49e762bbbe3dfe2a10740d635c0e1abc5034a0c84a2acb",
-      "bytes": 434958
+      "sha256": "c333c951d2fdc1aabf4d77d3b8ccc9dd9df5cfead100c5234fbda4b0801b442e",
+      "bytes": 437532
     },
     "json/customer.json": {
       "sha256": "011ebcb58b611744534510df5fec1aca08d60f1ec9c7134e9de970eb3c811b10",
@@ -114,8 +114,8 @@
       "bytes": 1431
     },
     "json/retention_outcome.json": {
-      "sha256": "f8511a99963bf794f25340cd98175546e57dcaeb78d7ed26d6cc0c4f227f8354",
-      "bytes": 62780
+      "sha256": "7d851899343435a88e7494944a95c24c67c911c132b221ebb6bb186ae6244294",
+      "bytes": 71288
     },
     "json/risk_score.json": {
       "sha256": "c1844535b86fa68c1402d78ed3fae79d01e15f0fb1441ab4067e4ffba30f4450",
@@ -141,16 +141,28 @@
       "sha256": "a8bb542a7c2c4516c1d235373409a6c5b97a83599d74cb6e098d590ecbc3a9ea",
       "bytes": 4882228
     },
+    "model_info.json": {
+      "sha256": "f75be5ab926c563c1e518c88c37bd1ac0cee0dd16b9f82005a0314a61c965eea",
+      "bytes": 1956
+    },
     "sql/schema.sql": {
       "sha256": "1025bbb340ba5823ab32a29d5438094a73c2a1fbfad9b96249afb1964ea3ea11",
       "bytes": 13346
     },
     "sql/seed.sql": {
-      "sha256": "4fb21d15c1b50d53d942941b6347c4b286ce70e935d6f01820213c1bae4f20db",
-      "bytes": 19374977
+      "sha256": "2807e748872c4161598aa0b005d6909938b5c436f404917fd48744920007c615",
+      "bytes": 19394292
     }
   },
   "ground_truth_files": {
+    "ground_truth/anomalies.csv": {
+      "sha256": "e0af4805ea16bcafe3e37b28022abc148d48af0847abbbc49f3b183a0c7c573b",
+      "bytes": 7761
+    },
+    "ground_truth/expected_decisions.csv": {
+      "sha256": "caa7bd892dd9ae5a8ef70448d545873fdbfa5ea664a41274d2ae8c28d72c52c5",
+      "bytes": 305408
+    },
     "ground_truth/latent_customer_state.csv": {
       "sha256": "925b484849b2948facee5fe60c5731bf6c3aadbbe3741e52c3997c0b6082ca1f",
       "bytes": 26668

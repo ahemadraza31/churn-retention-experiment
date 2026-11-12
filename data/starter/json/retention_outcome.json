@@ -240,6 +240,26 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000105-2026-W02",
+    "contact_id": "CMP-CUS-000105-2026-W02",
+    "customer_id": "CUS-000105",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000108-2026-W01",
+    "contact_id": "CMP-CUS-000108-2026-W01",
+    "customer_id": "CUS-000108",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000113-2026-W01",
     "contact_id": "CMP-CUS-000113-2026-W01",
     "customer_id": "CUS-000113",
@@ -340,6 +360,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000148-2026-W02",
+    "contact_id": "CMP-CUS-000148-2026-W02",
+    "customer_id": "CUS-000148",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000156-2026-W01",
     "contact_id": "CMP-CUS-000156-2026-W01",
     "customer_id": "CUS-000156",
@@ -353,6 +383,16 @@
     "retention_id": "RET-CMP-CUS-000160-2026-W01",
     "contact_id": "CMP-CUS-000160-2026-W01",
     "customer_id": "CUS-000160",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000161-2026-W01",
+    "contact_id": "CMP-CUS-000161-2026-W01",
+    "customer_id": "CUS-000161",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
@@ -510,10 +550,30 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000207-2026-W02",
+    "contact_id": "CMP-CUS-000207-2026-W02",
+    "customer_id": "CUS-000207",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000214-2026-W01",
     "contact_id": "CMP-CUS-000214-2026-W01",
     "customer_id": "CUS-000214",
     "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000214-2026-W02",
+    "contact_id": "CMP-CUS-000214-2026-W02",
+    "customer_id": "CUS-000214",
+    "attributed_offer_id": "OFF-2026-000002",
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
     "retained": 1,
@@ -570,6 +630,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000240-2026-W02",
+    "contact_id": "CMP-CUS-000240-2026-W02",
+    "customer_id": "CUS-000240",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000241-2026-W01",
     "contact_id": "CMP-CUS-000241-2026-W01",
     "customer_id": "CUS-000241",
@@ -610,10 +680,30 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000249-2026-W02",
+    "contact_id": "CMP-CUS-000249-2026-W02",
+    "customer_id": "CUS-000249",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000254-2026-W01",
     "contact_id": "CMP-CUS-000254-2026-W01",
     "customer_id": "CUS-000254",
     "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000254-2026-W02",
+    "contact_id": "CMP-CUS-000254-2026-W02",
+    "customer_id": "CUS-000254",
+    "attributed_offer_id": "OFF-2026-000001",
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
     "retained": 1,
@@ -692,6 +782,16 @@
   {
     "retention_id": "RET-CMP-CUS-000298-2026-W01",
     "contact_id": "CMP-CUS-000298-2026-W01",
+    "customer_id": "CUS-000298",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000298-2026-W02",
+    "contact_id": "CMP-CUS-000298-2026-W02",
     "customer_id": "CUS-000298",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
@@ -1010,6 +1110,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000437-2026-W02",
+    "contact_id": "CMP-CUS-000437-2026-W02",
+    "customer_id": "CUS-000437",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000443-2026-W01",
     "contact_id": "CMP-CUS-000443-2026-W01",
     "customer_id": "CUS-000443",
@@ -1042,6 +1152,16 @@
   {
     "retention_id": "RET-CMP-CUS-000465-2026-W01",
     "contact_id": "CMP-CUS-000465-2026-W01",
+    "customer_id": "CUS-000465",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000465-2026-W02",
+    "contact_id": "CMP-CUS-000465-2026-W02",
     "customer_id": "CUS-000465",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
@@ -1192,6 +1312,16 @@
   {
     "retention_id": "RET-CMP-CUS-000502-2026-W01",
     "contact_id": "CMP-CUS-000502-2026-W01",
+    "customer_id": "CUS-000502",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000502-2026-W02",
+    "contact_id": "CMP-CUS-000502-2026-W02",
     "customer_id": "CUS-000502",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
@@ -1410,6 +1540,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000582-2026-W01",
+    "contact_id": "CMP-CUS-000582-2026-W01",
+    "customer_id": "CUS-000582",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000585-2026-W01",
     "contact_id": "CMP-CUS-000585-2026-W01",
     "customer_id": "CUS-000585",
@@ -1418,6 +1558,26 @@
     "window_end": "2026-04-05",
     "retained": 1,
     "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000587-2026-W01",
+    "contact_id": "CMP-CUS-000587-2026-W01",
+    "customer_id": "CUS-000587",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000597-2026-W01",
+    "contact_id": "CMP-CUS-000597-2026-W01",
+    "customer_id": "CUS-000597",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 0,
+    "churned_at": "2026-03-26"
   },
   {
     "retention_id": "RET-CMP-CUS-000599-2026-W01",
@@ -1430,10 +1590,30 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000599-2026-W02",
+    "contact_id": "CMP-CUS-000599-2026-W02",
+    "customer_id": "CUS-000599",
+    "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000600-2026-W01",
     "contact_id": "CMP-CUS-000600-2026-W01",
     "customer_id": "CUS-000600",
     "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000600-2026-W02",
+    "contact_id": "CMP-CUS-000600-2026-W02",
+    "customer_id": "CUS-000600",
+    "attributed_offer_id": null,
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
     "retained": 1,
@@ -1464,6 +1644,16 @@
     "contact_id": "CMP-CUS-000611-2026-W01",
     "customer_id": "CUS-000611",
     "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000611-2026-W02",
+    "contact_id": "CMP-CUS-000611-2026-W02",
+    "customer_id": "CUS-000611",
+    "attributed_offer_id": "OFF-2026-000002",
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
     "retained": 1,
@@ -1570,6 +1760,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000664-2026-W01",
+    "contact_id": "CMP-CUS-000664-2026-W01",
+    "customer_id": "CUS-000664",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000677-2026-W01",
     "contact_id": "CMP-CUS-000677-2026-W01",
     "customer_id": "CUS-000677",
@@ -1593,6 +1793,16 @@
     "retention_id": "RET-CMP-CUS-000682-2026-W01",
     "contact_id": "CMP-CUS-000682-2026-W01",
     "customer_id": "CUS-000682",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000686-2026-W01",
+    "contact_id": "CMP-CUS-000686-2026-W01",
+    "customer_id": "CUS-000686",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
@@ -1630,6 +1840,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000694-2026-W02",
+    "contact_id": "CMP-CUS-000694-2026-W02",
+    "customer_id": "CUS-000694",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000698-2026-W01",
     "contact_id": "CMP-CUS-000698-2026-W01",
     "customer_id": "CUS-000698",
@@ -1642,6 +1862,16 @@
   {
     "retention_id": "RET-CMP-CUS-000704-2026-W01",
     "contact_id": "CMP-CUS-000704-2026-W01",
+    "customer_id": "CUS-000704",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000704-2026-W02",
+    "contact_id": "CMP-CUS-000704-2026-W02",
     "customer_id": "CUS-000704",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
@@ -1770,6 +2000,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000796-2026-W01",
+    "contact_id": "CMP-CUS-000796-2026-W01",
+    "customer_id": "CUS-000796",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000802-2026-W01",
     "contact_id": "CMP-CUS-000802-2026-W01",
     "customer_id": "CUS-000802",
@@ -1810,6 +2050,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000807-2026-W02",
+    "contact_id": "CMP-CUS-000807-2026-W02",
+    "customer_id": "CUS-000807",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000816-2026-W01",
     "contact_id": "CMP-CUS-000816-2026-W01",
     "customer_id": "CUS-000816",
@@ -1823,6 +2073,16 @@
     "retention_id": "RET-CMP-CUS-000817-2026-W01",
     "contact_id": "CMP-CUS-000817-2026-W01",
     "customer_id": "CUS-000817",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000820-2026-W01",
+    "contact_id": "CMP-CUS-000820-2026-W01",
+    "customer_id": "CUS-000820",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
@@ -1870,6 +2130,16 @@
     "churned_at": null
   },
   {
+    "retention_id": "RET-CMP-CUS-000847-2026-W02",
+    "contact_id": "CMP-CUS-000847-2026-W02",
+    "customer_id": "CUS-000847",
+    "attributed_offer_id": "OFF-2026-000002",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
     "retention_id": "RET-CMP-CUS-000852-2026-W01",
     "contact_id": "CMP-CUS-000852-2026-W01",
     "customer_id": "CUS-000852",
@@ -1882,6 +2152,16 @@
   {
     "retention_id": "RET-CMP-CUS-000859-2026-W01",
     "contact_id": "CMP-CUS-000859-2026-W01",
+    "customer_id": "CUS-000859",
+    "attributed_offer_id": null,
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000859-2026-W02",
+    "contact_id": "CMP-CUS-000859-2026-W02",
     "customer_id": "CUS-000859",
     "attributed_offer_id": null,
     "window_start": "2026-01-05",
@@ -1914,6 +2194,16 @@
     "contact_id": "CMP-CUS-000869-2026-W01",
     "customer_id": "CUS-000869",
     "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000869-2026-W02",
+    "contact_id": "CMP-CUS-000869-2026-W02",
+    "customer_id": "CUS-000869",
+    "attributed_offer_id": "OFF-2026-000002",
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
     "retained": 1,
@@ -2224,6 +2514,16 @@
     "contact_id": "CMP-CUS-000994-2026-W01",
     "customer_id": "CUS-000994",
     "attributed_offer_id": "OFF-2026-000001",
+    "window_start": "2026-01-05",
+    "window_end": "2026-04-05",
+    "retained": 1,
+    "churned_at": null
+  },
+  {
+    "retention_id": "RET-CMP-CUS-000996-2026-W01",
+    "contact_id": "CMP-CUS-000996-2026-W01",
+    "customer_id": "CUS-000996",
+    "attributed_offer_id": null,
     "window_start": "2026-01-05",
     "window_end": "2026-04-05",
     "retained": 1,

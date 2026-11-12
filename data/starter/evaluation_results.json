@@ -1,0 +1,557 @@
+{
+  "exclusions": {
+    "counts_by_detector": {
+      "DET-A-LABEL-BEFORE-PREDICTION": 10,
+      "DET-B-INELIGIBLE-OFFER": 10,
+      "DET-C-GROUP-LEAKAGE": 10,
+      "DET-D-MULTI-ATTRIBUTION": 10
+    },
+    "excluded_customer_ids": [
+      "CUS-000050",
+      "CUS-000094",
+      "CUS-000098",
+      "CUS-000105",
+      "CUS-000108",
+      "CUS-000118",
+      "CUS-000148",
+      "CUS-000161",
+      "CUS-000205",
+      "CUS-000207",
+      "CUS-000214",
+      "CUS-000240",
+      "CUS-000249",
+      "CUS-000254",
+      "CUS-000298",
+      "CUS-000437",
+      "CUS-000441",
+      "CUS-000465",
+      "CUS-000502",
+      "CUS-000582",
+      "CUS-000587",
+      "CUS-000597",
+      "CUS-000599",
+      "CUS-000600",
+      "CUS-000611",
+      "CUS-000652",
+      "CUS-000664",
+      "CUS-000686",
+      "CUS-000694",
+      "CUS-000704",
+      "CUS-000762",
+      "CUS-000785",
+      "CUS-000796",
+      "CUS-000803",
+      "CUS-000807",
+      "CUS-000820",
+      "CUS-000847",
+      "CUS-000859",
+      "CUS-000869",
+      "CUS-000996"
+    ],
+    "total_unique_excluded_customers": 40
+  },
+  "experiment": {
+    "correlation_vs_incremental": {
+      "a_treatment_all_retention_rate_180d": 0.978261,
+      "a_treatment_all_retention_rate_90d": 0.98913,
+      "b_redeemers_retention_rate_180d": 0.962963,
+      "b_redeemers_retention_rate_90d": 1.0,
+      "c_control_retention_rate_180d": 0.945946,
+      "c_control_retention_rate_90d": 0.963964,
+      "d_attributed_retained_customers": 27,
+      "e_incremental_retained_customers_180d": 2.972973,
+      "e_incremental_retained_customers_90d": 2.315315,
+      "n_redeemers": 27,
+      "retained_redeemers_180d": 26,
+      "retained_redeemers_90d": 27,
+      "why_not_causal": "Metrics (a), (b), and (d) are not causal because customers who respond and redeem are self-selected and include many customers who would have stayed without any offer, whereas only the randomized ITT comparison against the withheld control group (e) isolates true incremental saves."
+    },
+    "primary_90d": {
+      "absolute_lift": 0.025166,
+      "absolute_lift_pp": 2.516647,
+      "ci_95_high": 0.0658,
+      "ci_95_high_pp": 6.580032,
+      "ci_95_low": -0.015467,
+      "ci_95_low_pp": -1.546738,
+      "incremental_retained": 2.315315,
+      "incremental_retained_ci_high": 6.053629,
+      "incremental_retained_ci_low": -1.422999,
+      "n_control": 111,
+      "n_treatment": 92,
+      "nnt": 39.735409,
+      "p_value": 0.249478,
+      "rate_control": 0.963964,
+      "rate_treatment": 0.98913,
+      "relative_lift": 0.026107,
+      "retained_control": 107,
+      "retained_treatment": 91,
+      "se_unpooled": 0.020732,
+      "z_stat_pooled": 1.151617
+    },
+    "randomization_check": {
+      "any_flagged": true,
+      "covariate_balance": {
+        "monthly_price_cents": {
+          "flagged": false,
+          "mean_control": 1800.801802,
+          "mean_treatment": 1738.130435,
+          "smd": 0.065672
+        },
+        "risk_score": {
+          "flagged": false,
+          "mean_control": 0.052484,
+          "mean_treatment": 0.051561,
+          "smd": 0.034001
+        },
+        "tenure_days": {
+          "flagged": true,
+          "mean_control": 596.900901,
+          "mean_treatment": 631.771739,
+          "smd": 0.135239
+        }
+      },
+      "stratum_arm_sizes": {
+        "HIGH": {
+          "CONTROL": 47,
+          "TREATMENT": 39
+        },
+        "MEDIUM": {
+          "CONTROL": 64,
+          "TREATMENT": 53
+        }
+      }
+    },
+    "secondary_180d": {
+      "absolute_lift": 0.032315,
+      "absolute_lift_pp": 3.231492,
+      "ci_95_high": 0.083866,
+      "ci_95_high_pp": 8.38664,
+      "ci_95_low": -0.019237,
+      "ci_95_low_pp": -1.923655,
+      "incremental_retained": 2.972973,
+      "incremental_retained_ci_high": 7.715708,
+      "incremental_retained_ci_low": -1.769763,
+      "n_control": 111,
+      "n_treatment": 92,
+      "nnt": 30.945455,
+      "p_value": 0.238798,
+      "rate_control": 0.945946,
+      "rate_treatment": 0.978261,
+      "relative_lift": 0.034161,
+      "retained_control": 105,
+      "retained_treatment": 90,
+      "se_unpooled": 0.026302,
+      "z_stat_pooled": 1.177997
+    },
+    "subgroups": {
+      "by_offer": {
+        "OFF-2026-000001": {
+          "exploratory": true,
+          "primary_90d": {
+            "absolute_lift": 0.015873,
+            "absolute_lift_pp": 1.587302,
+            "ci_95_high": 0.046736,
+            "ci_95_high_pp": 4.673566,
+            "ci_95_low": -0.01499,
+            "ci_95_low_pp": -1.498963,
+            "incremental_retained": 0.793651,
+            "incremental_retained_ci_high": 2.336783,
+            "incremental_retained_ci_low": -0.749481,
+            "n_control": 63,
+            "n_treatment": 50,
+            "nnt": 63.0,
+            "p_value": 0.370873,
+            "rate_control": 0.984127,
+            "rate_treatment": 1.0,
+            "relative_lift": 0.016129,
+            "retained_control": 62,
+            "retained_treatment": 50,
+            "se_unpooled": 0.015747,
+            "z_stat_pooled": 0.894839
+          },
+          "secondary_180d": {
+            "absolute_lift": 0.011746,
+            "absolute_lift_pp": 1.174603,
+            "ci_95_high": 0.069885,
+            "ci_95_high_pp": 6.988493,
+            "ci_95_low": -0.046393,
+            "ci_95_low_pp": -4.639287,
+            "incremental_retained": 0.587302,
+            "incremental_retained_ci_high": 3.494246,
+            "incremental_retained_ci_low": -2.319643,
+            "n_control": 63,
+            "n_treatment": 50,
+            "nnt": 85.135135,
+            "p_value": 0.699667,
+            "rate_control": 0.968254,
+            "rate_treatment": 0.98,
+            "relative_lift": 0.012131,
+            "retained_control": 61,
+            "retained_treatment": 49,
+            "se_unpooled": 0.029663,
+            "z_stat_pooled": 0.38577
+          }
+        },
+        "OFF-2026-000002": {
+          "exploratory": true,
+          "primary_90d": {
+            "absolute_lift": 0.041408,
+            "absolute_lift_pp": 4.140787,
+            "ci_95_high": 0.126361,
+            "ci_95_high_pp": 12.636054,
+            "ci_95_low": -0.043545,
+            "ci_95_low_pp": -4.354481,
+            "incremental_retained": 1.73913,
+            "incremental_retained_ci_high": 5.307143,
+            "incremental_retained_ci_low": -1.828882,
+            "n_control": 46,
+            "n_treatment": 42,
+            "nnt": 24.15,
+            "p_value": 0.351622,
+            "rate_control": 0.934783,
+            "rate_treatment": 0.97619,
+            "relative_lift": 0.044297,
+            "retained_control": 43,
+            "retained_treatment": 41,
+            "se_unpooled": 0.043344,
+            "z_stat_pooled": 0.931447
+          },
+          "secondary_180d": {
+            "absolute_lift": 0.063147,
+            "absolute_lift_pp": 6.3147,
+            "ci_95_high": 0.156721,
+            "ci_95_high_pp": 15.672119,
+            "ci_95_low": -0.030427,
+            "ci_95_low_pp": -3.042719,
+            "incremental_retained": 2.652174,
+            "incremental_retained_ci_high": 6.58229,
+            "incremental_retained_ci_low": -1.277942,
+            "n_control": 46,
+            "n_treatment": 42,
+            "nnt": 15.836066,
+            "p_value": 0.201205,
+            "rate_control": 0.913043,
+            "rate_treatment": 0.97619,
+            "relative_lift": 0.069161,
+            "retained_control": 42,
+            "retained_treatment": 41,
+            "se_unpooled": 0.047743,
+            "z_stat_pooled": 1.278126
+          }
+        },
+        "OFF-2026-000003": {
+          "exploratory": true,
+          "primary_90d": {
+            "absolute_lift": -1.0,
+            "absolute_lift_pp": -100.0,
+            "ci_95_high": -1.0,
+            "ci_95_high_pp": -100.0,
+            "ci_95_low": -1.0,
+            "ci_95_low_pp": -100.0,
+            "incremental_retained": -0.0,
+            "incremental_retained_ci_high": -0.0,
+            "incremental_retained_ci_low": -0.0,
+            "n_control": 2,
+            "n_treatment": 0,
+            "nnt": null,
+            "p_value": 0.0,
+            "rate_control": 1.0,
+            "rate_treatment": 0.0,
+            "relative_lift": -1.0,
+            "retained_control": 2,
+            "retained_treatment": 0,
+            "se_unpooled": 0.0,
+            "z_stat_pooled": 0.0
+          },
+          "secondary_180d": {
+            "absolute_lift": -1.0,
+            "absolute_lift_pp": -100.0,
+            "ci_95_high": -1.0,
+            "ci_95_high_pp": -100.0,
+            "ci_95_low": -1.0,
+            "ci_95_low_pp": -100.0,
+            "incremental_retained": -0.0,
+            "incremental_retained_ci_high": -0.0,
+            "incremental_retained_ci_low": -0.0,
+            "n_control": 2,
+            "n_treatment": 0,
+            "nnt": null,
+            "p_value": 0.0,
+            "rate_control": 1.0,
+            "rate_treatment": 0.0,
+            "relative_lift": -1.0,
+            "retained_control": 2,
+            "retained_treatment": 0,
+            "se_unpooled": 0.0,
+            "z_stat_pooled": 0.0
+          }
+        }
+      },
+      "by_stratum": {
+        "HIGH": {
+          "exploratory": true,
+          "primary_90d": {
+            "absolute_lift": 0.021277,
+            "absolute_lift_pp": 2.12766,
+            "ci_95_high": 0.062532,
+            "ci_95_high_pp": 6.253194,
+            "ci_95_low": -0.019979,
+            "ci_95_low_pp": -1.997875,
+            "incremental_retained": 0.829787,
+            "incremental_retained_ci_high": 2.438746,
+            "incremental_retained_ci_low": -0.779171,
+            "n_control": 47,
+            "n_treatment": 39,
+            "nnt": 47.0,
+            "p_value": 0.359526,
+            "rate_control": 0.978723,
+            "rate_treatment": 1.0,
+            "relative_lift": 0.021739,
+            "retained_control": 46,
+            "retained_treatment": 39,
+            "se_unpooled": 0.021049,
+            "z_stat_pooled": 0.916269
+          },
+          "secondary_180d": {
+            "absolute_lift": 0.016912,
+            "absolute_lift_pp": 1.691217,
+            "ci_95_high": 0.09301,
+            "ci_95_high_pp": 9.300988,
+            "ci_95_low": -0.059186,
+            "ci_95_low_pp": -5.918554,
+            "incremental_retained": 0.659574,
+            "incremental_retained_ci_high": 3.627385,
+            "incremental_retained_ci_low": -2.308236,
+            "n_control": 47,
+            "n_treatment": 39,
+            "nnt": 59.129032,
+            "p_value": 0.67045,
+            "rate_control": 0.957447,
+            "rate_treatment": 0.974359,
+            "relative_lift": 0.017664,
+            "retained_control": 45,
+            "retained_treatment": 38,
+            "se_unpooled": 0.038826,
+            "z_stat_pooled": 0.42553
+          }
+        },
+        "MEDIUM": {
+          "exploratory": true,
+          "primary_90d": {
+            "absolute_lift": 0.028007,
+            "absolute_lift_pp": 2.800708,
+            "ci_95_high": 0.091438,
+            "ci_95_high_pp": 9.143762,
+            "ci_95_low": -0.035423,
+            "ci_95_low_pp": -3.542346,
+            "incremental_retained": 1.484375,
+            "incremental_retained_ci_high": 4.846194,
+            "incremental_retained_ci_low": -1.877444,
+            "n_control": 64,
+            "n_treatment": 53,
+            "nnt": 35.705263,
+            "p_value": 0.406602,
+            "rate_control": 0.953125,
+            "rate_treatment": 0.981132,
+            "relative_lift": 0.029384,
+            "retained_control": 61,
+            "retained_treatment": 52,
+            "se_unpooled": 0.032363,
+            "z_stat_pooled": 0.829888
+          },
+          "secondary_180d": {
+            "absolute_lift": 0.043632,
+            "absolute_lift_pp": 4.363208,
+            "ci_95_high": 0.113337,
+            "ci_95_high_pp": 11.333653,
+            "ci_95_low": -0.026072,
+            "ci_95_low_pp": -2.607238,
+            "incremental_retained": 2.3125,
+            "incremental_retained_ci_high": 6.006836,
+            "incremental_retained_ci_low": -1.381836,
+            "n_control": 64,
+            "n_treatment": 53,
+            "nnt": 22.918919,
+            "p_value": 0.245424,
+            "rate_control": 0.9375,
+            "rate_treatment": 0.981132,
+            "relative_lift": 0.046541,
+            "retained_control": 60,
+            "retained_treatment": 52,
+            "se_unpooled": 0.035564,
+            "z_stat_pooled": 1.161536
+          }
+        }
+      },
+      "exploratory": true
+    },
+    "unit_count": 203
+  },
+  "financial": {
+    "avg_expected_margin_cents": 6462,
+    "expected_margin_months": 6,
+    "headline_180d": {
+      "avg_expected_margin_cents": 6462,
+      "benefit_cents": 19211,
+      "benefit_ci_high_cents": 49859,
+      "benefit_ci_low_cents": -11436,
+      "ci_includes_zero": true,
+      "cost_per_incremental_retained_cents": 9678,
+      "horizon": "180d",
+      "incremental_retained_ci_high": 7.715672,
+      "incremental_retained_ci_low": -1.769804,
+      "incremental_retained_customers": 2.97298,
+      "is_negative": true,
+      "net_impact_cents": -9562,
+      "net_impact_ci_high_cents": 21086,
+      "net_impact_ci_low_cents": -40209,
+      "plain_statement": "For the 180d horizon, point-estimate net financial impact is negative (-9562 cents) and the 95% confidence interval [-40209, 21086] cents includes zero.",
+      "realized_cost_cents": 28773
+    },
+    "primary_90d": {
+      "avg_expected_margin_cents": 6462,
+      "benefit_cents": 14961,
+      "benefit_ci_high_cents": 39118,
+      "benefit_ci_low_cents": -9195,
+      "ci_includes_zero": true,
+      "cost_per_incremental_retained_cents": 12427,
+      "horizon": "90d",
+      "incremental_retained_ci_high": 6.0536,
+      "incremental_retained_ci_low": -1.422964,
+      "incremental_retained_customers": 2.315272,
+      "is_negative": true,
+      "net_impact_cents": -13812,
+      "net_impact_ci_high_cents": 10345,
+      "net_impact_ci_low_cents": -37968,
+      "plain_statement": "For the 90d horizon, point-estimate net financial impact is negative (-13812 cents) and the 95% confidence interval [-37968, 10345] cents includes zero.",
+      "realized_cost_cents": 28773
+    },
+    "realized_cost_cents": 28773,
+    "redeemed_retained_90d_count": 27
+  },
+  "model_metrics": {
+    "cohort": "untreated_2026_unflagged",
+    "cutoff_90d_date": "2026-04-05",
+    "in_sample_model_info": {
+      "feature_names": [
+        "usage_minutes_3m",
+        "usage_minutes_prev3m",
+        "usage_ratio_3m_vs_prev3m",
+        "last_month_active_days",
+        "usage_slope_6m",
+        "sessions_6m",
+        "failed_payments_6m",
+        "days_since_last_failed_payment",
+        "outstanding_balance_cents",
+        "support_cases_6m",
+        "high_severity_cases_6m",
+        "cancellation_inquiries_6m",
+        "tenure_days",
+        "monthly_price_cents",
+        "plan_downgrade_6m",
+        "is_seasonal",
+        "plan_tier_BASIC",
+        "plan_tier_STANDARD",
+        "plan_tier_PREMIUM",
+        "segment_CONSUMER",
+        "segment_SMB",
+        "channel_ORGANIC",
+        "channel_PAID",
+        "channel_PARTNER",
+        "channel_REFERRAL"
+      ],
+      "in_sample_roc_auc": 0.747518,
+      "label_type": "in_sample",
+      "model_version": "logreg-v1",
+      "top_10_coefficients": [
+        {
+          "coefficient": -0.543915,
+          "feature": "last_month_active_days",
+          "sign": "-"
+        },
+        {
+          "coefficient": -0.525485,
+          "feature": "channel_PARTNER",
+          "sign": "-"
+        },
+        {
+          "coefficient": 0.503076,
+          "feature": "channel_ORGANIC",
+          "sign": "+"
+        },
+        {
+          "coefficient": -0.371651,
+          "feature": "is_seasonal",
+          "sign": "-"
+        },
+        {
+          "coefficient": 0.311548,
+          "feature": "sessions_6m",
+          "sign": "+"
+        },
+        {
+          "coefficient": -0.28377,
+          "feature": "usage_minutes_3m",
+          "sign": "-"
+        },
+        {
+          "coefficient": -0.25292,
+          "feature": "tenure_days",
+          "sign": "-"
+        },
+        {
+          "coefficient": 0.252627,
+          "feature": "channel_PAID",
+          "sign": "+"
+        },
+        {
+          "coefficient": 0.239746,
+          "feature": "support_cases_6m",
+          "sign": "+"
+        },
+        {
+          "coefficient": -0.239028,
+          "feature": "channel_REFERRAL",
+          "sign": "-"
+        }
+      ],
+      "train_as_of": "2025-07-01",
+      "training_positives": 30,
+      "training_rows": 876
+    },
+    "label_180d": {
+      "base_rate": 0.042767,
+      "brier_score": 0.041714,
+      "high_band_decision_rule": {
+        "f1": 0.066116,
+        "fn": 30,
+        "fp": 83,
+        "precision": 0.045977,
+        "precision_lift": 1.075051,
+        "recall": 0.117647,
+        "tn": 678,
+        "tp": 4
+      },
+      "n": 795,
+      "positives": 34,
+      "roc_auc": 0.514725
+    },
+    "label_90d": {
+      "base_rate": 0.021384,
+      "high_band_decision_rule": {
+        "f1": 0.038462,
+        "fn": 15,
+        "fp": 85,
+        "precision": 0.022989,
+        "precision_lift": 1.075051,
+        "recall": 0.117647,
+        "tn": 693,
+        "tp": 2
+      },
+      "n": 795,
+      "positives": 17,
+      "roc_auc": 0.521246
+    }
+  },
+  "scale": "starter"
+}

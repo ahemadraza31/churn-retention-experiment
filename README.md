@@ -57,6 +57,18 @@ python -m churnexp validate --scale full
 # Verify two-run subprocess reproducibility (PYTHONHASHSEED=1 vs 2)
 python -m churnexp repro-check --scale starter
 python -m churnexp repro-check --scale full
+
+# Evaluate model metrics, causal ITT lift, and financial impact
+python -m churnexp evaluate --scale starter
+python -m churnexp evaluate --scale full
+
+# Run ground truth audit against detectors and causal effects
+python -m churnexp audit --scale starter
+python -m churnexp audit --scale full
+
+# Run end-to-end pipeline (generate, export, validate, evaluate, audit)
+python -m churnexp all --scale starter
+python -m churnexp all --scale full
 ```
 
 ---

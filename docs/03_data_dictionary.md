@@ -348,4 +348,56 @@ Evaluated at `assignment_date = 2026-01-05` for all customers scored at $P = \te
   - `passed = 1` iff `offer_cost_cents <= max_allowed_cents`.
 - **Simulation Note**: In Run 2A, only `PERSUADABLE` voluntary churners who are `TREATMENT + SENT`, respond, redeem, and pass the offer save draw have their 2026 churn prevented (`saved_by_campaign = 1`); `SLEEPING_DOG` customers do not get induced churn in this run.
 
+---
+
+### Ground Truth Files (Run 2B)
+
+Stored strictly outside the SQLite database under `ground_truth/` and accessible only by the audit module:
+
+1. **`anomalies.csv`**:
+   - `anomaly_id`: Unique identifier (`ANOM-A-001`, `ANOM-B-001`, etc.)
+   - `anomaly_type`: `A`, `B`, `C`, or `D`
+   - `detector_rule_id`: Expected detector code (`DET-A-LABEL-BEFORE-PREDICTION`, `DET-B-INELIGIBLE-OFFER`, `DET-C-GROUP-LEAKAGE`, `DET-D-MULTI-ATTRIBUTION`)
+   - `customer_id`: Target customer ID (`CUS-######`)
+   - `primary_key_table`: Injected entity table (`churn_outcome` or `campaign_contact`)
+   - `primary_key_value`: Primary key value of the injected record
+   - `description`: Explanatory text describing the injected condition
+
+2. **`expected_decisions.csv`**:
+   - `customer_id`: Evaluated candidate customer (`CUS-######`)
+   - `as_of_date`: Evaluation date (`2026-01-05`)
+   - `rule_id`: Evaluated rule code (`ER-001` through `ER-007`)
+   - `offer_id`: Evaluated offer ID for offer-specific rules (`ER-007`), or `NULL` for customer-level rules (`ER-001`..`ER-006`)
+   - `passed`: `1` if the candidate passes the rule, else `0`
+
+3. **`latent_customer_state.csv`**:
+   - `customer_id`: Unique customer identifier (`CUS-######`)
+   - `hidden_segment`: Latent behavioural segment (`PERSUADABLE`, `SURE_THING`, `LOST_CAUSE`, `SLEEPING_DOG`)
+   - `untreated_churn_date`: Counterfactual churn date if no retention campaign was run (`YYYY-MM-DD` or `NULL`)
+   - `treated_churn_date`: Counterfactual churn date under treated condition (`YYYY-MM-DD` or `NULL`)
+   - `true_effect_flag`: `1` if churn was averted due to treatment, `0` if contacted but churn was not averted, or `NULL` if not contacted
+
+---
+
+### Blind Business-Rule Detectors (Run 2B)
+
+Operate strictly on observable database tables without access to `ground_truth/` or latent state:
+
+- **`DET-A-LABEL-BEFORE-PREDICTION`** (`CRITICAL`): Identifies temporal leakage where a 2026 `churn_outcome` has `churned = 1` with `churn_date < prediction_date`.
+- **`DET-B-INELIGIBLE-OFFER`** (`CRITICAL`): Identifies `campaign_contact` records assigned to customers who fail one or more eligibility rules (`ER-001`..`ER-007`) as of the assignment date.
+- **`DET-C-GROUP-LEAKAGE`** (`CRITICAL`): Identifies customers assigned to both `TREATMENT` and `CONTROL` campaign contacts.
+- **`DET-D-MULTI-ATTRIBUTION`** (`HIGH`): Identifies customers who have multiple retained outcomes attributed to distinct non-null offers.
+
+---
+
+### Evaluation & Audit Artifacts (Run 2B)
+
+- `data/<scale>/model_info.json`: Model version, training sample size, in-sample ROC-AUC, feature names, and top 10 standardized coefficients.
+- `data/<scale>/anomaly_report.json`: Machine-readable findings from blind detectors.
+- `data/<scale>/evaluation_results.json`: Clean-cohort model metrics (180d, 90d), ITT lift (primary 90d, secondary 180d, exploratory subgroups), and integer-cents financial impact.
+- `data/<scale>/evaluation_report.md`: Formatted executive decision report with ITT lift and ROI tables.
+- `data/<scale>/audit_report.json`: Ground truth audit results reporting TP, FP, FN, precision, recall, and estimator confidence interval coverage.
+- `data/<scale>/audit_report.md`: Markdown ground truth audit report.
+
+
 

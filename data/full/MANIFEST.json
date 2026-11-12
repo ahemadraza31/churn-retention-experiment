@@ -12,9 +12,9 @@
     "offer": 3,
     "eligibility_rule": 7,
     "offer_eligibility_rule": 21,
-    "campaign_contact": 4867,
-    "churn_outcome": 36101,
-    "retention_outcome": 4867,
+    "campaign_contact": 4987,
+    "churn_outcome": 36141,
+    "retention_outcome": 4987,
     "state_event": 64021,
     "risk_score": 18363,
     "feature_snapshot": 36089,
@@ -26,12 +26,12 @@
       "bytes": 69548499
     },
     "csv/campaign_contact.csv": {
-      "sha256": "6a16eaec56976d8ed8dc36860d8c9aafec491e96f28fe3d9d12f0655566f1812",
-      "bytes": 524732
+      "sha256": "766b187915f2755347df302f7236ee6e7a252f25756e7480f040e36179f81c54",
+      "bytes": 537948
     },
     "csv/churn_outcome.csv": {
-      "sha256": "027dad2676d4a81cf7caa2b683f5a0b3a8e35a344d0854c8fd9fa8591aa17c2a",
-      "bytes": 2338743
+      "sha256": "f803e3d208a869dc22d78e6d8b100e3ff7beafb50b2d19676685794b9a67db8f",
+      "bytes": 2342083
     },
     "csv/customer.csv": {
       "sha256": "24f3e5c13f7d6ef22d53cac855ae0635303c9f740c8c7d2c10fa04e26af7edc3",
@@ -54,8 +54,8 @@
       "bytes": 500
     },
     "csv/retention_outcome.csv": {
-      "sha256": "9e2510c44d508c803f4c4946815d0859c382363ebab84e58cb68b1c1e50011e9",
-      "bytes": 447538
+      "sha256": "4c6ebba747cf0a174d2e1a2b383cce71deba96d76b9e629c8587520bcbcb54ad",
+      "bytes": 458858
     },
     "csv/risk_score.csv": {
       "sha256": "aba0005aa58744e7f5b51bfb177e1758ba355db8ae5d0a9f2616c5f72fb9a01c",
@@ -80,9 +80,21 @@
     "csv/usage_snapshot.csv": {
       "sha256": "048363f46bfa6923d6cfc10c719b5887221f1244f3fa3013f1229cfc8bfab7ed",
       "bytes": 31634693
+    },
+    "model_info.json": {
+      "sha256": "7346e9300be534308ffc2164353f01e5b8b219ae1609eb03f77b7fb488ae7258",
+      "bytes": 1980
     }
   },
   "ground_truth_files": {
+    "ground_truth/anomalies.csv": {
+      "sha256": "1dd10287fad930e9401ce3b47e216d5b884d5c972b797746ab92e57a69ee9cc5",
+      "bytes": 30741
+    },
+    "ground_truth/expected_decisions.csv": {
+      "sha256": "158ab63777f449b6ce3bd2a9c4dad1314181f8177cfbf8c25e486cdb6f533a6b",
+      "bytes": 6114926
+    },
     "ground_truth/latent_customer_state.csv": {
       "sha256": "8a4f907c8770997f5cf262813ceff158182d59be6d396fe3ee6b7545486b5eda",
       "bytes": 533368

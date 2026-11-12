@@ -1,0 +1,87 @@
+{
+  "model_version": "logreg-v1",
+  "label_type": "in_sample",
+  "train_as_of": "2025-07-01",
+  "training_rows": 17726,
+  "training_positives": 723,
+  "in_sample_roc_auc": 0.655942,
+  "feature_names": [
+    "usage_minutes_3m",
+    "usage_minutes_prev3m",
+    "usage_ratio_3m_vs_prev3m",
+    "last_month_active_days",
+    "usage_slope_6m",
+    "sessions_6m",
+    "failed_payments_6m",
+    "days_since_last_failed_payment",
+    "outstanding_balance_cents",
+    "support_cases_6m",
+    "high_severity_cases_6m",
+    "cancellation_inquiries_6m",
+    "tenure_days",
+    "monthly_price_cents",
+    "plan_downgrade_6m",
+    "is_seasonal",
+    "plan_tier_BASIC",
+    "plan_tier_STANDARD",
+    "plan_tier_PREMIUM",
+    "segment_CONSUMER",
+    "segment_SMB",
+    "channel_ORGANIC",
+    "channel_PAID",
+    "channel_PARTNER",
+    "channel_REFERRAL"
+  ],
+  "top_10_coefficients": [
+    {
+      "feature": "segment_CONSUMER",
+      "coefficient": -0.8450480514184618,
+      "sign": "-"
+    },
+    {
+      "feature": "channel_REFERRAL",
+      "coefficient": -0.8363157892081057,
+      "sign": "-"
+    },
+    {
+      "feature": "segment_SMB",
+      "coefficient": -0.7168875261883098,
+      "sign": "-"
+    },
+    {
+      "feature": "plan_tier_BASIC",
+      "coefficient": -0.5914919604132064,
+      "sign": "-"
+    },
+    {
+      "feature": "plan_tier_STANDARD",
+      "coefficient": -0.5250662942749255,
+      "sign": "-"
+    },
+    {
+      "feature": "plan_tier_PREMIUM",
+      "coefficient": -0.4453773229186386,
+      "sign": "-"
+    },
+    {
+      "feature": "channel_ORGANIC",
+      "coefficient": -0.43499076136506437,
+      "sign": "-"
+    },
+    {
+      "feature": "last_month_active_days",
+      "coefficient": -0.38309074278023725,
+      "sign": "-"
+    },
+    {
+      "feature": "channel_PARTNER",
+      "coefficient": -0.3103278249899317,
+      "sign": "-"
+    },
+    {
+      "feature": "monthly_price_cents",
+      "coefficient": -0.2498540320828558,
+      "sign": "-"
+    }
+  ]
+}

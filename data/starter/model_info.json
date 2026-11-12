@@ -1,0 +1,87 @@
+{
+  "model_version": "logreg-v1",
+  "label_type": "in_sample",
+  "train_as_of": "2025-07-01",
+  "training_rows": 876,
+  "training_positives": 30,
+  "in_sample_roc_auc": 0.747518,
+  "feature_names": [
+    "usage_minutes_3m",
+    "usage_minutes_prev3m",
+    "usage_ratio_3m_vs_prev3m",
+    "last_month_active_days",
+    "usage_slope_6m",
+    "sessions_6m",
+    "failed_payments_6m",
+    "days_since_last_failed_payment",
+    "outstanding_balance_cents",
+    "support_cases_6m",
+    "high_severity_cases_6m",
+    "cancellation_inquiries_6m",
+    "tenure_days",
+    "monthly_price_cents",
+    "plan_downgrade_6m",
+    "is_seasonal",
+    "plan_tier_BASIC",
+    "plan_tier_STANDARD",
+    "plan_tier_PREMIUM",
+    "segment_CONSUMER",
+    "segment_SMB",
+    "channel_ORGANIC",
+    "channel_PAID",
+    "channel_PARTNER",
+    "channel_REFERRAL"
+  ],
+  "top_10_coefficients": [
+    {
+      "feature": "last_month_active_days",
+      "coefficient": -0.5439147409348031,
+      "sign": "-"
+    },
+    {
+      "feature": "channel_PARTNER",
+      "coefficient": -0.5254845872794986,
+      "sign": "-"
+    },
+    {
+      "feature": "channel_ORGANIC",
+      "coefficient": 0.5030760471017214,
+      "sign": "+"
+    },
+    {
+      "feature": "is_seasonal",
+      "coefficient": -0.37165129747490416,
+      "sign": "-"
+    },
+    {
+      "feature": "sessions_6m",
+      "coefficient": 0.3115476944369162,
+      "sign": "+"
+    },
+    {
+      "feature": "usage_minutes_3m",
+      "coefficient": -0.28376998765966677,
+      "sign": "-"
+    },
+    {
+      "feature": "tenure_days",
+      "coefficient": -0.2529202424525941,
+      "sign": "-"
+    },
+    {
+      "feature": "channel_PAID",
+      "coefficient": 0.25262690467685445,
+      "sign": "+"
+    },
+    {
+      "feature": "support_cases_6m",
+      "coefficient": 0.2397457028905725,
+      "sign": "+"
+    },
+    {
+      "feature": "channel_REFERRAL",
+      "coefficient": -0.23902774968759205,
+      "sign": "-"
+    }
+  ]
+}

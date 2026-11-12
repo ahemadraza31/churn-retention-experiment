@@ -1,0 +1,41 @@
+anomaly_id,anomaly_type,detector_rule_id,customer_id,primary_key_table,primary_key_value,description
+ANOM-A-001,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000803,churn_outcome,CHURN-CUS-000803-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000803-2026 has churn_date=2025-10-27 < prediction_date=2026-01-01
+ANOM-A-002,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000785,churn_outcome,CHURN-CUS-000785-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000785-2026 has churn_date=2025-08-12 < prediction_date=2026-01-01
+ANOM-A-003,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000050,churn_outcome,CHURN-CUS-000050-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000050-2026 has churn_date=2025-09-08 < prediction_date=2026-01-01
+ANOM-A-004,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000652,churn_outcome,CHURN-CUS-000652-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000652-2026 has churn_date=2025-09-23 < prediction_date=2026-01-01
+ANOM-A-005,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000118,churn_outcome,CHURN-CUS-000118-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000118-2026 has churn_date=2025-12-11 < prediction_date=2026-01-01
+ANOM-A-006,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000762,churn_outcome,CHURN-CUS-000762-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000762-2026 has churn_date=2025-09-20 < prediction_date=2026-01-01
+ANOM-A-007,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000094,churn_outcome,CHURN-CUS-000094-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000094-2026 has churn_date=2025-07-21 < prediction_date=2026-01-01
+ANOM-A-008,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000441,churn_outcome,CHURN-CUS-000441-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000441-2026 has churn_date=2025-10-18 < prediction_date=2026-01-01
+ANOM-A-009,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000205,churn_outcome,CHURN-CUS-000205-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000205-2026 has churn_date=2025-11-26 < prediction_date=2026-01-01
+ANOM-A-010,A,DET-A-LABEL-BEFORE-PREDICTION,CUS-000098,churn_outcome,CHURN-CUS-000098-2026,Temporal label leakage: 2026 churn_outcome CHURN-CUS-000098-2026 has churn_date=2025-09-25 < prediction_date=2026-01-01
+ANOM-B-001,B,DET-B-INELIGIBLE-OFFER,CUS-000796,campaign_contact,CMP-CUS-000796-2026-W01,Ineligible customer CUS-000796 sent offer OFF-2026-000001 (failed ER-003)
+ANOM-B-002,B,DET-B-INELIGIBLE-OFFER,CUS-000587,campaign_contact,CMP-CUS-000587-2026-W01,Ineligible customer CUS-000587 sent offer OFF-2026-000001 (failed ER-004)
+ANOM-B-003,B,DET-B-INELIGIBLE-OFFER,CUS-000996,campaign_contact,CMP-CUS-000996-2026-W01,Ineligible customer CUS-000996 sent offer OFF-2026-000001 (failed ER-002)
+ANOM-B-004,B,DET-B-INELIGIBLE-OFFER,CUS-000108,campaign_contact,CMP-CUS-000108-2026-W01,Ineligible customer CUS-000108 sent offer OFF-2026-000001 (failed ER-005)
+ANOM-B-005,B,DET-B-INELIGIBLE-OFFER,CUS-000161,campaign_contact,CMP-CUS-000161-2026-W01,Ineligible customer CUS-000161 sent offer OFF-2026-000001 (failed ER-003)
+ANOM-B-006,B,DET-B-INELIGIBLE-OFFER,CUS-000597,campaign_contact,CMP-CUS-000597-2026-W01,Ineligible customer CUS-000597 sent offer OFF-2026-000001 (failed ER-004)
+ANOM-B-007,B,DET-B-INELIGIBLE-OFFER,CUS-000582,campaign_contact,CMP-CUS-000582-2026-W01,Ineligible customer CUS-000582 sent offer OFF-2026-000001 (failed ER-002)
+ANOM-B-008,B,DET-B-INELIGIBLE-OFFER,CUS-000820,campaign_contact,CMP-CUS-000820-2026-W01,Ineligible customer CUS-000820 sent offer OFF-2026-000001 (failed ER-003)
+ANOM-B-009,B,DET-B-INELIGIBLE-OFFER,CUS-000664,campaign_contact,CMP-CUS-000664-2026-W01,Ineligible customer CUS-000664 sent offer OFF-2026-000001 (failed ER-004)
+ANOM-B-010,B,DET-B-INELIGIBLE-OFFER,CUS-000686,campaign_contact,CMP-CUS-000686-2026-W01,Ineligible customer CUS-000686 sent offer OFF-2026-000001 (failed ER-002)
+ANOM-C-001,C,DET-C-GROUP-LEAKAGE,CUS-000502,campaign_contact,CMP-CUS-000502-2026-W02,Group leakage: customer CUS-000502 has both TREATMENT (W01) and CONTROL (CMP-CUS-000502-2026-W02) contacts
+ANOM-C-002,C,DET-C-GROUP-LEAKAGE,CUS-000298,campaign_contact,CMP-CUS-000298-2026-W02,Group leakage: customer CUS-000298 has both TREATMENT (W01) and CONTROL (CMP-CUS-000298-2026-W02) contacts
+ANOM-C-003,C,DET-C-GROUP-LEAKAGE,CUS-000600,campaign_contact,CMP-CUS-000600-2026-W02,Group leakage: customer CUS-000600 has both TREATMENT (W01) and CONTROL (CMP-CUS-000600-2026-W02) contacts
+ANOM-C-004,C,DET-C-GROUP-LEAKAGE,CUS-000240,campaign_contact,CMP-CUS-000240-2026-W02,Group leakage: customer CUS-000240 has both TREATMENT (W01) and CONTROL (CMP-CUS-000240-2026-W02) contacts
+ANOM-C-005,C,DET-C-GROUP-LEAKAGE,CUS-000859,campaign_contact,CMP-CUS-000859-2026-W02,Group leakage: customer CUS-000859 has both TREATMENT (W01) and CONTROL (CMP-CUS-000859-2026-W02) contacts
+ANOM-C-006,C,DET-C-GROUP-LEAKAGE,CUS-000704,campaign_contact,CMP-CUS-000704-2026-W02,Group leakage: customer CUS-000704 has both TREATMENT (W01) and CONTROL (CMP-CUS-000704-2026-W02) contacts
+ANOM-C-007,C,DET-C-GROUP-LEAKAGE,CUS-000148,campaign_contact,CMP-CUS-000148-2026-W02,Group leakage: customer CUS-000148 has both TREATMENT (W01) and CONTROL (CMP-CUS-000148-2026-W02) contacts
+ANOM-C-008,C,DET-C-GROUP-LEAKAGE,CUS-000207,campaign_contact,CMP-CUS-000207-2026-W02,Group leakage: customer CUS-000207 has both TREATMENT (W01) and CONTROL (CMP-CUS-000207-2026-W02) contacts
+ANOM-C-009,C,DET-C-GROUP-LEAKAGE,CUS-000465,campaign_contact,CMP-CUS-000465-2026-W02,Group leakage: customer CUS-000465 has both TREATMENT (W01) and CONTROL (CMP-CUS-000465-2026-W02) contacts
+ANOM-C-010,C,DET-C-GROUP-LEAKAGE,CUS-000694,campaign_contact,CMP-CUS-000694-2026-W02,Group leakage: customer CUS-000694 has both TREATMENT (W01) and CONTROL (CMP-CUS-000694-2026-W02) contacts
+ANOM-D-001,D,DET-D-MULTI-ATTRIBUTION,CUS-000249,campaign_contact,CMP-CUS-000249-2026-W02,Multi-offer attribution: customer CUS-000249 retained and attributed to both OFF-2026-000003 and OFF-2026-000001
+ANOM-D-002,D,DET-D-MULTI-ATTRIBUTION,CUS-000599,campaign_contact,CMP-CUS-000599-2026-W02,Multi-offer attribution: customer CUS-000599 retained and attributed to both OFF-2026-000002 and OFF-2026-000001
+ANOM-D-003,D,DET-D-MULTI-ATTRIBUTION,CUS-000214,campaign_contact,CMP-CUS-000214-2026-W02,Multi-offer attribution: customer CUS-000214 retained and attributed to both OFF-2026-000001 and OFF-2026-000002
+ANOM-D-004,D,DET-D-MULTI-ATTRIBUTION,CUS-000847,campaign_contact,CMP-CUS-000847-2026-W02,Multi-offer attribution: customer CUS-000847 retained and attributed to both OFF-2026-000001 and OFF-2026-000002
+ANOM-D-005,D,DET-D-MULTI-ATTRIBUTION,CUS-000869,campaign_contact,CMP-CUS-000869-2026-W02,Multi-offer attribution: customer CUS-000869 retained and attributed to both OFF-2026-000001 and OFF-2026-000002
+ANOM-D-006,D,DET-D-MULTI-ATTRIBUTION,CUS-000807,campaign_contact,CMP-CUS-000807-2026-W02,Multi-offer attribution: customer CUS-000807 retained and attributed to both OFF-2026-000001 and OFF-2026-000002
+ANOM-D-007,D,DET-D-MULTI-ATTRIBUTION,CUS-000611,campaign_contact,CMP-CUS-000611-2026-W02,Multi-offer attribution: customer CUS-000611 retained and attributed to both OFF-2026-000001 and OFF-2026-000002
+ANOM-D-008,D,DET-D-MULTI-ATTRIBUTION,CUS-000105,campaign_contact,CMP-CUS-000105-2026-W02,Multi-offer attribution: customer CUS-000105 retained and attributed to both OFF-2026-000002 and OFF-2026-000001
+ANOM-D-009,D,DET-D-MULTI-ATTRIBUTION,CUS-000254,campaign_contact,CMP-CUS-000254-2026-W02,Multi-offer attribution: customer CUS-000254 retained and attributed to both OFF-2026-000002 and OFF-2026-000001
+ANOM-D-010,D,DET-D-MULTI-ATTRIBUTION,CUS-000437,campaign_contact,CMP-CUS-000437-2026-W02,Multi-offer attribution: customer CUS-000437 retained and attributed to both OFF-2026-000001 and OFF-2026-000002

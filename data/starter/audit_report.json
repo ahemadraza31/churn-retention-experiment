@@ -1,0 +1,86 @@
+{
+  "scale": "starter",
+  "overall_status": "PASS",
+  "detector_summary": {
+    "all_detectors_perfect": true,
+    "total_ground_truth": 40,
+    "total_detected": 40,
+    "overall_precision": 1.0,
+    "overall_recall": 1.0
+  },
+  "detectors": {
+    "DET-A-LABEL-BEFORE-PREDICTION": {
+      "rule_id": "DET-A-LABEL-BEFORE-PREDICTION",
+      "anomaly_type": "A",
+      "severity": "CRITICAL",
+      "description": "Churn outcome has churned=1 with churn_date strictly before prediction_date",
+      "ground_truth_count": 10,
+      "detected_count": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "status": "PASS",
+      "missed_customer_ids": [],
+      "false_positive_customer_ids": []
+    },
+    "DET-B-INELIGIBLE-OFFER": {
+      "rule_id": "DET-B-INELIGIBLE-OFFER",
+      "anomaly_type": "B",
+      "severity": "CRITICAL",
+      "description": "Campaign contact assigned to customer/offer failing one or more of ER-001..ER-007",
+      "ground_truth_count": 10,
+      "detected_count": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "status": "PASS",
+      "missed_customer_ids": [],
+      "false_positive_customer_ids": []
+    },
+    "DET-C-GROUP-LEAKAGE": {
+      "rule_id": "DET-C-GROUP-LEAKAGE",
+      "anomaly_type": "C",
+      "severity": "CRITICAL",
+      "description": "Customer assigned to both TREATMENT and CONTROL campaign contacts",
+      "ground_truth_count": 10,
+      "detected_count": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "status": "PASS",
+      "missed_customer_ids": [],
+      "false_positive_customer_ids": []
+    },
+    "DET-D-MULTI-ATTRIBUTION": {
+      "rule_id": "DET-D-MULTI-ATTRIBUTION",
+      "anomaly_type": "D",
+      "severity": "HIGH",
+      "description": "Customer has multiple retained outcomes attributed to distinct non-null offers",
+      "ground_truth_count": 10,
+      "detected_count": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "status": "PASS",
+      "missed_customer_ids": [],
+      "false_positive_customer_ids": []
+    }
+  },
+  "estimator_audit": {
+    "unflagged_w01_treatment_count": 92,
+    "true_saved_count": 1,
+    "true_180d_itt_effect": 0.010869565217391304,
+    "estimated_180d_itt_lift": 0.032315,
+    "ci_95_low": -0.019237,
+    "ci_95_high": 0.083866,
+    "ci_contains_true_effect": true
+  }
+}
