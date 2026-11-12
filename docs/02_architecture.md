@@ -123,6 +123,30 @@ flowchart TD
 - Post-experiment model performance (AUC-ROC, Brier score) is evaluated **strictly on untreated customers** (Control group, Untargeted low/medium risk customers, and Ineligible accounts).
 - Customers who received an active treatment have their downstream churn probabilities altered by intervention; evaluating the baseline prediction model on treated customers would contaminate evaluation metrics.
 
+### ADR-013: Deterministic Anomaly Injection
+- Four operational anomaly types (A-D) are deterministically injected at the end of the data generation pipeline:
+  - Anomaly A: Temporal label leakage (`churn_date < prediction_date`).
+  - Anomaly B: Ineligible offer contact (contacted despite failing eligibility rules).
+  - Anomaly C: Group exclusivity violation (assigned to both `TREATMENT` and `CONTROL`).
+  - Anomaly D: Multi-offer attribution (multiple retention outcomes credited to distinct offers).
+- Injected records strictly add rows to existing entities without modifying or deleting valid rows.
+- Ground-truth manifests are written exclusively to `ground_truth/` and remain strictly isolated from production schemas.
+
+### ADR-014: Blind Business-Rule Detectors
+- Detectors inspect production SQLite tables and data exports using business logic only, completely blind to `ground_truth/` and latent parameters.
+- Detectors emit structured findings (`DET-A-LABEL-BEFORE-PREDICTION`, `DET-B-INELIGIBLE-OFFER`, `DET-C-GROUP-LEAKAGE`, `DET-D-MULTI-ATTRIBUTION`) written to `anomaly_report.json`.
+- Business detector findings do not fail standard data quality validation (exit 0) but identify operational issues.
+
+### ADR-015: Ground Truth Audit
+- An independent audit module loads blind detector findings and scores them against isolated `ground_truth/anomalies.csv`.
+- The audit evaluates True Positives, False Positives, False Negatives, Precision, and Recall per detector (target 100% recall on injected bugs).
+- In addition, the audit checks whether the empirical ITT 95% confidence interval encloses the true causal population treatment effect derived from `latent_customer_state.csv`.
+
+### ADR-016: Causal Evaluation and Financial Impact
+- Prior to evaluation, customers flagged by blind business-rule detectors are excluded from causal lift and financial impact calculations.
+- Causal lift is computed using Intention-to-Treat (ITT) principles across primary 90-day and secondary 180-day horizons with unpooled analytical 95% confidence intervals and two-sided pooled z-tests.
+- Financial impact is computed in exact integer cents using realized offer costs and 6-month expected margins from active subscription terms.
+
 ---
 
 ## 3. Architecture Decision Records (ADRs)
@@ -141,6 +165,10 @@ flowchart TD
 | **010** | Predictive model | Explainable Logistic Regression with standardized features as primary; Gradient Boosting as optional secondary benchmark. | Marginally lower raw AUC compared to deep ensembles; delivers transparent coefficient interpretations and rapid training. |
 | **011** | Serving architecture | FastAPI service is read-only. Streamlit calls shared domain services directly. | Eliminates unnecessary inter-process network hops in demo mode while preserving REST contracts. |
 | **012** | Model evaluation purity | Model evaluation uses untreated cohorts only (control, untargeted, ineligible). | Reduces sample size for model evaluation; guarantees uncorrupted baseline metrics. |
+| **013** | Anomaly injection | Deterministic injection of four operational anomaly types (A-D) at pipeline tail. | Requires isolated ground-truth references for downstream verification. |
+| **014** | Blind detectors | Detectors evaluate business rules blind to ground truth and latent parameters. | Operates without ground truth; audited independently against latent truth. |
+| **015** | Ground truth audit | Compare blind detector findings and ITT lift against hidden ground truth. | Audit code strictly isolated from runtime and evaluation pipelines. |
+| **016** | Experiment evaluation | Filter detector-flagged records; ITT lift with analytical 95% CIs; integer-cent financial metrics. | Excludes corrupt contacts; preserves causal inference. |
 
 ---
 
@@ -684,7 +712,7 @@ If delivery timelines slip, features will be trimmed in the following strict ord
 
 ## Addendum: Anomalies, detectors, audit and evaluation (Run 2B)
 
-- **Deterministic Anomaly Injection (`src/churnexp/anomalies/inject.py`)**:
+- **ADR-013: Deterministic Anomaly Injection (`src/churnexp/anomalies/inject.py`)**:
   - Implemented deterministic injection of $N$ records each (`records_per_type = 10` starter, `40` full) across four anomaly types at the end of the generation pipeline:
     - **Anomaly A (Temporal label leakage)**: Adds 2026 `churn_outcome` rows for customers who churned in 2025, with `churn_date < prediction_date`.
     - **Anomaly B (Ineligible offer contact)**: Adds `campaign_contact` (and associated `retention_outcome`) for customers active on assignment date who fail one or more eligibility rules (`ER-002` through `ER-005`).
@@ -693,7 +721,7 @@ If delivery timelines slip, features will be trimmed in the following strict ord
   - Injected records strictly ADD rows (never modifying or deleting valid rows), ensuring all 18 structural and data-quality rules continue to pass with zero findings.
   - Emits isolated ground-truth files `anomalies.csv` and `expected_decisions.csv` under `ground_truth/`.
 
-- **Blind Business-Rule Detectors (`src/churnexp/validation/detectors.py`)**:
+- **ADR-014: Blind Business-Rule Detectors (`src/churnexp/validation/detectors.py`)**:
   - Operates strictly on observable database tables without access to `ground_truth/` or latent parameters.
   - Implements four dedicated detectors:
     - `DET-A-LABEL-BEFORE-PREDICTION` (`CRITICAL`): Flags churn outcomes with `churn_date < prediction_date`.
@@ -702,12 +730,12 @@ If delivery timelines slip, features will be trimmed in the following strict ord
     - `DET-D-MULTI-ATTRIBUTION` (`HIGH`): Flags customers retained and attributed to multiple distinct offers.
   - `validate` reports both data-quality and business-rule detector findings, writing `data/<scale>/anomaly_report.json` and appending findings to `validation_summary.md`. Data-quality rules alone dictate exit codes (exit 0 when only business anomalies are present).
 
-- **Ground Truth Audit (`src/churnexp/audit/score.py`)**:
+- **ADR-015: Ground Truth Audit (`src/churnexp/audit/score.py`)**:
   - Compares detector findings against `ground_truth/anomalies.csv` on `(rule_id, customer_id)`, computing TP, FP, FN, precision, and recall per detector.
   - Audits causal estimators by checking whether the unflagged 180-day ITT 95% confidence interval encompasses the true 180-day treatment effect computed from `latent_customer_state.csv`.
   - CLI subcommand `python -m churnexp audit --scale starter|full` writes `audit_report.json` and `audit_report.md`, exiting with code 0 if all detectors achieve 100% precision and recall, else 1.
 
-- **Evaluation & Causal Lift Estimation (`src/churnexp/evaluation/`)**:
+- **ADR-016: Evaluation & Causal Lift Estimation (`src/churnexp/evaluation/`)**:
   - Filters out all customers flagged by detectors prior to analysis.
   - Evaluates untreated predictive model metrics (180-day and 90-day ROC-AUC, Brier score, decision rule table).
   - Estimates causal Intention-to-Treat (ITT) lift with two-proportion z-tests and 95% confidence intervals for primary 90-day retention, secondary 180-day retention, and exploratory subgroups (by offer and by stratum).
@@ -717,6 +745,26 @@ If delivery timelines slip, features will be trimmed in the following strict ord
 - **End-to-End Orchestration & Reproducibility (`cli.py`, `repro.py`)**:
   - Added CLI `python -m churnexp all --scale starter|full` to sequentially execute `generate`, `export`, `validate`, `evaluate`, and `audit`.
   - Updated `repro-check` to enforce identical SHA-256 hashes across isolated runs with `PYTHONHASHSEED=1` and `2` for exported CSVs, SQL, JSON, `anomalies.csv`, `expected_decisions.csv`, `latent_customer_state.csv`, `anomaly_report.json`, `evaluation_results.json`, and `model_info.json`.
+
+## Addendum: Dashboard, QA and documentation (Run 3)
+
+- **Read-Only Domain Services (`src/churnexp/services/queries.py`)**:
+  - Implemented strictly read-only query layer (`get_ro_connection`, `list_customers`, `customer_360`, `campaign_summary`, `load_report`).
+  - Read-only SQLite URI connections (`file:...mode=ro`) strictly reject `INSERT`/`UPDATE` operations.
+  - Zero access or mentions of ground-truth or latent parameters in domain query code.
+- **Interactive Multi-Page Streamlit Dashboard (`app/streamlit_app.py`)**:
+  - Built actor-specific interfaces: Overview, Marketing Ops, Support Agent (Customer 360 & diagnostics), Analyst (clean-cohort AUC, ITT lift, correlation vs incremental), and System Admin (18 rules, manifest row counts, reproducibility).
+  - Uses native Streamlit widgets and `st.cache_data`. Displays universal synthetic data warning banner.
+  - Comprehensive automated testing with `streamlit.testing.v1.AppTest` (`tests/unit/test_app.py`).
+- **Comprehensive Quality Assurance & Traceability**:
+  - Created bidirectional requirements traceability matrix (`docs/REQUIREMENTS_TRACEABILITY.md`) mapping FR-01..FR-20, NFR-01..NFR-07, AC-01..AC-12, Anomalies A-D, and 12 relational validation rules to exact pytest node names and evidence artifacts.
+  - Created stdlib-only automated test reporting script (`scripts/make_test_report.py`) producing `docs/TEST_REPORT.md` with test case details and operational checks.
+  - Verified 123 tests passing with 100% pass rate.
+- **Documentation & Verification Tooling**:
+  - Authored comprehensive `README.md` with 60-second quick start, command table, temporal design, causal experiment design, and headline results.
+  - Created `scripts/clean_clone_check.sh` to automate clean clone, environment creation, pipeline execution, and bitwise data parity validation.
+  - Authored `docs/FINAL_REPORT.md` providing end-to-end engineering review and business workflow audit.
+
 
 
 

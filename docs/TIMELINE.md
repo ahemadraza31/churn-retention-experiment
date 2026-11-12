@@ -15,4 +15,5 @@
 | 2026-11-12 06:46 IST | Milestone 3: Synthetic history generator (18-month untreated world & latent GT) | `dc004a7` |
 | 2026-11-12 08:00 IST | Milestone 4: M3 corrections, validators, generic exporter, and reproducibility check | `81a7fba` |
 | 2026-11-12 10:00 IST | Run 2A (M5-M7): Features, churn risk model, offer catalog, eligibility & margin engine, stratified assignment, and outcome simulation | `487f5ee` |
-| 2026-11-12 12:30 IST | Run 2B (M8-M9): Labelled anomalies, blind detectors, ground truth audit, causal evaluation & financial reporting, and 'all' CLI command | `Run 2B` |
+| 2026-11-12 12:30 IST | Run 2B (M8-M9): Labelled anomalies, blind detectors, ground truth audit, causal evaluation & financial reporting, and 'all' CLI command | `881b199` |
+| 2026-11-12 14:15 IST | Run 3 (M10-M12): Read-only Streamlit actor dashboard, domain queries, requirements traceability, test report, clean clone script, and final report | `Run 3` |

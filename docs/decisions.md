@@ -36,3 +36,7 @@
 | **010** | Predictive model | Explainable Logistic Regression with standardized features as primary; Gradient Boosting as optional secondary benchmark. | Marginally lower raw AUC; delivers transparent coefficient interpretations. |
 | **011** | Serving architecture | FastAPI service is read-only. Streamlit calls shared domain services directly. | Eliminates unnecessary inter-process network hops in demo mode while preserving REST contracts. |
 | **012** | Model evaluation purity | Model evaluation uses untreated cohorts only (control, untargeted, ineligible). | Reduces sample size for model evaluation; guarantees uncorrupted baseline metrics. |
+| **013** | Anomaly injection | Deterministic injection of four operational anomaly types (A-D) at pipeline tail. | Requires isolated ground-truth references for downstream verification. |
+| **014** | Blind detectors | Detectors evaluate business rules blind to ground truth and latent parameters. | Operates without ground truth; audited independently against latent truth. |
+| **015** | Ground truth audit | Compare blind detector findings and ITT lift against hidden ground truth. | Audit code strictly isolated from runtime and evaluation pipelines. |
+| **016** | Experiment evaluation | Filter detector-flagged records; ITT lift with analytical 95% CIs; integer-cent financial metrics. | Excludes corrupt contacts; preserves causal inference. |

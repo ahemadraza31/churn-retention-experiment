@@ -67,8 +67,8 @@ Evaluated strictly on scored customers with a 2026 churn outcome who are **not**
 | `OFF-2026-000001` *(exploratory)* | 180d | 49/50 (0.9800) | 61/63 (0.9683) | +1.17 | [-4.64, +6.99] | 0.6997 | +0.59 |
 | `OFF-2026-000002` *(exploratory)* | 90d | 41/42 (0.9762) | 43/46 (0.9348) | +4.14 | [-4.35, +12.64] | 0.3516 | +1.74 |
 | `OFF-2026-000002` *(exploratory)* | 180d | 41/42 (0.9762) | 42/46 (0.9130) | +6.31 | [-3.04, +15.67] | 0.2012 | +2.65 |
-| `OFF-2026-000003` *(exploratory)* | 90d | 0/0 (0.0000) | 2/2 (1.0000) | -100.00 | [-100.00, -100.00] | 0.0000 | -0.00 |
-| `OFF-2026-000003` *(exploratory)* | 180d | 0/0 (0.0000) | 2/2 (1.0000) | -100.00 | [-100.00, -100.00] | 0.0000 | -0.00 |
+| `OFF-2026-000003` *(exploratory)* | 90d | 0/0 (0.0000) | 2/2 (1.0000) | n/a (arm empty) | n/a (arm empty) | n/a (arm empty) | n/a (arm empty) |
+| `OFF-2026-000003` *(exploratory)* | 180d | 0/0 (0.0000) | 2/2 (1.0000) | n/a (arm empty) | n/a (arm empty) | n/a (arm empty) | n/a (arm empty) |
 
 ### 3.3 Exploratory Subgroup Breakdown by Risk Stratum
 
@@ -84,7 +84,7 @@ Evaluated strictly on scored customers with a 2026 churn outcome who are **not**
 | Covariate | Treatment Mean | Control Mean | Standardized Mean Diff (SMD) | Flagged (`SMD >= 0.10`) |
 | :--- | ---: | ---: | ---: | :---: |
 | `risk_score` | 0.0516 | 0.0525 | 0.034001 | `NO` |
-| `tenure_days` | 631.7717 | 596.9009 | 0.135239 | `YES` |
+| `tenure_days` | 631.7717 | 596.9009 | 0.135239 *(small sample)* | `YES (small sample)` |
 | `monthly_price_cents` | 1738.1304 | 1800.8018 | 0.065672 | `NO` |
 
 ### 3.5 Correlation vs. Incremental Causal Comparison
@@ -113,10 +113,19 @@ Evaluated strictly on scored customers with a 2026 churn outcome who are **not**
 | **Net Financial Impact (cents)** | -9562 ([-40209, 21086]) | -13812 ([-37968, 10345]) |
 | **Cost per Incremental Retained Customer (cents)** | 9678 | 12427 |
 
+Realized cost counts every redeemer who stayed, including customers who would have stayed anyway.
+
 - **180-Day Financial Assessment**: For the 180d horizon, point-estimate net financial impact is negative (-9562 cents) and the 95% confidence interval [-40209, 21086] cents includes zero.
 - **90-Day Financial Assessment**: For the 90d horizon, point-estimate net financial impact is negative (-13812 cents) and the 95% confidence interval [-37968, 10345] cents includes zero.
 
-## 5. How to read this
+## 5. Business reading
+
+1. **Causal Lift Sign & Confidence**: The sign of the 180-day retention lift is positive (+3.23 pp), and the 95% confidence interval of the 180-day lift includes zero ([-1.92, +8.39] pp).
+2. **Net Impact Assessment**: Program net impact is negative (-9562 cents), and the 95% confidence interval of net impact includes zero ([-40209, 21086] cents).
+3. **Unit Economics Comparison**: The cost per incremental retained customer is 9678 cents versus the average 6-month margin of 6462 cents.
+4. **Simulation Caveat**: These conclusions hold only under the stated simulation parameters.
+
+## 6. How to read this
 
 1. **What Intention-to-Treat (ITT) Means**: Every eligible customer randomized into `TREATMENT` or `CONTROL` at `W01` (`2026-01-05`) is analyzed in their assigned arm regardless of whether delivery succeeded (`SENT` vs `DELIVERY_FAILED`) or whether the customer responded or redeemed. Comparing `TREATMENT` redeemers directly to `CONTROL` introduces severe selection bias because customers who open and redeem offers also have higher baseline retention propensity.
 2. **Denominators and Time Windows**: Model evaluation uses the unflagged untreated cohort (`CONTROL` + uncontacted customers scored at `P = 2026-01-01`). Experiment evaluation uses unflagged eligible customers assigned at `2026-01-05`. The **90-day outcome window** (`2026-01-05` to `2026-04-05`) is the **primary experiment metric** (Decision D3), while the **180-day horizon** (`2026-01-01` to `2026-06-30`) is the **secondary experiment metric** and serves as the headline financial basis because expected gross margin is evaluated over 6 months.

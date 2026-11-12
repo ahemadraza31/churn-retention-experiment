@@ -210,3 +210,53 @@ Four operational failure modes must be injected into the post-assignment data to
   - Starter scale generation and evaluation: $\le 10\text{ seconds}$.
   - Full scale (20,000 customers) generation and evaluation: $\le 90\text{ seconds}$.
 - **Zero Heavy Dependencies**: Pure Python 3.11 with pandas, NumPy, scikit-learn, SQLite, FastAPI, and Streamlit. No Docker containers, no external database servers, no message brokers.
+
+---
+
+## 12. Requirements Catalog & Acceptance Criteria Matrix
+
+### Functional Requirements (FR-01 to FR-20)
+- **FR-01**: Synthetic customer and subscription history generator across 18 months for starter (1k) and full (20k) scales.
+- **FR-02**: Relational SQLite storage with plain SQL schema, primary/foreign keys, and analytical views.
+- **FR-03**: Append-only event tracking and subscription versioning for customer lifecycle states.
+- **FR-04**: Dual-snapshot point-in-time feature extraction ($P_0 = 2025-07-01$, $P = 2026-01-01$) with zero leakage.
+- **FR-05**: 180-day churn label resolution fully finalized before scoring cutoff date.
+- **FR-06**: Explainable churn prediction modeling via standardized L2-penalized Logistic Regression.
+- **FR-07**: Churn risk scoring and quantile band stratification (HIGH, MEDIUM, LOW).
+- **FR-08**: Retention offer catalog defining 3 distinct offers (10% 6m, 20% 3m, 1 free month).
+- **FR-09**: Seven-rule eligibility engine evaluating tenure, opt-in, billing, support, and risk.
+- **FR-10**: Financial gross margin cap guardrail (ER-007) evaluated per candidate offer.
+- **FR-11**: Planned offer assignment to eligible candidates prior to arm randomization.
+- **FR-12**: Stratified 50/50 randomized experiment assignment (TREATMENT vs CONTROL with WITHHELD status).
+- **FR-13**: Counterfactual simulation of response, redemption, and post-churn usage generation.
+- **FR-14**: Deterministic operational anomaly injection across four failure types (A, B, C, D).
+- **FR-15**: Blind business-rule detectors (DET-A, DET-B, DET-C, DET-D) operating without ground truth.
+- **FR-16**: Ground-truth audit module scoring detector precision/recall and causal estimator coverage.
+- **FR-17**: Causal Intention-to-Treat (ITT) lift estimation (primary 90d, secondary 180d, exploratory subgroups) with 95% CIs.
+- **FR-18**: Integer-cent financial impact and ROI calculation (realized cost vs incremental margin).
+- **FR-19**: Multi-format data exporter (CSV, JSON, SQL) with cryptographic SHA-256 manifests.
+- **FR-20**: Serving interface (FastAPI read-only REST API replaced by Streamlit actor dashboard and services layer).
+
+### Non-Functional Requirements (NFR-01 to NFR-07)
+- **NFR-01**: Deterministic reproducibility via master SeedSequence(20261022) and per-entity child substreams.
+- **NFR-02**: Zero temporal lookahead data leakage guaranteed by design.
+- **NFR-03**: Strict ground truth isolation (no cheat columns in database, isolated ground_truth/ directory).
+- **NFR-04**: Modular monolith architecture in pure Python 3.11 with no external daemons.
+- **NFR-05**: Strict runtime performance targets (starter <= 10s, full <= 90s).
+- **NFR-06**: Deterministic formatting and primary key sorting across all exports.
+- **NFR-07**: Comprehensive automated test and validation coverage.
+
+### Acceptance Criteria (AC-01 to AC-12)
+- **AC-01**: Dual temporal snapshot isolation verified with mutate-the-future tests.
+- **AC-02**: Baseline 18-month annualized churn rate within 5% to 20% boundary.
+- **AC-03**: 50/50 stratified randomization balance across risk strata and plan tiers.
+- **AC-04**: Planned offer recorded for both Treatment and Control arms.
+- **AC-05**: 18 structural and relational integrity validation rules pass with zero findings.
+- **AC-06**: Four operational anomalies (A, B, C, D) deterministically injected at pipeline tail.
+- **AC-07**: Blind detectors identify injected anomalies without ground truth access.
+- **AC-08**: Ground truth audit confirms 100% precision and recall on injected anomalies.
+- **AC-09**: Primary 90-day and secondary 180-day ITT lift evaluated with unpooled 95% CIs.
+- **AC-10**: Financial impact evaluated in integer cents using realized costs and 6-month margins.
+- **AC-11**: Multi-format exports match SQLite database with verified SHA-256 manifests.
+- **AC-12**: Independent runs with different PYTHONHASHSEED produce bitwise identical outputs.
+
